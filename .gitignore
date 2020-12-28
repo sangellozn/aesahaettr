@@ -1,7 +1,7 @@
 /.classpath
 /.project
 /.settings
-/target/classes
+/target
 /ui/aesahaettr-app/node_modules
 # e2e
 /ui/aesahaettr-app/e2e/*.js
