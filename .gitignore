@@ -1,0 +1,8 @@
+/.classpath
+/.project
+/.settings
+/target/classes
+/ui/aesahaettr-app/node_modules
+# e2e
+/ui/aesahaettr-app/e2e/*.js
+/ui/aesahaettr-app/e2e/*.map

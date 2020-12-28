@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.aesahaettr.me/aesahaettr" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.aesahaettr.me/aesahaettr">
+
+    <complexType name="personne">
+    	<sequence>
+    		<element name="id" type="tns:UIID"></element>
+    		<element name="nom" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="prenoms" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomUsage" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="prenomUsage" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    
+    <complexType name="aesahaettr">
+    	<sequence>
+    		<element name="personne" type="tns:personne" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="aesahaettr" type="tns:aesahaettr"></element>
+
+    <simpleType name="UIID">
+    	<restriction base="string">
+    		<length value="36"></length>
+    		<pattern
+    			value="[a-z0-9]{8,8}-[a-z0-9]{4,4}-[a-z0-9]{4,4}-[a-z0-9]{4,4}-[a-z0-9]{12,12}">
+    		</pattern>
+    		<whiteSpace value="collapse"></whiteSpace>
+    	</restriction>
+    </simpleType>
+
+    <complexType name="adresse"></complexType>
+
+    <complexType name="objet"></complexType>
+
+    <complexType name="evenement"></complexType>
+
+    <complexType name="contact"></complexType>
+
+    <complexType name="typeRelation"></complexType>
+
+    <complexType name="typeContact"></complexType>
+
+    <complexType name="typeObjet"></complexType>
+
+</schema>
