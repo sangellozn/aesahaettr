@@ -3,22 +3,42 @@
 
     <complexType name="personne">
     	<sequence>
-    		<element name="id" type="tns:UIID"></element>
-    		<element name="nom" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="prenoms" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="nomUsage" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="prenomUsage" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nom" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="prenoms" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="nomUsage" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="prenomUsage" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element ref="tns:adresses" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:relations" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:possessions" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:evenements" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:contacts" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
+    	<attribute name="id" type="tns:UIID" use="required"></attribute>
     </complexType>
 
-    
+
     <complexType name="aesahaettr">
     	<sequence>
-    		<element name="personne" type="tns:personne" minOccurs="0" maxOccurs="unbounded"></element>
+    		<element ref="tns:personnes" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:refPays" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:refTypeAppartenance" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:refTypeContact" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:refTypeObjet" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:refTypeRelation" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     </complexType>
     
-    <element name="aesahaettr" type="tns:aesahaettr"></element>
+    <element name="aesahaettr" type="tns:aesahaettr">
+        
+    </element>
 
     <simpleType name="UIID">
     	<restriction base="string">
@@ -30,18 +50,218 @@
     	</restriction>
     </simpleType>
 
-    <complexType name="adresse"></complexType>
+    <complexType name="adresse">
+    	<sequence>
+    		<element name="ligne1" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="ligne2" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="ligne3" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="lieuDit" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="codePostal" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="localiteDestination" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="paysId" type="tns:UIID" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    	<attribute name="id" type="tns:UIID" use="required"></attribute>
+    </complexType>
 
-    <complexType name="objet"></complexType>
+    <complexType name="objet">
+    	<sequence>
+    		<element name="nom" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="description" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="typeObjetCode" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:evenements" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    	<attribute name="id" type="tns:UIID" use="required"></attribute>
+    </complexType>
 
-    <complexType name="evenement"></complexType>
+    <complexType name="evenement">
+    	<sequence>
+    		<element name="dateDebut" type="dateTime" minOccurs="0" maxOccurs="1"></element>
+    		<element name="dateFin" type="dateTime" minOccurs="0" maxOccurs="1"></element>
+    		<element name="dateEvt" type="dateTime" minOccurs="1" maxOccurs="1"></element>
+    		<element name="resume" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="description" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    	<attribute name="id" type="tns:UIID" use="required"></attribute>
+    </complexType>
 
-    <complexType name="contact"></complexType>
+    <complexType name="contact">
+    	<sequence>
+    		<element name="typeContactCode" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="valeur" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    	<attribute name="id" type="tns:UIID" use="required"></attribute>
+    </complexType>
 
-    <complexType name="typeRelation"></complexType>
+    <complexType name="typeRelation">
+    	<sequence>
+    		<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="libelle" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
 
-    <complexType name="typeContact"></complexType>
+    <complexType name="typeContact">
+    	<sequence>
+    		<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="libelle" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
 
-    <complexType name="typeObjet"></complexType>
+    <complexType name="typeObjet">
+    	<sequence>
+    		<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="libelle" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
 
+    
+    <complexType name="pays">
+    	<sequence>
+    		<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nom" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    	<attribute name="id" type="tns:UIID" use="required"></attribute>
+    </complexType>
+    
+    <element name="pays" type="tns:pays"></element>
+
+    <element name="adresse" type="tns:adresse"></element>
+
+    <complexType name="adresseList">
+    	<sequence>
+    		<element ref="tns:adresse" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="personne" type="tns:personne"></element>
+
+    <element name="adresses" type="tns:adresseList">
+    </element>
+
+    <element name="personnes" type="tns:personneList"></element>
+
+    <complexType name="personneList">
+    	<sequence>
+    		<element ref="tns:personne" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="paysList">
+    	<sequence>
+    		<element ref="tns:pays" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="refPays" type="tns:paysList"></element>
+
+
+    <complexType name="typeContactList">
+    	<sequence>
+    		<element ref="tns:typeContact" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="typeContact" type="tns:typeContact"></element>
+
+    <element name="refTypeContact" type="tns:typeContactList"></element>
+
+    <complexType name="typeObjetList">
+    	<sequence>
+    		<element ref="tns:typeObjet" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="typeObjet" type="tns:typeObjet"></element>
+
+    <element name="refTypeObjet" type="tns:typeObjetList"></element>
+
+    <complexType name="typeRelationList">
+    	<sequence>
+    		<element ref="tns:typeRelation" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="typeRelation" type="tns:typeRelation"></element>
+
+    <element name="refTypeRelation" type="tns:typeRelationList"></element>
+
+    <complexType name="relation">
+    	<sequence>
+    		<element name="typeRelationCode" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="personneId" type="tns:UIID" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="relationList">
+    	<sequence>
+    		<element ref="tns:relation" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="relation" type="tns:relation"></element>
+
+    <element name="relations" type="tns:relationList"></element>
+
+    <element name="objet" type="tns:objet"></element>
+
+    <element name="objets" type="tns:objetList"></element>
+
+    <complexType name="objetList">
+    	<sequence>
+    		<element ref="tns:objet" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="typeAppartenance">
+    	<sequence>
+    		<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="libelle" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="typeAppartenanceList">
+    	<sequence>
+    		<element ref="tns:typeAppartenance" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="typeAppartenance" type="tns:typeAppartenance"></element>
+
+    <element name="refTypeAppartenance" type="tns:typeAppartenanceList"></element>
+
+    <complexType name="possessionList">
+    	<sequence>
+    		<element ref="tns:possession" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="possessions" type="tns:possessionList"></element>
+
+    <element name="possession" type="tns:possession"></element>
+
+    <complexType name="possession">
+    	<sequence>
+    		<element name="typeAppartenanceCode" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="objetId" type="tns:UIID" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="evenements" type="tns:evenementList"></element>
+
+    <complexType name="evenementList">
+    	<sequence>
+    		<element name="evenementId" type="tns:UIID" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="contactList">
+    	<sequence>
+    		<element ref="tns:contact" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="contacts" type="tns:contactList"></element>
+
+    <element name="contact" type="tns:contact"></element>
 </schema>
