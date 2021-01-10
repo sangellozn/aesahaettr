@@ -1,6 +1,6 @@
 package aesahaettr.ui.bean.ref;
 
-public class PaysDto {
+public class PaysDto implements Comparable<PaysDto> {
 
     private String code;
 
@@ -32,6 +32,11 @@ public class PaysDto {
      */
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    @Override
+    public int compareTo(PaysDto o) {
+        return this.code.compareTo(o.getCode());
     }
 
 }

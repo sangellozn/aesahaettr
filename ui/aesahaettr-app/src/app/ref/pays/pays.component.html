@@ -1,5 +1,5 @@
 <h1>Référentiel des pays</h1>
-<p>Cette page permet de gérer le référentiel des pays utilisable pour les adresses, lieux, etc.</p>
+<p>Cette page permet de gérer le référentiel des pays utilisables pour les adresses, lieux, etc. Une fois un pays créé, son code ne peut plus être modifié.</p>
 
 <p-toolbar styleClass="p-mb-4">
     <ng-template pTemplate="left">
@@ -9,7 +9,7 @@
 </p-toolbar>
 
 <p-table #paysTable [value]="paysList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
-  [globalFilterFields]="['code', 'nom']">
+  [globalFilterFields]="['code', 'nom']" styleClass="p-datatable-striped">
     <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
             <h5 class="p-m-0">Gérer les pays</h5>
@@ -22,8 +22,8 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Code</th>
-            <th>Nom</th>
+            <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="nom">Nom <p-sortIcon field="nom"></p-sortIcon></th>
             <th></th>
         </tr>
     </ng-template>

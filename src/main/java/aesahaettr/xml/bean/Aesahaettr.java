@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "aesahaettr", propOrder = {
     "personnes",
+    "objets",
     "refPays",
     "refTypeAppartenance",
     "refTypeContact",
@@ -53,6 +54,8 @@ public class Aesahaettr {
 
     @XmlElement(required = true)
     protected PersonneList personnes;
+    @XmlElement(required = true)
+    protected ObjetList objets;
     @XmlElement(required = true)
     protected PaysList refPays;
     @XmlElement(required = true)
@@ -206,6 +209,24 @@ public class Aesahaettr {
      */
     public void setRefTypeRelation(TypeRelationList value) {
         this.refTypeRelation = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété objets.
+     *
+     * @return the objets
+     */
+    public ObjetList getObjets() {
+        return this.objets;
+    }
+
+    /**
+     * Définit la valeur de la propriété objets.
+     *
+     * @param objets the objets to set
+     */
+    public void setObjets(ObjetList objets) {
+        this.objets = objets;
     }
 
 }

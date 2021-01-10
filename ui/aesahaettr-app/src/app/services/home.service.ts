@@ -21,7 +21,7 @@ export class HomeService extends AbstractAppService {
 
   getGreeting() : Observable<Greetings> {
     return this.http.get<Greetings>(this.url).pipe(
-      catchError(this.handleError(new Greetings))
+      catchError(this.throwError())
     );;
   }
 }

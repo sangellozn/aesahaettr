@@ -22,7 +22,7 @@ public class PaysServicesImpl implements IPaysServices {
     @Override
     public Collection<PaysDto> findAll() {
         return AesahaettrXmlInstance.getInstance().getRefPays().getPays()
-                .stream().map(this.paysFactory::mapToDto).collect(Collectors.toList());
+                .stream().map(this.paysFactory::mapToDto).sorted().collect(Collectors.toList());
     }
 
     @Override

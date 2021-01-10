@@ -28,11 +28,20 @@
     <complexType name="aesahaettr">
     	<sequence>
     		<element ref="tns:personnes" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:refPays" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:refTypeAppartenance" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:refTypeContact" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:refTypeObjet" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:refTypeRelation" minOccurs="1" maxOccurs="1"></element>
+            <element ref="tns:objets" minOccurs="1" maxOccurs="1"></element>
+            <element ref="tns:refPays" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:refTypeAppartenance" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element ref="tns:refTypeContact" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element ref="tns:refTypeObjet" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element ref="tns:refTypeRelation" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
     	</sequence>
     </complexType>
     
