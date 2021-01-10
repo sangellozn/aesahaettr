@@ -17,6 +17,8 @@ export class PaysComponent implements OnInit {
 
   showAddNouveauPaysPopin: boolean = false;
 
+  modification: boolean = false;
+
   constructor(private paysService: PaysService) { }
 
   ngOnInit(): void {
@@ -34,14 +36,27 @@ export class PaysComponent implements OnInit {
   onNouveauPaysPopinCancelBtnClick(): void {
     this.showAddNouveauPaysPopin = false;
     this.nouveauPays = new Pays;
+    this.modification = false;
   }
 
   onPaysFormSubmit(): void {
     this.paysService.save(this.nouveauPays)
       .subscribe(() => {
+        this.showAddNouveauPaysPopin = false;
         this.loadPays();
         this.nouveauPays = new Pays;
-    });
+        this.modification = false;
+      });
+  }
+
+  editPays(pays: Pays) {
+    this.nouveauPays = {...pays};
+    this.modification = true;
+    this.showAddNouveauPaysPopin = true;
+  }
+
+  onHideNouveauPaysPopin() {
+    this.onNouveauPaysPopinCancelBtnClick();
   }
 
 }

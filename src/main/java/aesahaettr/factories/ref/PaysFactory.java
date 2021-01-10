@@ -9,14 +9,23 @@ import aesahaettr.xml.bean.Pays;
 public class PaysFactory implements IPaysFactory {
 
     @Override
-    public PaysDto map(Pays pays) {
+    public PaysDto mapToDto(Pays pays) {
         PaysDto paysDto = new PaysDto();
 
         paysDto.setCode(pays.getCode());
-        paysDto.setId(pays.getId());
         paysDto.setNom(pays.getNom());
 
         return paysDto;
+    }
+
+    @Override
+    public Pays mapToBean(PaysDto bean) {
+        Pays pays = new Pays();
+
+        pays.setCode(bean.getCode());
+        pays.setNom(bean.getNom());
+
+        return pays;
     }
 
 }

@@ -12,14 +12,14 @@ export class AbstractAppService {
 
     handleError<T>(result?: T) {
         return (error: any): Observable<T> => {
-            this.messageService.add({severity:'error', summary: error.statusText, detail: error.message, life: 5000 });
+            this.messageService.add({severity:'error', summary: error.statusText, detail: error.message});
             return of(result as T);
         }
     }
 
     throwError() {
         return (error: any): Observable<never> => {
-            this.messageService.add({severity:'error', summary: error.statusText, detail: error.message, life: 5000 });
+            this.messageService.add({severity:'error', summary: error.statusText, detail: error.message });
             return throwError(error);
         }
     }

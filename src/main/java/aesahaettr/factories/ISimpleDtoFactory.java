@@ -2,6 +2,8 @@ package aesahaettr.factories;
 
 public interface ISimpleDtoFactory<DTO, BEAN> {
 
-    DTO map(BEAN bean);
+    DTO mapToDto(BEAN bean);
+
+    BEAN mapToBean(DTO bean);
 
 }

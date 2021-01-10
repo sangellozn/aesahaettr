@@ -5,6 +5,8 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,9 +25,14 @@ public class PaysController {
         return this.paysServices.findAll();
     }
 
-    @GetMapping("/{id}")
-    public PaysDto getById(@PathVariable("id") String id) {
-        return this.paysServices.getById(id);
+    @GetMapping("/{code}")
+    public PaysDto getByCode(@PathVariable("code") String code) {
+        return this.paysServices.getByCode(code);
+    }
+
+    @PostMapping
+    public void save(@RequestBody PaysDto pays) {
+        this.paysServices.save(pays);
     }
 
 }

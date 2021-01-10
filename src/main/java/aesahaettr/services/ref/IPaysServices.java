@@ -8,7 +8,7 @@ public interface IPaysServices {
 
     Collection<PaysDto> findAll();
 
-    PaysDto getById(String id);
+    PaysDto getByCode(String code);
 
     void save(PaysDto paysDto);
 

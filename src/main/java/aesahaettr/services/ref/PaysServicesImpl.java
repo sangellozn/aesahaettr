@@ -1,6 +1,7 @@
 package aesahaettr.services.ref;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,24 +22,31 @@ public class PaysServicesImpl implements IPaysServices {
     @Override
     public Collection<PaysDto> findAll() {
         return AesahaettrXmlInstance.getInstance().getRefPays().getPays()
-                .stream().map(this.paysFactory::map).collect(Collectors.toList());
+                .stream().map(this.paysFactory::mapToDto).collect(Collectors.toList());
     }
 
     @Override
-    public PaysDto getById(String id) {
-        return this.paysFactory.map(this.getByIdIntern(id));
+    public PaysDto getByCode(String code) {
+        return this.paysFactory.mapToDto(this.getByCodeIntern(code).orElseThrow(() -> new PaysNotFoundException(code)));
     }
 
     @Override
     public void save(PaysDto paysDto) {
-        // TODO Auto-generated method stub
+        Optional<Pays> paysOpt = this.getByCodeIntern(paysDto.getCode());
 
+        if (paysOpt.isPresent()) {
+            paysOpt.get().setNom(paysDto.getNom());
+        } else {
+            AesahaettrXmlInstance.getInstance().getRefPays().getPays().add(this.paysFactory.mapToBean(paysDto));
+        }
+
+        AesahaettrXmlInstance.save();
     }
 
-    private Pays getByIdIntern(String id) {
+    private Optional<Pays> getByCodeIntern(String code) {
         return AesahaettrXmlInstance.getInstance().getRefPays().getPays()
-                .stream().filter(item -> item.getId().equals(id))
-                .findFirst().orElseThrow(() -> new PaysNotFoundException(id));
+                .stream().filter(item -> item.getCode().equals(code))
+                .findFirst();
     }
 
 }
