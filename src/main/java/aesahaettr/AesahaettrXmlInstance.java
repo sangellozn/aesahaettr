@@ -1,4 +1,4 @@
-package aesahaettr.services;
+package aesahaettr;
 
 import java.io.File;
 
@@ -12,10 +12,15 @@ import javax.xml.bind.Unmarshaller;
 
 import aesahaettr.xml.bean.Aesahaettr;
 
-public class AesahaettrXmlServicesImpl implements IAesahaettrXmlServices {
+public final class AesahaettrXmlInstance {
 
-    @Override
-    public Aesahaettr load() {
+    private static Aesahaettr INSTANCE;
+
+    private AesahaettrXmlInstance() {
+        // Nothing.
+    }
+
+    private static Aesahaettr load() {
         try {
             InitialContext context = new InitialContext();
             Context xmlNode = (Context) context.lookup("java:comp/env");
@@ -32,8 +37,7 @@ public class AesahaettrXmlServicesImpl implements IAesahaettrXmlServices {
 
     }
 
-    @Override
-    public void save(Aesahaettr aesahaettr) {
+    public static synchronized void save() {
         try {
             InitialContext context = new InitialContext();
             Context xmlNode = (Context) context.lookup("java:comp/env");
@@ -43,11 +47,19 @@ public class AesahaettrXmlServicesImpl implements IAesahaettrXmlServices {
 
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-            jaxbMarshaller.marshal(aesahaettr, new File(dataFilePath));
+            jaxbMarshaller.marshal(AesahaettrXmlInstance.INSTANCE, new File(dataFilePath));
         } catch (NamingException | JAXBException e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public static synchronized Aesahaettr getInstance() {
+        if (AesahaettrXmlInstance.INSTANCE == null) {
+            AesahaettrXmlInstance.INSTANCE = AesahaettrXmlInstance.load();
+        }
+
+        return AesahaettrXmlInstance.INSTANCE;
     }
 
 }

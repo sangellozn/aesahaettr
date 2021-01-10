@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.12.29 à 05:55:54 PM CET 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
+// Généré le : 2020.12.29 à 05:55:54 PM CET
 //
 
 
@@ -11,14 +11,15 @@ package aesahaettr.xml.bean;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Classe Java pour aesahaettr complex type.
- * 
+ *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="aesahaettr">
  *   &lt;complexContent>
@@ -35,8 +36,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "aesahaettr", propOrder = {
@@ -47,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
     "refTypeObjet",
     "refTypeRelation"
 })
+@XmlRootElement
 public class Aesahaettr {
 
     @XmlElement(required = true)
@@ -64,23 +66,23 @@ public class Aesahaettr {
 
     /**
      * Obtient la valeur de la propriété personnes.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PersonneList }
-     *     
+     *
      */
     public PersonneList getPersonnes() {
-        return personnes;
+        return this.personnes;
     }
 
     /**
      * Définit la valeur de la propriété personnes.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PersonneList }
-     *     
+     *
      */
     public void setPersonnes(PersonneList value) {
         this.personnes = value;
@@ -88,23 +90,23 @@ public class Aesahaettr {
 
     /**
      * Obtient la valeur de la propriété refPays.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PaysList }
-     *     
+     *
      */
     public PaysList getRefPays() {
-        return refPays;
+        return this.refPays;
     }
 
     /**
      * Définit la valeur de la propriété refPays.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PaysList }
-     *     
+     *
      */
     public void setRefPays(PaysList value) {
         this.refPays = value;
@@ -112,23 +114,23 @@ public class Aesahaettr {
 
     /**
      * Obtient la valeur de la propriété refTypeAppartenance.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TypeAppartenanceList }
-     *     
+     *
      */
     public TypeAppartenanceList getRefTypeAppartenance() {
-        return refTypeAppartenance;
+        return this.refTypeAppartenance;
     }
 
     /**
      * Définit la valeur de la propriété refTypeAppartenance.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TypeAppartenanceList }
-     *     
+     *
      */
     public void setRefTypeAppartenance(TypeAppartenanceList value) {
         this.refTypeAppartenance = value;
@@ -136,23 +138,23 @@ public class Aesahaettr {
 
     /**
      * Obtient la valeur de la propriété refTypeContact.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TypeContactList }
-     *     
+     *
      */
     public TypeContactList getRefTypeContact() {
-        return refTypeContact;
+        return this.refTypeContact;
     }
 
     /**
      * Définit la valeur de la propriété refTypeContact.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TypeContactList }
-     *     
+     *
      */
     public void setRefTypeContact(TypeContactList value) {
         this.refTypeContact = value;
@@ -160,23 +162,23 @@ public class Aesahaettr {
 
     /**
      * Obtient la valeur de la propriété refTypeObjet.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TypeObjetList }
-     *     
+     *
      */
     public TypeObjetList getRefTypeObjet() {
-        return refTypeObjet;
+        return this.refTypeObjet;
     }
 
     /**
      * Définit la valeur de la propriété refTypeObjet.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TypeObjetList }
-     *     
+     *
      */
     public void setRefTypeObjet(TypeObjetList value) {
         this.refTypeObjet = value;
@@ -184,23 +186,23 @@ public class Aesahaettr {
 
     /**
      * Obtient la valeur de la propriété refTypeRelation.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TypeRelationList }
-     *     
+     *
      */
     public TypeRelationList getRefTypeRelation() {
-        return refTypeRelation;
+        return this.refTypeRelation;
     }
 
     /**
      * Définit la valeur de la propriété refTypeRelation.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TypeRelationList }
-     *     
+     *
      */
     public void setRefTypeRelation(TypeRelationList value) {
         this.refTypeRelation = value;

@@ -1,3 +1,64 @@
 <h1>Référentiel des pays</h1>
 <p>Cette page permet de gérer le référentiel des pays utilisable pour les adresses, lieux, etc.</p>
-<p>TODO</p>
+
+<p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2"
+            (click)="onNouveauPaysBtnClick()"></button>
+    </ng-template>
+</p-toolbar>
+
+<p-table [value]="paysList" dataKey="id">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Gérer les pays</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Rechercher..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Code</th>
+            <th>Nom</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pays>
+        <tr>
+            <td>{{pays.code}}</td>
+            <td>{{pays.nom}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Il y a {{paysList?.length}} pays.
+        </div>
+    </ng-template>
+</p-table>
+
+<form (ngSubmit)="onPaysFormSubmit()" #paysForm="ngForm" >
+    <p-dialog [(visible)]="showAddNouveauPaysPopin" [style]="{width: '450px'}" header="Nouveau Pays" [modal]="true"
+        styleClass="p-fluid">
+        <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="code">Code *</label>
+                <input type="text" pInputText id="code" name="code" [(ngModel)]="nouveauPays.code" required autofocus #code="ngModel" />
+                <small class="p-invalid" [hidden]="code.valid || code.pristine">Le code est obligatoire</small>
+            </div>
+            <div class="p-field">
+                <label for="nom">Nom *</label>
+                <input type="text" pInputText id="nom" name="nom" [(ngModel)]="nouveauPays.nom" required autofocus #nom="ngModel" />
+                <small class="p-invalid" [hidden]="nom.valid || nom.pristine">Le nom est obligatoire</small>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple type="button" label="Annuler" icon="pi pi-times" class="p-button-danger p-button-outlined"
+                (click)="onNouveauPaysPopinCancelBtnClick()"></button>
+            <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-success"
+                [disabled]="!paysForm.form.valid"></button>
+        </ng-template>
+    </p-dialog>
+</form>
