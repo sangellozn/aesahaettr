@@ -8,14 +8,14 @@
     </ng-template>
 </p-toolbar>
 
-<!--<p-table #paysTable [value]="paysList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
-  [globalFilterFields]="['code', 'nom']" styleClass="p-datatable-striped">
+<p-table #appartenanceTable [value]="appartenanceList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
+  [globalFilterFields]="['code', 'libelle']" styleClass="p-datatable-striped">
     <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
-            <h5 class="p-m-0">Gérer les pays</h5>
+            <h5 class="p-m-0">Gérer les types d'appartenance</h5>
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="paysTable.filterGlobal($event.target.value, 'contains')"
+                <input pInputText type="text" (input)="appartenanceTable.filterGlobal($event.target.value, 'contains')"
                     placeholder="Rechercher..." />
             </span>
         </div>
@@ -23,50 +23,50 @@
     <ng-template pTemplate="header">
         <tr>
             <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
-            <th pSortableColumn="nom">Nom <p-sortIcon field="nom"></p-sortIcon></th>
+            <th pSortableColumn="libelle">Libelle <p-sortIcon field="libelle"></p-sortIcon></th>
             <th></th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-pays>
+    <ng-template pTemplate="body" let-appartenance>
         <tr>
-            <td>{{pays.code}}</td>
-            <td>{{pays.nom}}</td>
+            <td>{{appartenance.code}}</td>
+            <td>{{appartenance.libelle}}</td>
             <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
-                    (click)="editPays(pays)" title="Modifier le pays"></button>
+                    (click)="editAppartenance(appartenance)" title="Modifier le type d'appartenance"></button>
             </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            Il y a {{paysList?.length}} pays.
+            Il y a {{appartenanceList?.length}} types d'appartenance.
         </div>
     </ng-template>
 </p-table>
 
-<form (ngSubmit)="onPaysFormSubmit()" #paysForm="ngForm">
-    <p-dialog [(visible)]="showAddNouveauPaysPopin" [style]="{width: '450px'}" [header]="modification ? 'Modification du pays' : 'Nouveau Pays'" [modal]="true"
-        styleClass="p-fluid" (onHide)="onHideNouveauPaysPopin()">
+<form (ngSubmit)="onAppartenanceFormSubmit()" #appartenanceForm="ngForm">
+    <p-dialog [(visible)]="showAddNouveauTypeAppartenancePopin" [style]="{width: '450px'}" [header]="modification ? 'Modification du type d\'appartenance' : 'Nouveau type d\'appartenance'" [modal]="true"
+        styleClass="p-fluid" (onHide)="onHideNouveauTypeAppartenancePopin()">
         <ng-template pTemplate="content">
             <div class="p-field">
                 <label for="code">Code *</label>
-                <input [disabled]="modification" type="text" pInputText id="code" name="code" [(ngModel)]="nouveauPays.code" required autofocus
+                <input [disabled]="modification" type="text" pInputText id="code" name="code" [(ngModel)]="nouveauTypeAppartenance.code" required autofocus
                     #code="ngModel" />
                 <small class="p-invalid" [hidden]="code.valid || code.pristine">Le code est obligatoire</small>
             </div>
             <div class="p-field">
-                <label for="nom">Nom *</label>
-                <input type="text" pInputText id="nom" name="nom" [(ngModel)]="nouveauPays.nom" required autofocus
-                    #nom="ngModel" />
-                <small class="p-invalid" [hidden]="nom.valid || nom.pristine">Le nom est obligatoire</small>
+                <label for="libelle">Libelle *</label>
+                <input type="text" pInputText id="libelle" name="libelle" [(ngModel)]="nouveauTypeAppartenance.libelle" required autofocus
+                    #libelle="ngModel" />
+                <small class="p-invalid" [hidden]="libelle.valid || libelle.pristine">Le libellé est obligatoire</small>
             </div>
         </ng-template>
 
         <ng-template pTemplate="footer">
             <button pButton pRipple type="button" label="Annuler" icon="pi pi-times"
-                class="p-button-danger p-button-outlined" (click)="onNouveauPaysPopinCancelBtnClick()"></button>
+                class="p-button-danger p-button-outlined" (click)="onNouveauTypeAppartenancePopinCancelBtnClick()"></button>
             <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-success"
-                [disabled]="!paysForm.form.valid"></button>
+                [disabled]="!appartenanceForm.form.valid"></button>
         </ng-template>
     </p-dialog>
-</form>-->
+</form>
