@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import aesahaettr.AesahaettrXmlInstance;
 import aesahaettr.exceptions.ref.PaysNotFoundException;
-import aesahaettr.factories.ref.IPaysFactory;
+import aesahaettr.factories.ref.IPaysDtoFactory;
 import aesahaettr.ui.bean.ref.PaysDto;
 import aesahaettr.xml.bean.Pays;
 
@@ -17,7 +17,7 @@ import aesahaettr.xml.bean.Pays;
 public class PaysServicesImpl implements IPaysServices {
 
     @Autowired
-    private IPaysFactory paysFactory;
+    private IPaysDtoFactory paysFactory;
 
     @Override
     public Collection<PaysDto> findAll() {

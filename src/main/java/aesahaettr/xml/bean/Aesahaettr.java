@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
-// Généré le : 2020.12.29 à 05:55:54 PM CET
+// Généré le : 2021.01.11 à 04:38:41 PM CET
 //
 
 
@@ -26,11 +26,15 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}personnes"/>
+ *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}objets"/>
+ *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}adresses"/>
+ *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}evenements"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}refPays"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}refTypeAppartenance"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}refTypeContact"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}refTypeObjet"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}refTypeRelation"/>
+ *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}refTypeLocalisation"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,11 +47,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "aesahaettr", propOrder = {
     "personnes",
     "objets",
+    "adresses",
+    "evenements",
     "refPays",
     "refTypeAppartenance",
     "refTypeContact",
     "refTypeObjet",
-    "refTypeRelation"
+    "refTypeRelation",
+    "refTypeLocalisation"
 })
 @XmlRootElement
 public class Aesahaettr {
@@ -56,6 +63,10 @@ public class Aesahaettr {
     protected PersonneList personnes;
     @XmlElement(required = true)
     protected ObjetList objets;
+    @XmlElement(required = true)
+    protected AdresseList adresses;
+    @XmlElement(required = true)
+    protected EvenementList evenements;
     @XmlElement(required = true)
     protected PaysList refPays;
     @XmlElement(required = true)
@@ -66,6 +77,8 @@ public class Aesahaettr {
     protected TypeObjetList refTypeObjet;
     @XmlElement(required = true)
     protected TypeRelationList refTypeRelation;
+    @XmlElement(required = true)
+    protected TypeLocalisationList refTypeLocalisation;
 
     /**
      * Obtient la valeur de la propriété personnes.
@@ -89,6 +102,78 @@ public class Aesahaettr {
      */
     public void setPersonnes(PersonneList value) {
         this.personnes = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété objets.
+     *
+     * @return
+     *     possible object is
+     *     {@link ObjetList }
+     *
+     */
+    public ObjetList getObjets() {
+        return this.objets;
+    }
+
+    /**
+     * Définit la valeur de la propriété objets.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ObjetList }
+     *
+     */
+    public void setObjets(ObjetList value) {
+        this.objets = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété adresses.
+     *
+     * @return
+     *     possible object is
+     *     {@link AdresseList }
+     *
+     */
+    public AdresseList getAdresses() {
+        return this.adresses;
+    }
+
+    /**
+     * Définit la valeur de la propriété adresses.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link AdresseList }
+     *
+     */
+    public void setAdresses(AdresseList value) {
+        this.adresses = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété evenements.
+     *
+     * @return
+     *     possible object is
+     *     {@link EvenementList }
+     *
+     */
+    public EvenementList getEvenements() {
+        return this.evenements;
+    }
+
+    /**
+     * Définit la valeur de la propriété evenements.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link EvenementList }
+     *
+     */
+    public void setEvenements(EvenementList value) {
+        this.evenements = value;
     }
 
     /**
@@ -212,21 +297,27 @@ public class Aesahaettr {
     }
 
     /**
-     * Obtient la valeur de la propriété objets.
+     * Obtient la valeur de la propriété refTypeLocalisation.
      *
-     * @return the objets
+     * @return
+     *     possible object is
+     *     {@link TypeLocalisationList }
+     *
      */
-    public ObjetList getObjets() {
-        return this.objets;
+    public TypeLocalisationList getRefTypeLocalisation() {
+        return this.refTypeLocalisation;
     }
 
     /**
-     * Définit la valeur de la propriété objets.
+     * Définit la valeur de la propriété refTypeLocalisation.
      *
-     * @param objets the objets to set
+     * @param value
+     *     allowed object is
+     *     {@link TypeLocalisationList }
+     *
      */
-    public void setObjets(ObjetList objets) {
-        this.objets = objets;
+    public void setRefTypeLocalisation(TypeLocalisationList value) {
+        this.refTypeLocalisation = value;
     }
 
 }

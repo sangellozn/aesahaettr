@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +22,6 @@ public class PaysController {
     @GetMapping
     public Collection<PaysDto> getAll() {
         return this.paysServices.findAll();
-    }
-
-    @GetMapping("/{code}")
-    public PaysDto getByCode(@PathVariable("code") String code) {
-        return this.paysServices.getByCode(code);
     }
 
     @PostMapping

@@ -15,11 +15,13 @@
     		<element name="prenomUsage" type="string" minOccurs="1"
     			maxOccurs="1">
     		</element>
-    		<element ref="tns:adresses" minOccurs="1" maxOccurs="1"></element>
     		<element ref="tns:relations" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:possessions" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:evenements" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:possessions" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element ref="tns:evenementIds" minOccurs="1" maxOccurs="1"></element>
     		<element ref="tns:contacts" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:localisations" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     	<attribute name="id" type="tns:UIID" use="required"></attribute>
     </complexType>
@@ -28,8 +30,10 @@
     <complexType name="aesahaettr">
     	<sequence>
     		<element ref="tns:personnes" minOccurs="1" maxOccurs="1"></element>
-            <element ref="tns:objets" minOccurs="1" maxOccurs="1"></element>
-            <element ref="tns:refPays" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:objets" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:adresses" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:evenements" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:refPays" minOccurs="1" maxOccurs="1"></element>
     		<element ref="tns:refTypeAppartenance" minOccurs="1"
     			maxOccurs="1">
     		</element>
@@ -42,6 +46,7 @@
     		<element ref="tns:refTypeRelation" minOccurs="1"
     			maxOccurs="1">
     		</element>
+    		<element ref="tns:refTypeLocalisation" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     </complexType>
     
@@ -67,17 +72,24 @@
     		<element name="lieuDit" type="string" minOccurs="0" maxOccurs="1"></element>
     		<element name="codePostal" type="string" minOccurs="1" maxOccurs="1"></element>
     		<element name="localiteDestination" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="paysId" type="tns:UIID" minOccurs="1" maxOccurs="1"></element>
+    		<element name="paysCode" type="string" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     	<attribute name="id" type="tns:UIID" use="required"></attribute>
     </complexType>
 
     <complexType name="objet">
     	<sequence>
-    		<element name="nom" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="description" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="typeObjetCode" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:evenements" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nom" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="description" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="typeObjetCode" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element ref="tns:evenementIds" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:localisations"></element>
     	</sequence>
     	<attribute name="id" type="tns:UIID" use="required"></attribute>
     </complexType>
@@ -128,7 +140,6 @@
     		<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>
     		<element name="nom" type="string" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
-    	<attribute name="id" type="tns:UIID" use="required"></attribute>
     </complexType>
     
     <element name="pays" type="tns:pays"></element>
@@ -255,9 +266,9 @@
     	</sequence>
     </complexType>
 
-    <element name="evenements" type="tns:evenementList"></element>
+    <element name="evenementIds" type="tns:evenementIdList"></element>
 
-    <complexType name="evenementList">
+    <complexType name="evenementIdList">
     	<sequence>
     		<element name="evenementId" type="tns:UIID" minOccurs="0" maxOccurs="unbounded"></element>
     	</sequence>
@@ -273,4 +284,58 @@
     <element name="contacts" type="tns:contactList"></element>
 
     <element name="contact" type="tns:contact"></element>
+
+    <complexType name="typeLocalisationList">
+    	<sequence>
+    		<element ref="tns:typeLocalisation" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="typeLocalisation">
+    	<sequence>
+    		<element name="code" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="libelle" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="refTypeLocalisation" type="tns:typeLocalisationList"></element>
+
+    <element name="typeLocalisation" type="tns:typeLocalisation"></element>
+
+    <complexType name="localisation">
+    	<sequence>
+    		<element name="adresseId" type="tns:UIID" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="typeLocalisationCode" type="string"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="dateDebut" type="date" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="dateFin" type="date" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="localisation" type="tns:localisation"></element>
+
+    <complexType name="localisationList">
+    	<sequence>
+    		<element ref="tns:localisation" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="localisations" type="tns:localisationList"></element>
+
+    <complexType name="evenementList">
+    	<sequence>
+    		<element ref="tns:evenement" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="evenement" type="tns:evenement"></element>
+
+    <element name="evenements" type="tns:evenementList"></element>
 </schema>

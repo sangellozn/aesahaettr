@@ -4,6 +4,6 @@ public interface ISimpleDtoFactory<DTO, BEAN> {
 
     DTO mapToDto(BEAN bean);
 
-    BEAN mapToBean(DTO bean);
+    BEAN mapToBean(DTO dto);
 
 }

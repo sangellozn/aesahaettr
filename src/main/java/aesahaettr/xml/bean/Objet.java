@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.12.29 à 05:55:54 PM CET 
+// Généré le : 2021.01.11 à 04:38:41 PM CET 
 //
 
 
@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="typeObjetCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}evenements"/>
+ *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}evenementIds"/>
+ *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}localisations"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.aesahaettr.me/aesahaettr}UIID" />
  *     &lt;/restriction>
@@ -43,7 +44,8 @@ import javax.xml.bind.annotation.XmlType;
     "nom",
     "description",
     "typeObjetCode",
-    "evenements"
+    "evenementIds",
+    "localisations"
 })
 public class Objet {
 
@@ -54,7 +56,9 @@ public class Objet {
     @XmlElement(required = true)
     protected String typeObjetCode;
     @XmlElement(required = true)
-    protected EvenementList evenements;
+    protected EvenementIdList evenementIds;
+    @XmlElement(required = true)
+    protected LocalisationList localisations;
     @XmlAttribute(name = "id", required = true)
     protected String id;
 
@@ -131,27 +135,51 @@ public class Objet {
     }
 
     /**
-     * Obtient la valeur de la propriété evenements.
+     * Obtient la valeur de la propriété evenementIds.
      * 
      * @return
      *     possible object is
-     *     {@link EvenementList }
+     *     {@link EvenementIdList }
      *     
      */
-    public EvenementList getEvenements() {
-        return evenements;
+    public EvenementIdList getEvenementIds() {
+        return evenementIds;
     }
 
     /**
-     * Définit la valeur de la propriété evenements.
+     * Définit la valeur de la propriété evenementIds.
      * 
      * @param value
      *     allowed object is
-     *     {@link EvenementList }
+     *     {@link EvenementIdList }
      *     
      */
-    public void setEvenements(EvenementList value) {
-        this.evenements = value;
+    public void setEvenementIds(EvenementIdList value) {
+        this.evenementIds = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété localisations.
+     * 
+     * @return
+     *     possible object is
+     *     {@link LocalisationList }
+     *     
+     */
+    public LocalisationList getLocalisations() {
+        return localisations;
+    }
+
+    /**
+     * Définit la valeur de la propriété localisations.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link LocalisationList }
+     *     
+     */
+    public void setLocalisations(LocalisationList value) {
+        this.localisations = value;
     }
 
     /**
