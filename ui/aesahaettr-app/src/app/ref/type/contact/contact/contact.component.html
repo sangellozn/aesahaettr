@@ -1,0 +1,72 @@
+<h1>Référentiel Contact</h1>
+<p>Cette page permet de gérer le référentiel des types de contact, permettant de définir les différents mode de contact d'une personne. Une fois un type créé, son code ne peut plus être modifié.</p>
+
+<p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2"
+            (click)="onNouveauTypeContactBtnClick()" title="Ajouter un nouveau type de contact"></button>
+    </ng-template>
+</p-toolbar>
+
+<p-table #contactTable [value]="contactList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
+  [globalFilterFields]="['code', 'libelle']" styleClass="p-datatable-striped">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Gérer les types de contact</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="contactTable.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Rechercher..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="libelle">Libelle <p-sortIcon field="libelle"></p-sortIcon></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-contact>
+        <tr>
+            <td>{{contact.code}}</td>
+            <td>{{contact.libelle}}</td>
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                    (click)="editContact(contact)" title="Modifier le type de contact"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Il y a {{contactList?.length}} types de contact.
+        </div>
+    </ng-template>
+</p-table>
+
+<form (ngSubmit)="onContactFormSubmit()" #contactForm="ngForm">
+    <p-dialog [(visible)]="showAddNouveauTypeContactPopin" [style]="{width: '450px'}" [header]="modification ? 'Modification du type de contact' : 'Nouveau type de contact'" [modal]="true"
+        styleClass="p-fluid" (onHide)="onHideNouveauTypeContactPopin()">
+        <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="code">Code *</label>
+                <input [disabled]="modification" type="text" pInputText id="code" name="code" [(ngModel)]="nouveauTypeContact.code" required autofocus
+                    #code="ngModel" />
+                <small class="p-invalid" [hidden]="code.valid || code.pristine">Le code est obligatoire</small>
+            </div>
+            <div class="p-field">
+                <label for="libelle">Libelle *</label>
+                <input type="text" pInputText id="libelle" name="libelle" [(ngModel)]="nouveauTypeContact.libelle" required autofocus
+                    #libelle="ngModel" />
+                <small class="p-invalid" [hidden]="libelle.valid || libelle.pristine">Le libellé est obligatoire</small>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple type="button" label="Annuler" icon="pi pi-times"
+                class="p-button-danger p-button-outlined" (click)="onNouveauTypeContactPopinCancelBtnClick()"></button>
+            <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-success"
+                [disabled]="!contactForm.form.valid"></button>
+        </ng-template>
+    </p-dialog>
+</form>

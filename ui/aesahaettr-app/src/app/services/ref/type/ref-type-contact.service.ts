@@ -10,9 +10,9 @@ import { AbstractAppService } from '../../abstract-app.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RefTypeAppartenanceService extends AbstractAppService {
+export class RefTypeContactService extends AbstractAppService {
 
-  private url = `${environment.baseUrl}/ref/type/appartenance`;
+  private url = `${environment.baseUrl}/ref/type/contact`;
 
   constructor(http: HttpClient, messageService: MessageService) {
     super(http, messageService);
@@ -27,5 +27,4 @@ export class RefTypeAppartenanceService extends AbstractAppService {
       tap(() => this.messageService.add({ severity: 'success', summary: 'Création/Modification', detail: 'Le type a été créé/modifié avec succès.' })),
       catchError(this.throwError()));
   }
-  
 }

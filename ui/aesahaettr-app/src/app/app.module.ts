@@ -21,6 +21,7 @@ import { PaysComponent } from './ref/pays/pays.component';
 import { MessageService } from 'primeng/api';
 import { PageNotFoundComponent } from './not-found/page-not-found/page-not-found.component';
 import { AppartenanceComponent } from './ref/type/appartenance/appartenance.component';
+import { ContactComponent } from './ref/type/contact/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AppartenanceComponent } from './ref/type/appartenance/appartenance.comp
     PaysComponent,
     HomeComponent,
     PageNotFoundComponent,
-    AppartenanceComponent
+    AppartenanceComponent,
+    ContactComponent
   ],
   imports: [
     AppRoutingModule,
