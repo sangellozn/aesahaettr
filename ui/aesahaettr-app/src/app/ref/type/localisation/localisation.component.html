@@ -1,21 +1,21 @@
-<h1>Référentiel Appartenance</h1>
-<p>Cette page permet de gérer le référentiel des types d'appartenance, permettant de définir l'appartenance d'un objet à une personne. Une fois un type créé, son code ne peut plus être modifié.</p>
+<h1>Référentiel Localisation</h1>
+<p>Cette page permet de gérer le référentiel des types de localisation, permettant de définir les différents mode de localisation d'une personne ou d'un objet. Une fois un type créé, son code ne peut plus être modifié.</p>
 
 <p-toolbar styleClass="p-mb-4">
     <ng-template pTemplate="left">
         <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2"
-            (click)="onNouveauTypeAppartenanceBtnClick()" title="Ajouter un nouveau type d'appartenance"></button>
+            (click)="onNouveauTypeLocalisationBtnClick()" title="Ajouter un nouveau type de localisation"></button>
     </ng-template>
 </p-toolbar>
 
-<p-table #appartenanceTable [value]="appartenanceList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
+<p-table #localisationTable [value]="localisationList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
   [globalFilterFields]="['code', 'libelle']" styleClass="p-datatable-striped">
     <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
-            <h5 class="p-m-0">Gérer les types d'appartenance</h5>
+            <h5 class="p-m-0">Gérer les types de localisation</h5>
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="appartenanceTable.filterGlobal($event.target.value, 'contains')"
+                <input pInputText type="text" (input)="localisationTable.filterGlobal($event.target.value, 'contains')"
                     placeholder="Rechercher..." />
             </span>
         </div>
@@ -27,36 +27,36 @@
             <th></th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-appartenance>
+    <ng-template pTemplate="body" let-localisation>
         <tr>
-            <td>{{appartenance.code}}</td>
-            <td>{{appartenance.libelle}}</td>
+            <td>{{localisation.code}}</td>
+            <td>{{localisation.libelle}}</td>
             <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
-                    (click)="editAppartenance(appartenance)" title="Modifier le type d'appartenance"></button>
+                    (click)="editLocalisation(localisation)" title="Modifier le type de localisation"></button>
             </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            Il y a {{appartenanceList?.length}} types d'appartenance.
+            Il y a {{localisationList?.length}} types de localisation.
         </div>
     </ng-template>
 </p-table>
 
-<form (ngSubmit)="onAppartenanceFormSubmit()" #appartenanceForm="ngForm">
-    <p-dialog [(visible)]="showAddNouveauTypeAppartenancePopin" [style]="{width: '450px'}" [header]="modification ? 'Modification du type d\'appartenance' : 'Nouveau type d\'appartenance'" [modal]="true"
-        styleClass="p-fluid" (onHide)="onHideNouveauTypeAppartenancePopin()">
+<form (ngSubmit)="onLocalisationFormSubmit()" #localisationForm="ngForm">
+    <p-dialog [(visible)]="showAddNouveauTypeLocalisationPopin" [style]="{width: '450px'}" [header]="modification ? 'Modification du type de localisation' : 'Nouveau type de localisation'" [modal]="true"
+        styleClass="p-fluid" (onHide)="onHideNouveauTypeLocalisationPopin()">
         <ng-template pTemplate="content">
             <div class="p-field">
                 <label for="code">Code *</label>
-                <input [disabled]="modification" type="text" pInputText id="code" name="code" [(ngModel)]="nouveauTypeAppartenance.code" required [autofocus]="!modification"
+                <input [disabled]="modification" type="text" pInputText id="code" name="code" [(ngModel)]="nouveauTypeLocalisation.code" required [autofocus]="!modification"
                     #code="ngModel" />
                 <small class="p-invalid" [hidden]="code.valid || code.pristine">Le code est obligatoire</small>
             </div>
             <div class="p-field">
                 <label for="libelle">Libelle *</label>
-                <input type="text" pInputText id="libelle" name="libelle" [(ngModel)]="nouveauTypeAppartenance.libelle" required autofocus
+                <input type="text" pInputText id="libelle" name="libelle" [(ngModel)]="nouveauTypeLocalisation.libelle" required autofocus
                     #libelle="ngModel" />
                 <small class="p-invalid" [hidden]="libelle.valid || libelle.pristine">Le libellé est obligatoire</small>
             </div>
@@ -64,9 +64,9 @@
 
         <ng-template pTemplate="footer">
             <button pButton pRipple type="button" label="Annuler" icon="pi pi-times"
-                class="p-button-danger p-button-outlined" (click)="onNouveauTypeAppartenancePopinCancelBtnClick()"></button>
+                class="p-button-danger p-button-outlined" (click)="onNouveauTypeLocalisationPopinCancelBtnClick()"></button>
             <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-success"
-                [disabled]="!appartenanceForm.form.valid"></button>
+                [disabled]="!localisationForm.form.valid"></button>
         </ng-template>
     </p-dialog>
 </form>

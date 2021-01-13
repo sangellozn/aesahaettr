@@ -50,7 +50,7 @@
         <ng-template pTemplate="content">
             <div class="p-field">
                 <label for="code">Code *</label>
-                <input [disabled]="modification" type="text" pInputText id="code" name="code" [(ngModel)]="nouveauTypeContact.code" required autofocus
+                <input [disabled]="modification" type="text" pInputText id="code" name="code" [(ngModel)]="nouveauTypeContact.code" required [autofocus]="!modification"
                     #code="ngModel" />
                 <small class="p-invalid" [hidden]="code.valid || code.pristine">Le code est obligatoire</small>
             </div>

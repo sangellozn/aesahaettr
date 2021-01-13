@@ -21,7 +21,9 @@ import { PaysComponent } from './ref/pays/pays.component';
 import { MessageService } from 'primeng/api';
 import { PageNotFoundComponent } from './not-found/page-not-found/page-not-found.component';
 import { AppartenanceComponent } from './ref/type/appartenance/appartenance.component';
-import { ContactComponent } from './ref/type/contact/contact/contact.component';
+import { ContactComponent } from './ref/type/contact/contact.component';
+import { LocalisationComponent } from './ref/type/localisation/localisation.component';
+import { ObjetComponent } from './ref/type/objet/objet.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ContactComponent } from './ref/type/contact/contact/contact.component';
     HomeComponent,
     PageNotFoundComponent,
     AppartenanceComponent,
-    ContactComponent
+    ContactComponent,
+    LocalisationComponent,
+    ObjetComponent
   ],
   imports: [
     AppRoutingModule,
