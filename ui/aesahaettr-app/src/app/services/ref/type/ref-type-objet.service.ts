@@ -27,4 +27,5 @@ export class RefTypeObjetService extends AbstractAppService {
       tap(() => this.messageService.add({ severity: 'success', summary: 'Création/Modification', detail: 'Le type a été créé/modifié avec succès.' })),
       catchError(this.throwError()));
   }
+  
 }

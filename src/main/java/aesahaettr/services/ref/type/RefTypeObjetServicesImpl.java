@@ -42,7 +42,6 @@ public class RefTypeObjetServicesImpl implements IRefTypeObjetServices {
         }
 
         AesahaettrXmlInstance.save();
-
     }
 
 }

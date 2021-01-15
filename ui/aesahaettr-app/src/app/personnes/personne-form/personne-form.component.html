@@ -1,0 +1,35 @@
+<h1 *ngIf="!personne.id; else editPersonneBlock">Ajouter une nouvelle personne</h1>
+<ng-template #editPersonneBlock><h1>Modification de {{personne.nomUsage}} {{personne.prenomUsage}}</h1></ng-template>
+
+<form #personneForm="ngForm" (ngSubmit)="onPersonneFormSubmit()" class="mt-5">
+    <div class="p-fluid">    
+        <div class="p-field">
+            <label for="nom">Nom *</label>
+            <input type="text" pInputText id="nom" name="nom" [(ngModel)]="personne.nom" required autofocus #nom="ngModel" />
+            <small class="p-invalid" [hidden]="nom.valid || nom.pristine">Le nom est obligatoire</small>
+        </div>
+        <div class="p-field">
+            <label for="prenoms">Prénoms *</label>
+            <input type="text" pInputText id="prenoms" name="prenoms" [(ngModel)]="personne.prenoms" required #prenoms="ngModel" />
+            <small class="p-invalid" [hidden]="prenoms.valid || prenoms.pristine">Les prénoms sont obligatoires</small>
+        </div>
+        <div class="p-field">
+            <label for="nomUsage">Nom d'usage *</label>
+            <input type="text" pInputText id="nomUsage" name="nomUsage" [(ngModel)]="personne.nomUsage" required #nomUsage="ngModel" />
+            <small class="p-invalid" [hidden]="nomUsage.valid || nomUsage.pristine">Le nom d'usage est obligatoire</small>
+        </div>
+        <div class="p-field">
+            <label for="prenomUsage">Prénom d'usage *</label>
+            <input type="text" pInputText id="prenomUsage" name="prenomUsage" [(ngModel)]="personne.prenomUsage" required #prenomUsage="ngModel" />
+            <small class="p-invalid" [hidden]="prenomUsage.valid || prenomUsage.pristine">Le prénom d'usage est obligatoire</small>
+        </div>
+        <div class="p-field">
+            <label for="commentaire">Commentaire</label>
+            <textarea pInputTextarea name="commentaire" id="commentaire" [(ngModel)]="personne.commentaire" rows="8" #commentaire="ngModel"></textarea>
+        </div>
+    </div>
+    <button pButton pRipple type="button" label="Annuler" icon="pi pi-times"
+        class="p-button-danger p-button-outlined mr-2" routerLink="/personnes"></button>
+    <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-success"
+        [disabled]="!personneForm.form.valid"></button>
+</form>

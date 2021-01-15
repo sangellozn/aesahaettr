@@ -14,6 +14,7 @@ import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +25,9 @@ import { AppartenanceComponent } from './ref/type/appartenance/appartenance.comp
 import { ContactComponent } from './ref/type/contact/contact.component';
 import { LocalisationComponent } from './ref/type/localisation/localisation.component';
 import { ObjetComponent } from './ref/type/objet/objet.component';
+import { RelationComponent } from './ref/type/relation/relation.component';
+import { PersonneFormComponent } from './personnes/personne-form/personne-form.component';
+import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { ObjetComponent } from './ref/type/objet/objet.component';
     AppartenanceComponent,
     ContactComponent,
     LocalisationComponent,
-    ObjetComponent
+    ObjetComponent,
+    RelationComponent,
+    PersonneFormComponent,
+    PersonneListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -49,7 +56,8 @@ import { ObjetComponent } from './ref/type/objet/objet.component';
     ToolbarModule,
     ButtonModule,
     DialogModule,
-    FormsModule
+    FormsModule,
+    InputTextareaModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

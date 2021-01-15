@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.01.11 à 04:38:41 PM CET 
+// Généré le : 2021.01.15 à 10:46:54 PM CET 
 //
 
 
@@ -12,7 +12,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -29,6 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="prenoms" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="nomUsage" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="prenomUsage" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="commentaire" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="date_creation" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element name="date_modification" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}relations"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}possessions"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}evenementIds"/>
@@ -49,6 +54,9 @@ import javax.xml.bind.annotation.XmlType;
     "prenoms",
     "nomUsage",
     "prenomUsage",
+    "commentaire",
+    "dateCreation",
+    "dateModification",
     "relations",
     "possessions",
     "evenementIds",
@@ -65,6 +73,13 @@ public class Personne {
     protected String nomUsage;
     @XmlElement(required = true)
     protected String prenomUsage;
+    protected String commentaire;
+    @XmlElement(name = "date_creation", required = true)
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateCreation;
+    @XmlElement(name = "date_modification")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateModification;
     @XmlElement(required = true)
     protected RelationList relations;
     @XmlElement(required = true)
@@ -172,6 +187,78 @@ public class Personne {
      */
     public void setPrenomUsage(String value) {
         this.prenomUsage = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété commentaire.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    /**
+     * Définit la valeur de la propriété commentaire.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCommentaire(String value) {
+        this.commentaire = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateCreation.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateCreation() {
+        return dateCreation;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateCreation.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateCreation(XMLGregorianCalendar value) {
+        this.dateCreation = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateModification.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateModification() {
+        return dateModification;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateModification.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateModification(XMLGregorianCalendar value) {
+        this.dateModification = value;
     }
 
     /**

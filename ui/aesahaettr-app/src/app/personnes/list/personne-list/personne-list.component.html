@@ -1,0 +1,47 @@
+<h1>Les personnes</h1>
+<p>Accès à la liste des personnalités connus.</p>
+
+<p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple icon="pi pi-plus" class="p-button-success p-mr-2"
+          routerLink="/personnes/new" title="Ajouter une nouvelle personne"></button>
+    </ng-template>
+</p-toolbar>
+
+<p-table #personneTable [value]="personneList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
+  [globalFilterFields]="['nomUsage', 'prenomUsage', 'localisation']" styleClass="p-datatable-striped">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Liste des personnes</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="personneTable.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Recherche rapide..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="nomUsage">Nom d'usage <p-sortIcon field="nomUsage"></p-sortIcon></th>
+            <th pSortableColumn="prenomUsage">Prénom d'usage <p-sortIcon field="prenomUsage"></p-sortIcon></th>
+            <th pSortableColumn="localisation">Dernière localisation connue <p-sortIcon field="localisation"></p-sortIcon></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-personne>
+        <tr>
+            <td>{{personne.nomUsage}}</td>
+            <td>{{personne.prenomUsage}}</td>
+            <td>{{personne.localisation}}</td>
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                    (click)="editPersonne(personne)" title="Modifier le type d'bjet"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Il y a {{personneList?.length}} personnes.
+        </div>
+    </ng-template>
+</p-table>

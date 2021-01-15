@@ -15,13 +15,24 @@
     		<element name="prenomUsage" type="string" minOccurs="1"
     			maxOccurs="1">
     		</element>
+    		<element name="commentaire" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="date_creation" type="dateTime" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="date_modification" type="dateTime" minOccurs="0" maxOccurs="1"></element>
     		<element ref="tns:relations" minOccurs="1" maxOccurs="1"></element>
     		<element ref="tns:possessions" minOccurs="1"
     			maxOccurs="1">
     		</element>
-    		<element ref="tns:evenementIds" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:evenementIds" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
     		<element ref="tns:contacts" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:localisations" minOccurs="1" maxOccurs="1"></element>
+    		<element ref="tns:localisations" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
     	</sequence>
     	<attribute name="id" type="tns:UIID" use="required"></attribute>
     </complexType>
@@ -85,11 +96,17 @@
     		<element name="description" type="string" minOccurs="1"
     			maxOccurs="1">
     		</element>
+    		<element name="date_creation" type="dateTime" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="date_modification" type="dateTime" minOccurs="0" maxOccurs="1"></element>
     		<element name="typeObjetCode" type="string" minOccurs="1"
     			maxOccurs="1">
     		</element>
-    		<element ref="tns:evenementIds" minOccurs="1" maxOccurs="1"></element>
-    		<element ref="tns:localisations"></element>
+    		<element ref="tns:evenementIds" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element ref="tns:localisations" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     	<attribute name="id" type="tns:UIID" use="required"></attribute>
     </complexType>
