@@ -3,7 +3,7 @@
 
 <p-toolbar styleClass="p-mb-4">
     <ng-template pTemplate="left">
-        <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2"
+        <button pButton pRipple icon="pi pi-plus" class="p-button-success p-mr-2"
             (click)="onNouveauPaysBtnClick()" title="Ajouter un nouveau pays"></button>
     </ng-template>
 </p-toolbar>
@@ -32,7 +32,7 @@
             <td>{{pays.code}}</td>
             <td>{{pays.nom}}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"
                     (click)="editPays(pays)" title="Modifier le pays"></button>
             </td>
         </tr>

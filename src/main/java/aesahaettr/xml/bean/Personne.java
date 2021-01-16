@@ -1,27 +1,30 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.01.15 à 10:46:54 PM CET 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
+// Généré le : 2021.01.15 à 10:46:54 PM CET
 //
 
 
 package aesahaettr.xml.bean;
 
+import java.time.LocalDateTime;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import aesahaettr.xml.LocalDateTimeAdapter;
 
 
 /**
  * <p>Classe Java pour personne complex type.
- * 
+ *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="personne">
  *   &lt;complexContent>
@@ -32,8 +35,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="nomUsage" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="prenomUsage" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="commentaire" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="date_creation" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
- *         &lt;element name="date_modification" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="dateCreation" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element name="dateModification" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}relations"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}possessions"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}evenementIds"/>
@@ -45,8 +48,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "personne", propOrder = {
@@ -74,12 +77,12 @@ public class Personne {
     @XmlElement(required = true)
     protected String prenomUsage;
     protected String commentaire;
-    @XmlElement(name = "date_creation", required = true)
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateCreation;
-    @XmlElement(name = "date_modification")
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateModification;
+    @XmlElement(name = "dateCreation", required = true)
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateCreation;
+    @XmlElement(name = "dateModification")
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateModification;
     @XmlElement(required = true)
     protected RelationList relations;
     @XmlElement(required = true)
@@ -95,23 +98,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété nom.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     /**
      * Définit la valeur de la propriété nom.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNom(String value) {
         this.nom = value;
@@ -119,23 +122,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété prenoms.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPrenoms() {
-        return prenoms;
+        return this.prenoms;
     }
 
     /**
      * Définit la valeur de la propriété prenoms.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPrenoms(String value) {
         this.prenoms = value;
@@ -143,23 +146,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété nomUsage.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNomUsage() {
-        return nomUsage;
+        return this.nomUsage;
     }
 
     /**
      * Définit la valeur de la propriété nomUsage.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNomUsage(String value) {
         this.nomUsage = value;
@@ -167,23 +170,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété prenomUsage.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPrenomUsage() {
-        return prenomUsage;
+        return this.prenomUsage;
     }
 
     /**
      * Définit la valeur de la propriété prenomUsage.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPrenomUsage(String value) {
         this.prenomUsage = value;
@@ -191,23 +194,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété commentaire.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getCommentaire() {
-        return commentaire;
+        return this.commentaire;
     }
 
     /**
      * Définit la valeur de la propriété commentaire.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setCommentaire(String value) {
         this.commentaire = value;
@@ -215,71 +218,71 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété dateCreation.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateCreation() {
-        return dateCreation;
+    public LocalDateTime getDateCreation() {
+        return this.dateCreation;
     }
 
     /**
      * Définit la valeur de la propriété dateCreation.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateCreation(XMLGregorianCalendar value) {
+    public void setDateCreation(LocalDateTime value) {
         this.dateCreation = value;
     }
 
     /**
      * Obtient la valeur de la propriété dateModification.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateModification() {
-        return dateModification;
+    public LocalDateTime getDateModification() {
+        return this.dateModification;
     }
 
     /**
      * Définit la valeur de la propriété dateModification.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateModification(XMLGregorianCalendar value) {
+    public void setDateModification(LocalDateTime value) {
         this.dateModification = value;
     }
 
     /**
      * Obtient la valeur de la propriété relations.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link RelationList }
-     *     
+     *
      */
     public RelationList getRelations() {
-        return relations;
+        return this.relations;
     }
 
     /**
      * Définit la valeur de la propriété relations.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link RelationList }
-     *     
+     *
      */
     public void setRelations(RelationList value) {
         this.relations = value;
@@ -287,23 +290,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété possessions.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PossessionList }
-     *     
+     *
      */
     public PossessionList getPossessions() {
-        return possessions;
+        return this.possessions;
     }
 
     /**
      * Définit la valeur de la propriété possessions.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PossessionList }
-     *     
+     *
      */
     public void setPossessions(PossessionList value) {
         this.possessions = value;
@@ -311,23 +314,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété evenementIds.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link EvenementIdList }
-     *     
+     *
      */
     public EvenementIdList getEvenementIds() {
-        return evenementIds;
+        return this.evenementIds;
     }
 
     /**
      * Définit la valeur de la propriété evenementIds.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link EvenementIdList }
-     *     
+     *
      */
     public void setEvenementIds(EvenementIdList value) {
         this.evenementIds = value;
@@ -335,23 +338,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété contacts.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ContactList }
-     *     
+     *
      */
     public ContactList getContacts() {
-        return contacts;
+        return this.contacts;
     }
 
     /**
      * Définit la valeur de la propriété contacts.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ContactList }
-     *     
+     *
      */
     public void setContacts(ContactList value) {
         this.contacts = value;
@@ -359,23 +362,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété localisations.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link LocalisationList }
-     *     
+     *
      */
     public LocalisationList getLocalisations() {
-        return localisations;
+        return this.localisations;
     }
 
     /**
      * Définit la valeur de la propriété localisations.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link LocalisationList }
-     *     
+     *
      */
     public void setLocalisations(LocalisationList value) {
         this.localisations = value;
@@ -383,23 +386,23 @@ public class Personne {
 
     /**
      * Obtient la valeur de la propriété id.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
      * Définit la valeur de la propriété id.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setId(String value) {
         this.id = value;

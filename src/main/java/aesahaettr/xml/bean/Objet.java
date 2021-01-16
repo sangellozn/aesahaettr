@@ -1,27 +1,30 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.01.15 à 10:46:54 PM CET 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
+// Généré le : 2021.01.15 à 10:46:54 PM CET
 //
 
 
 package aesahaettr.xml.bean;
 
+import java.time.LocalDateTime;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import aesahaettr.xml.LocalDateTimeAdapter;
 
 
 /**
  * <p>Classe Java pour objet complex type.
- * 
+ *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="objet">
  *   &lt;complexContent>
@@ -29,8 +32,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="date_creation" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
- *         &lt;element name="date_modification" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="dateCreation" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element name="dateModification" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="typeObjetCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}evenementIds"/>
  *         &lt;element ref="{http://www.aesahaettr.me/aesahaettr}localisations"/>
@@ -40,8 +43,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "objet", propOrder = {
@@ -59,12 +62,12 @@ public class Objet {
     protected String nom;
     @XmlElement(required = true)
     protected String description;
-    @XmlElement(name = "date_creation", required = true)
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateCreation;
-    @XmlElement(name = "date_modification")
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateModification;
+    @XmlElement(name = "dateCreation", required = true)
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateCreation;
+    @XmlElement(name = "dateModification")
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateModification;
     @XmlElement(required = true)
     protected String typeObjetCode;
     @XmlElement(required = true)
@@ -76,23 +79,23 @@ public class Objet {
 
     /**
      * Obtient la valeur de la propriété nom.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     /**
      * Définit la valeur de la propriété nom.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNom(String value) {
         this.nom = value;
@@ -100,23 +103,23 @@ public class Objet {
 
     /**
      * Obtient la valeur de la propriété description.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
      * Définit la valeur de la propriété description.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDescription(String value) {
         this.description = value;
@@ -124,71 +127,71 @@ public class Objet {
 
     /**
      * Obtient la valeur de la propriété dateCreation.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateCreation() {
-        return dateCreation;
+    public LocalDateTime getDateCreation() {
+        return this.dateCreation;
     }
 
     /**
      * Définit la valeur de la propriété dateCreation.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateCreation(XMLGregorianCalendar value) {
+    public void setDateCreation(LocalDateTime value) {
         this.dateCreation = value;
     }
 
     /**
      * Obtient la valeur de la propriété dateModification.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateModification() {
-        return dateModification;
+    public LocalDateTime getDateModification() {
+        return this.dateModification;
     }
 
     /**
      * Définit la valeur de la propriété dateModification.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateModification(XMLGregorianCalendar value) {
+    public void setDateModification(LocalDateTime value) {
         this.dateModification = value;
     }
 
     /**
      * Obtient la valeur de la propriété typeObjetCode.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getTypeObjetCode() {
-        return typeObjetCode;
+        return this.typeObjetCode;
     }
 
     /**
      * Définit la valeur de la propriété typeObjetCode.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setTypeObjetCode(String value) {
         this.typeObjetCode = value;
@@ -196,23 +199,23 @@ public class Objet {
 
     /**
      * Obtient la valeur de la propriété evenementIds.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link EvenementIdList }
-     *     
+     *
      */
     public EvenementIdList getEvenementIds() {
-        return evenementIds;
+        return this.evenementIds;
     }
 
     /**
      * Définit la valeur de la propriété evenementIds.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link EvenementIdList }
-     *     
+     *
      */
     public void setEvenementIds(EvenementIdList value) {
         this.evenementIds = value;
@@ -220,23 +223,23 @@ public class Objet {
 
     /**
      * Obtient la valeur de la propriété localisations.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link LocalisationList }
-     *     
+     *
      */
     public LocalisationList getLocalisations() {
-        return localisations;
+        return this.localisations;
     }
 
     /**
      * Définit la valeur de la propriété localisations.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link LocalisationList }
-     *     
+     *
      */
     public void setLocalisations(LocalisationList value) {
         this.localisations = value;
@@ -244,23 +247,23 @@ public class Objet {
 
     /**
      * Obtient la valeur de la propriété id.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
      * Définit la valeur de la propriété id.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setId(String value) {
         this.id = value;

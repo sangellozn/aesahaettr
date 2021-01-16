@@ -1,26 +1,29 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.01.15 à 10:46:54 PM CET 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
+// Généré le : 2021.01.15 à 10:46:54 PM CET
 //
 
 
 package aesahaettr.xml.bean;
 
+import java.time.LocalDateTime;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import aesahaettr.xml.LocalDateTimeAdapter;
 
 
 /**
  * <p>Classe Java pour localisation complex type.
- * 
+ *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="localisation">
  *   &lt;complexContent>
@@ -35,8 +38,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "localisation", propOrder = {
@@ -51,30 +54,30 @@ public class Localisation {
     protected String adresseId;
     @XmlElement(required = true)
     protected String typeLocalisationCode;
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar dateDebut;
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar dateFin;
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateDebut;
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateFin;
 
     /**
      * Obtient la valeur de la propriété adresseId.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAdresseId() {
-        return adresseId;
+        return this.adresseId;
     }
 
     /**
      * Définit la valeur de la propriété adresseId.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAdresseId(String value) {
         this.adresseId = value;
@@ -82,23 +85,23 @@ public class Localisation {
 
     /**
      * Obtient la valeur de la propriété typeLocalisationCode.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getTypeLocalisationCode() {
-        return typeLocalisationCode;
+        return this.typeLocalisationCode;
     }
 
     /**
      * Définit la valeur de la propriété typeLocalisationCode.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setTypeLocalisationCode(String value) {
         this.typeLocalisationCode = value;
@@ -106,49 +109,49 @@ public class Localisation {
 
     /**
      * Obtient la valeur de la propriété dateDebut.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateDebut() {
-        return dateDebut;
+    public LocalDateTime getDateDebut() {
+        return this.dateDebut;
     }
 
     /**
      * Définit la valeur de la propriété dateDebut.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateDebut(XMLGregorianCalendar value) {
+    public void setDateDebut(LocalDateTime value) {
         this.dateDebut = value;
     }
 
     /**
      * Obtient la valeur de la propriété dateFin.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateFin() {
-        return dateFin;
+    public LocalDateTime getDateFin() {
+        return this.dateFin;
     }
 
     /**
      * Définit la valeur de la propriété dateFin.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateFin(XMLGregorianCalendar value) {
+    public void setDateFin(LocalDateTime value) {
         this.dateFin = value;
     }
 

@@ -1,27 +1,30 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.01.15 à 10:46:54 PM CET 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
+// Généré le : 2021.01.15 à 10:46:54 PM CET
 //
 
 
 package aesahaettr.xml.bean;
 
+import java.time.LocalDateTime;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import aesahaettr.xml.LocalDateTimeAdapter;
 
 
 /**
  * <p>Classe Java pour evenement complex type.
- * 
+ *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="evenement">
  *   &lt;complexContent>
@@ -38,8 +41,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "evenement", propOrder = {
@@ -51,13 +54,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Evenement {
 
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateDebut;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateFin;
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateDebut;
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateFin;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar dateEvt;
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    protected LocalDateTime dateEvt;
     @XmlElement(required = true)
     protected String resume;
     @XmlElement(required = true)
@@ -67,95 +70,95 @@ public class Evenement {
 
     /**
      * Obtient la valeur de la propriété dateDebut.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateDebut() {
-        return dateDebut;
+    public LocalDateTime getDateDebut() {
+        return this.dateDebut;
     }
 
     /**
      * Définit la valeur de la propriété dateDebut.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateDebut(XMLGregorianCalendar value) {
+    public void setDateDebut(LocalDateTime value) {
         this.dateDebut = value;
     }
 
     /**
      * Obtient la valeur de la propriété dateFin.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateFin() {
-        return dateFin;
+    public LocalDateTime getDateFin() {
+        return this.dateFin;
     }
 
     /**
      * Définit la valeur de la propriété dateFin.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateFin(XMLGregorianCalendar value) {
+    public void setDateFin(LocalDateTime value) {
         this.dateFin = value;
     }
 
     /**
      * Obtient la valeur de la propriété dateEvt.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public XMLGregorianCalendar getDateEvt() {
-        return dateEvt;
+    public LocalDateTime getDateEvt() {
+        return this.dateEvt;
     }
 
     /**
      * Définit la valeur de la propriété dateEvt.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *     {@link LocalDateTime }
+     *
      */
-    public void setDateEvt(XMLGregorianCalendar value) {
+    public void setDateEvt(LocalDateTime value) {
         this.dateEvt = value;
     }
 
     /**
      * Obtient la valeur de la propriété resume.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getResume() {
-        return resume;
+        return this.resume;
     }
 
     /**
      * Définit la valeur de la propriété resume.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setResume(String value) {
         this.resume = value;
@@ -163,23 +166,23 @@ public class Evenement {
 
     /**
      * Obtient la valeur de la propriété description.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
      * Définit la valeur de la propriété description.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDescription(String value) {
         this.description = value;
@@ -187,23 +190,23 @@ public class Evenement {
 
     /**
      * Obtient la valeur de la propriété id.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
      * Définit la valeur de la propriété id.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setId(String value) {
         this.id = value;

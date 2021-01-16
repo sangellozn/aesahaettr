@@ -18,10 +18,10 @@
     		<element name="commentaire" type="string" minOccurs="0"
     			maxOccurs="1">
     		</element>
-    		<element name="date_creation" type="dateTime" minOccurs="1"
+    		<element name="dateCreation" type="dateTime" minOccurs="1"
     			maxOccurs="1">
     		</element>
-    		<element name="date_modification" type="dateTime" minOccurs="0" maxOccurs="1"></element>
+    		<element name="dateModification" type="dateTime" minOccurs="0" maxOccurs="1"></element>
     		<element ref="tns:relations" minOccurs="1" maxOccurs="1"></element>
     		<element ref="tns:possessions" minOccurs="1"
     			maxOccurs="1">
@@ -96,10 +96,10 @@
     		<element name="description" type="string" minOccurs="1"
     			maxOccurs="1">
     		</element>
-    		<element name="date_creation" type="dateTime" minOccurs="1"
+    		<element name="dateCreation" type="dateTime" minOccurs="1"
     			maxOccurs="1">
     		</element>
-    		<element name="date_modification" type="dateTime" minOccurs="0" maxOccurs="1"></element>
+    		<element name="dateModification" type="dateTime" minOccurs="0" maxOccurs="1"></element>
     		<element name="typeObjetCode" type="string" minOccurs="1"
     			maxOccurs="1">
     		</element>

@@ -14,7 +14,10 @@ import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PanelModule } from 'primeng/panel';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -28,6 +31,7 @@ import { ObjetComponent } from './ref/type/objet/objet.component';
 import { RelationComponent } from './ref/type/relation/relation.component';
 import { PersonneFormComponent } from './personnes/personne-form/personne-form.component';
 import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
+import { PersonneComponent } from './personnes/personne/personne.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { PersonneListComponent } from './personnes/list/personne-list/personne-l
     ObjetComponent,
     RelationComponent,
     PersonneFormComponent,
-    PersonneListComponent
+    PersonneListComponent,
+    PersonneComponent
   ],
   imports: [
     AppRoutingModule,
@@ -57,7 +62,10 @@ import { PersonneListComponent } from './personnes/list/personne-list/personne-l
     ButtonModule,
     DialogModule,
     FormsModule,
-    InputTextareaModule
+    InputTextareaModule,
+    PanelModule,
+    SplitButtonModule,
+    ScrollTopModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

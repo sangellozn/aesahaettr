@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './not-found/page-not-found/page-not-found.component';
 import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
 import { PersonneFormComponent } from './personnes/personne-form/personne-form.component';
+import { PersonneComponent } from './personnes/personne/personne.component';
 import { PaysComponent } from './ref/pays/pays.component';
 import { AppartenanceComponent } from './ref/type/appartenance/appartenance.component';
 import { ContactComponent } from './ref/type/contact/contact.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'ref/type/relation', component: RelationComponent },
   { path: 'personnes', component: PersonneListComponent },
   { path: 'personnes/new', component: PersonneFormComponent },
+  { path: 'personnes/:id', component: PersonneComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

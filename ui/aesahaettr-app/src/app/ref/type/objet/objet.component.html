@@ -3,7 +3,7 @@
 
 <p-toolbar styleClass="p-mb-4">
     <ng-template pTemplate="left">
-        <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2"
+        <button pButton pRipple icon="pi pi-plus" class="p-button-success p-mr-2"
             (click)="onNouveauTypeObjetBtnClick()" title="Ajouter un nouveau type d'objet"></button>
     </ng-template>
 </p-toolbar>
@@ -32,8 +32,8 @@
             <td>{{objet.code}}</td>
             <td>{{objet.libelle}}</td>
             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
-                    (click)="editObjet(objet)" title="Modifier le type d'bjet"></button>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"
+                    (click)="editObjet(objet)" title="Modifier le type d'objet"></button>
             </td>
         </tr>
     </ng-template>

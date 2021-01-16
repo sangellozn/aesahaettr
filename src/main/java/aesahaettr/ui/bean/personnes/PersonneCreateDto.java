@@ -1,14 +1,46 @@
 package aesahaettr.ui.bean.personnes;
 
-public class PersonneListItemDto {
+public class PersonneCreateDto {
 
     private String id;
+
+    private String nom;
+
+    private String prenoms;
 
     private String nomUsage;
 
     private String prenomUsage;
 
-    private String localisation;
+    private String commentaire;
+
+    /**
+     * @return the nom
+     */
+    public String getNom() {
+        return this.nom;
+    }
+
+    /**
+     * @param nom the nom to set
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * @return the prenoms
+     */
+    public String getPrenoms() {
+        return this.prenoms;
+    }
+
+    /**
+     * @param prenoms the prenoms to set
+     */
+    public void setPrenoms(String prenoms) {
+        this.prenoms = prenoms;
+    }
 
     /**
      * @return the nomUsage
@@ -39,17 +71,17 @@ public class PersonneListItemDto {
     }
 
     /**
-     * @return the localisation
+     * @return the commentaire
      */
-    public String getLocalisation() {
-        return this.localisation;
+    public String getCommentaire() {
+        return this.commentaire;
     }
 
     /**
-     * @param localisation the localisation to set
+     * @param commentaire the commentaire to set
      */
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
     /**
