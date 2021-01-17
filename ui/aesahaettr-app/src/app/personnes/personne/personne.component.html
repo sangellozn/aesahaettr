@@ -64,7 +64,8 @@
         </div>
     </p-panel>
     <p-panel header="Localisations et adresses" styleClass="mb-3">
-        <app-localisation-list [localisations]="personne.localisations"></app-localisation-list>
+        <app-localisation-list [localisations]="personne.localisations" [visible]="quickAddType === 'LOCALISATION'"
+          [personneId]="personne.id" (onEditAddActionCompleted)="onQuickAddActionCompleted($event)"></app-localisation-list>
     </p-panel>
     <p-panel header="Moyens de contact" styleClass="mb-3">
 

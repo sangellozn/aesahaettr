@@ -15,6 +15,8 @@ export class PersonneComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
 
+  quickAddType: string = '';
+
   constructor(private route: ActivatedRoute, private personnesService: PersonnesService) { }
 
   ngOnInit(): void {
@@ -22,11 +24,15 @@ export class PersonneComponent implements OnInit {
     this.menuItems = this.getMenuItems();
   }
 
+  onQuickAddActionCompleted(value: boolean): void {
+    this.quickAddType = '';
+  }
+
   getMenuItems(): MenuItem[] {
     return [
       {
         label: 'Ajouter une nouvelle localisation', icon: 'pi pi-home', command: () => {
-
+          this.quickAddType = 'LOCALISATION'
         }
       },
       {

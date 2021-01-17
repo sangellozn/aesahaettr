@@ -2,12 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Personne } from '../bean/personnes/personne';
 import { PersonneFull } from '../bean/personnes/personne-full';
 import { PersonneListItem } from '../bean/personnes/personne-list-item';
-import { PersonneFormComponent } from '../personnes/personne-form/personne-form.component';
 import { AbstractAppService } from './abstract-app.service';
 
 @Injectable({
@@ -32,7 +31,9 @@ export class PersonnesService extends AbstractAppService {
   }
 
   getById(id: string): Observable<PersonneFull> {
-    return this.http.get<PersonneFull>(this.url + '/' + id).pipe(catchError(this.throwError()));
+    return this.http.get<PersonneFull>(this.url + '/' + id).pipe(
+      map((value: PersonneFull) => PersonneFull.fromJson(value)),
+      catchError(this.throwError()));
   }
 
 }
