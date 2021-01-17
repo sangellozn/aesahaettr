@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import aesahaettr.services.personnes.IPersonnesServices;
+import aesahaettr.ui.bean.personnes.LocalisationDto;
 import aesahaettr.ui.bean.personnes.PersonneCreateDto;
 import aesahaettr.ui.bean.personnes.PersonneFullDto;
 import aesahaettr.ui.bean.personnes.PersonneListItemDto;
@@ -35,6 +36,11 @@ public class PersonnesController {
     @GetMapping("{id}")
     public PersonneFullDto getById(@PathVariable String id) {
         return this.personnesServices.getById(id);
+    }
+
+    @PostMapping("/localisations")
+    public LocalisationDto save(@RequestBody LocalisationDto localisationDto) {
+        return null;
     }
 
 }

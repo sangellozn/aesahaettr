@@ -2,7 +2,6 @@
 <div class="p-grid">
     <div *ngFor="let loc of localisations" class="p-col-3">
         <p-card [header]="loc.typeLocalisationLibelle">
-            <!--<div class="p-card-title">{{loc.typeLocalisationLibelle}}</div>-->
             <div>{{loc.ligne1}}</div>
             <div *ngIf="loc.ligne2">{{loc.ligne2}}</div>
             <div *ngIf="loc.ligne3">{{loc.ligne3}}</div>
@@ -18,77 +17,85 @@
     </div>
 </div>
 <form (ngSubmit)="onLocalisationFormSubmit()" #localisationForm="ngForm">
-    <p-dialog [(visible)]="visible" [style]="{width: 'auto'}" [header]="modification ? 'Modification de la localisation' : 'Nouvelle localisation'" [modal]="true"
+    <p-dialog [(visible)]="visible" [header]="modification ? 'Modification de la localisation' : 'Nouvelle localisation'" [modal]="true"
         styleClass="p-fluid" (onHide)="onHidePopin()">
         <ng-template pTemplate="content">
-            <div class="p-field">
-                <label for="ligne1">Ligne 1 *</label>
-                <input type="text" pInputText id="ligne1" name="ligne1" [(ngModel)]="localisation.ligne1" required autofocus
+            <div class="pr-4 pl-4">
+                <div class="p-field">
+                    <label for="ligne1">Ligne 1 *</label>
+                    <input type="text" pInputText id="ligne1" name="ligne1" [(ngModel)]="localisation.ligne1" required
                     #ligne1="ngModel" />
-                <small class="p-invalid" [hidden]="ligne1.valid || ligne1.pristine">La ligne 1 est obligatoire</small>
-            </div>
-            <div class="p-field">
-                <label for="ligne2">Ligne 2</label>
-                <input type="text" pInputText id="ligne2" name="ligne2" [(ngModel)]="localisation.ligne2"
+                    <small class="p-invalid" [hidden]="ligne1.valid || ligne1.pristine">La ligne 1 est obligatoire</small>
+                </div>
+                <div class="p-field">
+                    <label for="ligne2">Ligne 2</label>
+                    <input type="text" pInputText id="ligne2" name="ligne2" [(ngModel)]="localisation.ligne2"
                     #ligne2="ngModel" />
-            </div>
-            <div class="p-field">
-                <label for="ligne3">Ligne 3</label>
-                <input type="text" pInputText id="ligne3" name="ligne3" [(ngModel)]="localisation.ligne3"
+                </div>
+                <div class="p-field">
+                    <label for="ligne3">Ligne 3</label>
+                    <input type="text" pInputText id="ligne3" name="ligne3" [(ngModel)]="localisation.ligne3"
                     #ligne3="ngModel" />
-            </div>
-            <div class="p-field">
-                <label for="lieuDit">Lieu dit</label>
-                <input type="text" pInputText id="lieuDit" name="lieuDit" [(ngModel)]="localisation.lieuDit"
+                </div>
+                <div class="p-field">
+                    <label for="lieuDit">Lieu dit</label>
+                    <input type="text" pInputText id="lieuDit" name="lieuDit" [(ngModel)]="localisation.lieuDit"
                     #lieuDit="ngModel" />
-            </div>
-            <div class="p-grid">
-                <div class="p-col-4">
-                    <div class="p-fluid">
-                        <div class="p-field">
-                            <label for="codePostal">Code postal *</label>
-                            <input type="text" pInputText id="codePostal" name="codePostal" [(ngModel)]="localisation.codePostal" required
+                </div>
+                <div class="p-grid">
+                    <div class="p-col-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="codePostal">Code postal *</label>
+                                <input type="text" pInputText id="codePostal" name="codePostal" [(ngModel)]="localisation.codePostal" required
                                 #codePostal="ngModel" />
-                            <small class="p-invalid" [hidden]="codePostal.valid || codePostal.pristine">Le code postal est obligatoire</small>
+                                <small class="p-invalid" [hidden]="codePostal.valid || codePostal.pristine">Le code postal est obligatoire</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="p-col-4">
-                    <div class="p-fluid">
-                        <div class="p-field">
-                            <label for="localiteDestination">Localité/ville *</label>
-                            <input type="text" pInputText id="localiteDestination" name="localiteDestination" [(ngModel)]="localisation.localiteDestination" required
+                    <div class="p-col-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="localiteDestination">Localité/ville *</label>
+                                <input type="text" pInputText id="localiteDestination" name="localiteDestination" [(ngModel)]="localisation.localiteDestination" required
                                 #localiteDestination="ngModel" />
-                            <small class="p-invalid" [hidden]="localiteDestination.valid || localiteDestination.pristine">La localité/ville est obligatoire</small>
+                                <small class="p-invalid" [hidden]="localiteDestination.valid || localiteDestination.pristine">La localité/ville est obligatoire</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="paysCode">Pays *</label>
+                                <p-dropdown [options]="refPays" [(ngModel)]="localisation.paysCode" optionLabel="libelle" optionValue="code" name="paysCode" inputId="paysCode"
+                                #paysCode="ngModel"></p-dropdown>
+                                <small class="p-invalid" [hidden]="paysCode.valid || paysCode.pristine">Le pays est obligatoire</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="p-col-4">
-                    <div class="p-fluid">
-                        <div class="p-field">
-                            <label for="paysCode">Pays *</label>
-                            <input type="text" pInputText id="paysCode" name="paysCode" [(ngModel)]="localisation.paysCode" required
-                                #paysCode="ngModel" />
-                            <small class="p-invalid" [hidden]="paysCode.valid || paysCode.pristine">Le pays est obligatoire</small>
+                <div class="p-field">
+                    <label for="typeLocalisationCode">Type de localisation *</label>
+                    <p-dropdown [options]="refTypeLocalisations" [(ngModel)]="localisation.typeLocalisationCode" optionLabel="libelle" optionValue="code" name="typeLocalisationCode" inputId="typeLocalisationCode"
+                    #typeLocalisationCode="ngModel"></p-dropdown>
+                    <small class="p-invalid" [hidden]="typeLocalisationCode.valid || typeLocalisationCode.pristine">Le type de localisation est obligatoire</small>
+                </div>
+                <div class="p-grid">
+                    <div class="p-col-6">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="dateDebut">Depuis le *</label>
+                                <p-calendar [(ngModel)]="localisation.dateDebut" inputId="dateDebut" name="dateDebut" #dateDebut="ngModel" dateFormat="dd/mm/yy"></p-calendar>
+                                <small class="p-invalid" [hidden]="dateDebut.valid || dateDebut.pristine">La date de début est obligatoire</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="p-grid">
-                <div class="p-col-6">
-                    <div class="p-fluid">
-                        <div class="p-field">
-                            <label for="dateDebut">Depuis le *</label>
-                            <p-calendar [(ngModel)]="localisation.dateDebut" inputId="dateDebut" name="dateDebut" #dateDebut="ngModel" dateFormat="dd/mm/yy"></p-calendar>
-                            <small class="p-invalid" [hidden]="dateDebut.valid || dateDebut.pristine">La date de début est obligatoire</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-col-6">
-                    <div class="p-fluid">
-                        <div class="p-field">
-                            <label for="dateFin">Jusqu'au</label>
-                            <p-calendar [(ngModel)]="localisation.dateFin" inputId="dateFin" name="dateFin" #dateFin="ngModel" dateFormat="dd/mm/yy"></p-calendar>
+                    <div class="p-col-6">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="dateFin">Jusqu'au</label>
+                                <p-calendar [(ngModel)]="localisation.dateFin" inputId="dateFin" name="dateFin" #dateFin="ngModel" dateFormat="dd/mm/yy"></p-calendar>
+                            </div>
                         </div>
                     </div>
                 </div>

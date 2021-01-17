@@ -31,7 +31,7 @@ export class PersonnesService extends AbstractAppService {
   }
 
   getById(id: string): Observable<PersonneFull> {
-    return this.http.get<PersonneFull>(this.url + '/' + id).pipe(
+    return this.http.get<PersonneFull>(`${this.url}/${id}`).pipe(
       map((value: PersonneFull) => PersonneFull.fromJson(value)),
       catchError(this.throwError()));
   }

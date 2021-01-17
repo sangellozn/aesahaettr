@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Localisation } from 'src/app/bean/personnes/localisation';
+import { ReferentielItem } from 'src/app/bean/referentiel-item';
+import { ReferentielService } from 'src/app/services/ref/referentiel.service';
 
 @Component({
   selector: 'app-localisation-list',
@@ -21,15 +23,20 @@ export class LocalisationListComponent implements OnInit {
 
   modification: boolean = false;
 
+  refTypeLocalisations: ReferentielItem[] = [];
+
+  refPays: ReferentielItem[] = [];
+
   /**
    * Localisation à ajouter ou à modifier.
    */
   localisation: Localisation = new Localisation;
 
-  constructor() { }
+  constructor(private referentielService: ReferentielService) { }
 
   ngOnInit() {
-    
+    this.referentielService.findAllLocalisation().subscribe(data => this.refTypeLocalisations = data);
+    this.referentielService.findAllPays().subscribe(data => this.refPays = data);
   }
 
   onHidePopin(): void {
@@ -37,8 +44,7 @@ export class LocalisationListComponent implements OnInit {
   }
 
   editLocalisation(localisation: Localisation): void {
-    console.log(localisation);
-    this.localisation = localisation;
+    this.localisation = {...localisation};
     this.visible = true;
     this.modification = true;
   }

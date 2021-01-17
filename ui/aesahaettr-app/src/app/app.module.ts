@@ -20,6 +20,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { CardModule } from 'primeng/card';
 import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -71,7 +72,8 @@ import { LocalisationListComponent } from './personnes/localisation-list/localis
     SplitButtonModule,
     ScrollTopModule,
     CardModule,
-    CalendarModule
+    CalendarModule,
+    DropdownModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.01.15 à 10:46:54 PM CET 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
+// Généré le : 2021.01.15 à 10:46:54 PM CET
 //
 
 
@@ -13,12 +13,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import aesahaettr.xml.IReferentielItem;
+
 
 /**
  * <p>Classe Java pour typeObjet complex type.
- * 
+ *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="typeObjet">
  *   &lt;complexContent>
@@ -31,15 +33,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "typeObjet", propOrder = {
     "code",
     "libelle"
 })
-public class TypeObjet {
+public class TypeObjet implements IReferentielItem {
 
     @XmlElement(required = true)
     protected String code;
@@ -48,23 +50,24 @@ public class TypeObjet {
 
     /**
      * Obtient la valeur de la propriété code.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
+    @Override
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     /**
      * Définit la valeur de la propriété code.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setCode(String value) {
         this.code = value;
@@ -72,23 +75,24 @@ public class TypeObjet {
 
     /**
      * Obtient la valeur de la propriété libelle.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
+    @Override
     public String getLibelle() {
-        return libelle;
+        return this.libelle;
     }
 
     /**
      * Définit la valeur de la propriété libelle.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setLibelle(String value) {
         this.libelle = value;
