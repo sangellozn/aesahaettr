@@ -1,0 +1,19 @@
+<div *ngIf="!localisations.length">Aucune localisation ou adresse connue.</div>
+<div class="p-grid">
+    <div *ngFor="let loc of localisations" class="p-col-3">
+        <p-card [header]="loc.typeLocalisationLibelle">
+            <!--<div class="p-card-title">{{loc.typeLocalisationLibelle}}</div>-->
+            <div>{{loc.ligne1}}</div>
+            <div *ngIf="loc.ligne2">{{loc.ligne2}}</div>
+            <div *ngIf="loc.ligne3">{{loc.ligne3}}</div>
+            <div *ngIf="loc.lieuDit">{{loc.lieuDit}}</div>
+            <div>{{loc.codePostal}} {{loc.localiteDestination}} ({{loc.paysLibelle}})</div>
+            <p-footer>
+                <div class="text-align-right">
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2" title="Modifier"></button>
+                    <button pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger p-mr-2" title="Supprimer"></button>
+                </div>
+            </p-footer>
+        </p-card>
+    </div>
+</div>

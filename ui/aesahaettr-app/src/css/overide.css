@@ -1,3 +1,11 @@
 .p-toast-top-right {
     top: 75px !important;
 }
+
+.p-card {
+    background: var(--surface-b);
+}
+
+body {
+    background: var(--surface-b);
+}

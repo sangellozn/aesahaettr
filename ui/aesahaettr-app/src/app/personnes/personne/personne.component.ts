@@ -25,6 +25,16 @@ export class PersonneComponent implements OnInit {
   getMenuItems(): MenuItem[] {
     return [
       {
+        label: 'Ajouter une nouvelle localisation', icon: 'pi pi-home', command: () => {
+
+        }
+      },
+      {
+        label: 'Ajouter un nouveau moyen de contact', icon: 'pi pi-phone', command: () => {
+
+        }
+      },
+      {
         label: 'Ajouter une relation', icon: 'pi pi-share-alt', command: () => {
 
         }
@@ -38,17 +48,7 @@ export class PersonneComponent implements OnInit {
         label: 'Créer un nouvel événement', icon: 'pi pi-info-circle', command: () => {
 
         }
-      },
-      {
-        label: 'Ajouter un nouveau moyen de contact', icon: 'pi pi-phone', command: () => {
-
-        }
-      },
-      {
-        label: 'Ajouter une nouvelle localisation', icon: 'pi pi-home', command: () => {
-
-        }
-      }
+      }      
     ];
   }
 

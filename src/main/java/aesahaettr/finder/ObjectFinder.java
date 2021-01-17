@@ -4,13 +4,13 @@ import aesahaettr.AesahaettrXmlInstance;
 import aesahaettr.exceptions.AdresseNotFoundException;
 import aesahaettr.xml.bean.Adresse;
 
-public final class AdresseFinder {
+public final class ObjectFinder {
 
-    private AdresseFinder() {
+    private ObjectFinder() {
         throw new IllegalArgumentException("Classe utilitaire.");
     }
 
-    public static Adresse getById(String id) {
+    public static Adresse getAdresseById(String id) {
         return AesahaettrXmlInstance.getInstance().getAdresses().getAdresse().stream()
                 .filter(item -> item.getId().equals(id)).findFirst()
                 .orElseThrow(() -> new AdresseNotFoundException(id));

@@ -1,3 +1,5 @@
+import { Localisation } from "./localisation";
+
 export class PersonneFull {
 
     id: string;
@@ -8,5 +10,6 @@ export class PersonneFull {
     commentaire: string;
     dateCreation: string;
     dateModification: string;
+    localisations: Localisation[] = [];
 
 }

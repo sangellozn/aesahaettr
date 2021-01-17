@@ -18,6 +18,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PanelModule } from 'primeng/panel';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { CardModule } from 'primeng/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -32,6 +33,7 @@ import { RelationComponent } from './ref/type/relation/relation.component';
 import { PersonneFormComponent } from './personnes/personne-form/personne-form.component';
 import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
 import { PersonneComponent } from './personnes/personne/personne.component';
+import { LocalisationListComponent } from './personnes/localisation-list/localisation-list.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { PersonneComponent } from './personnes/personne/personne.component';
     RelationComponent,
     PersonneFormComponent,
     PersonneListComponent,
-    PersonneComponent
+    PersonneComponent,
+    LocalisationListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -65,7 +68,8 @@ import { PersonneComponent } from './personnes/personne/personne.component';
     InputTextareaModule,
     PanelModule,
     SplitButtonModule,
-    ScrollTopModule
+    ScrollTopModule,
+    CardModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

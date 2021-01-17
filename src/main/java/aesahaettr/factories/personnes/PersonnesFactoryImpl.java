@@ -1,6 +1,8 @@
 package aesahaettr.factories.personnes;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
@@ -8,8 +10,9 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 import aesahaettr.displayer.AdresseDisplayer;
-import aesahaettr.finder.AdresseFinder;
+import aesahaettr.finder.ObjectFinder;
 import aesahaettr.ui.bean.LocalisationEnum;
+import aesahaettr.ui.bean.personnes.LocalisationDto;
 import aesahaettr.ui.bean.personnes.PersonneCreateDto;
 import aesahaettr.ui.bean.personnes.PersonneFullDto;
 import aesahaettr.ui.bean.personnes.PersonneListItemDto;
@@ -38,7 +41,7 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
                 .findFirst();
 
         if (localisationOpt.isPresent()) {
-            resultat.setLocalisation(AdresseDisplayer.getAdresseDisplay(AdresseFinder.getById(localisationOpt.get().getAdresseId())));
+            resultat.setLocalisation(AdresseDisplayer.getAdresseDisplay(ObjectFinder.getAdresseById(localisationOpt.get().getAdresseId())));
         }
 
         return resultat;
@@ -90,6 +93,23 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
         resultat.setPrenomUsage(bean.getPrenomUsage());
         resultat.setDateCreation(bean.getDateCreation());
         resultat.setDateModification(bean.getDateModification());
+        resultat.setLocalisations(new ArrayList<>());
+
+        LocalisationDto e = new LocalisationDto();
+        e.setAdresseId(null);
+        e.setCodePostal("91190");
+        e.setDateDebut(LocalDateTime.now());
+        e.setDateFin(LocalDateTime.now().plus(1, ChronoUnit.DAYS));
+        e.setLieuDit("La passoire");
+        e.setLigne1("Ligne 1");
+        e.setLigne2("Ligne 2");
+        e.setLocaliteDestination("GIF-SUR-YVETTE");
+        e.setPaysCode("FR");
+        e.setPaysLibelle("France");
+        e.setTypeLocalisationCode("RESIDE");
+        e.setTypeLocalisationLibelle("Réside");
+
+        resultat.getLocalisations().add(e);
 
         return resultat;
     }

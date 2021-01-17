@@ -1,6 +1,7 @@
 package aesahaettr.ui.bean.personnes;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 public class PersonneFullDto {
 
@@ -19,6 +20,8 @@ public class PersonneFullDto {
     private LocalDateTime dateCreation;
 
     private LocalDateTime dateModification;
+
+    private Collection<LocalisationDto> localisations;
 
     /**
      * @return the id
@@ -130,6 +133,20 @@ public class PersonneFullDto {
      */
     public void setDateModification(LocalDateTime dateModification) {
         this.dateModification = dateModification;
+    }
+
+    /**
+     * @return the localisations
+     */
+    public Collection<LocalisationDto> getLocalisations() {
+        return localisations;
+    }
+
+    /**
+     * @param localisations the localisations to set
+     */
+    public void setLocalisations(Collection<LocalisationDto> localisations) {
+        this.localisations = localisations;
     }
 
 }
