@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import aesahaettr.AesahaettrXmlInstance;
 import aesahaettr.exceptions.personnes.PersonneNotFoundException;
 import aesahaettr.factories.personnes.IPersonnesFactory;
-import aesahaettr.ui.bean.personnes.PersonneCreateDto;
 import aesahaettr.ui.bean.personnes.PersonneFullDto;
 import aesahaettr.ui.bean.personnes.PersonneListItemDto;
+import aesahaettr.ui.bean.personnes.PersonneMinimalDto;
 import aesahaettr.xml.bean.Personne;
 
 @Service
@@ -28,8 +28,8 @@ public class PersonnesServicesImpl implements IPersonnesServices {
     }
 
     @Override
-    public PersonneCreateDto save(PersonneCreateDto dto) {
-        Personne personne = this.personnesFactory.mapToBean(dto);
+    public PersonneMinimalDto save(PersonneMinimalDto dto) {
+        Personne personne = this.personnesFactory.mapToNewBean(dto);
 
         AesahaettrXmlInstance.getInstance().getPersonnes().getPersonne().add(personne);
 
@@ -50,6 +50,19 @@ public class PersonnesServicesImpl implements IPersonnesServices {
         Personne personne = this.findByIdInternal(id).orElseThrow(() -> new PersonneNotFoundException(id));
 
         return this.personnesFactory.mapToFullDto(personne);
+    }
+
+    @Override
+    public PersonneFullDto update(PersonneMinimalDto dto) {
+        String id = dto.getId();
+
+        Personne personne = this.findByIdInternal(id).orElseThrow(() -> new PersonneNotFoundException(id));
+
+        this.personnesFactory.updateBean(personne, dto);
+
+        AesahaettrXmlInstance.save();
+
+        return this.getById(id);
     }
 
 }

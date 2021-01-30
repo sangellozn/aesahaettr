@@ -1,21 +1,20 @@
 package aesahaettr.factories.personnes;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import aesahaettr.displayer.AdresseDisplayer;
 import aesahaettr.finder.ObjectFinder;
 import aesahaettr.ui.bean.LocalisationEnum;
-import aesahaettr.ui.bean.personnes.LocalisationDto;
-import aesahaettr.ui.bean.personnes.PersonneCreateDto;
 import aesahaettr.ui.bean.personnes.PersonneFullDto;
 import aesahaettr.ui.bean.personnes.PersonneListItemDto;
+import aesahaettr.ui.bean.personnes.PersonneMinimalDto;
 import aesahaettr.xml.bean.ContactList;
 import aesahaettr.xml.bean.EvenementIdList;
 import aesahaettr.xml.bean.Localisation;
@@ -26,6 +25,9 @@ import aesahaettr.xml.bean.RelationList;
 
 @Component
 public class PersonnesFactoryImpl implements IPersonnesFactory {
+
+    @Autowired
+    private ILocalisationsFactory localisationsFactory;
 
     @Override
     public PersonneListItemDto mapToListItemDto(Personne bean) {
@@ -48,8 +50,8 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
     }
 
     @Override
-    public PersonneCreateDto mapToCreateDto(Personne bean) {
-        PersonneCreateDto resultat = new PersonneCreateDto();
+    public PersonneMinimalDto mapToCreateDto(Personne bean) {
+        PersonneMinimalDto resultat = new PersonneMinimalDto();
 
         resultat.setId(bean.getId());
         resultat.setCommentaire(bean.getCommentaire());
@@ -62,7 +64,7 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
     }
 
     @Override
-    public Personne mapToBean(PersonneCreateDto dto) {
+    public Personne mapToNewBean(PersonneMinimalDto dto) {
         Personne resultat = new Personne();
 
         resultat.setCommentaire(dto.getCommentaire());
@@ -93,25 +95,20 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
         resultat.setPrenomUsage(bean.getPrenomUsage());
         resultat.setDateCreation(bean.getDateCreation());
         resultat.setDateModification(bean.getDateModification());
-        resultat.setLocalisations(new ArrayList<>());
-
-        LocalisationDto e = new LocalisationDto();
-        e.setAdresseId(null);
-        e.setCodePostal("91190");
-        e.setDateDebut(LocalDateTime.now());
-        e.setDateFin(LocalDateTime.now().plus(1, ChronoUnit.DAYS));
-        e.setLieuDit("La passoire");
-        e.setLigne1("Ligne 1");
-        e.setLigne2("Ligne 2");
-        e.setLocaliteDestination("GIF-SUR-YVETTE");
-        e.setPaysCode("FR");
-        e.setPaysLibelle("France");
-        e.setTypeLocalisationCode("RESIDE");
-        e.setTypeLocalisationLibelle("Réside");
-
-        resultat.getLocalisations().add(e);
+        resultat.setLocalisations(bean.getLocalisations().getLocalisation().
+                stream().map(item -> this.localisationsFactory.mapToDto(item, bean)).collect(Collectors.toList()));
 
         return resultat;
+    }
+
+    @Override
+    public void updateBean(Personne bean, PersonneMinimalDto dto) {
+        bean.setCommentaire(dto.getCommentaire());
+        bean.setDateModification(LocalDateTime.now());
+        bean.setNom(dto.getNom());
+        bean.setNomUsage(dto.getNomUsage());
+        bean.setPrenoms(dto.getPrenoms());
+        bean.setPrenomUsage(dto.getPrenomUsage());
     }
 
 }

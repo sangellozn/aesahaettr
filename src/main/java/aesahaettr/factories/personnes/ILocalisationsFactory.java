@@ -1,0 +1,16 @@
+package aesahaettr.factories.personnes;
+
+import aesahaettr.ui.bean.personnes.LocalisationDto;
+import aesahaettr.xml.bean.Adresse;
+import aesahaettr.xml.bean.Localisation;
+import aesahaettr.xml.bean.Personne;
+
+public interface ILocalisationsFactory {
+
+    Adresse mapDtoToNewAdresseBean(LocalisationDto dto);
+
+    Localisation mapDtoToNewLocalisationBean(LocalisationDto dto, Adresse adresse);
+
+    LocalisationDto mapToDto(Localisation localisation, Personne personne);
+
+}

@@ -1,4 +1,5 @@
 import { Localisation } from "./localisation";
+import { Personne } from "./personne";
 
 export class PersonneFull {
 
@@ -18,6 +19,19 @@ export class PersonneFull {
         resultat.localisations = json['localisations'].map(Localisation.fromJson);
 
         return resultat;
+    }
+
+    public toPersonne(): Personne {
+        const personne = new Personne;
+
+        personne.id = this.id;
+        personne.nom = this.nom;
+        personne.nomUsage = this.nomUsage;
+        personne.prenomUsage = this.prenomUsage;
+        personne.prenoms = this.prenoms;
+        personne.commentaire = this.commentaire;
+
+        return personne;
     }
 
     id: string;

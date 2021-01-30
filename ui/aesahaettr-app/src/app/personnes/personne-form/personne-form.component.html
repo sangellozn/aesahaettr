@@ -29,7 +29,7 @@
         </div>
     </div>
     <button pButton pRipple type="button" label="Annuler" icon="pi pi-times"
-        class="p-button-danger p-button-outlined mr-2" routerLink="/personnes"></button>
+        class="p-button-danger p-button-outlined mr-2" (click)="onBackButtonClick()"></button>
     <button pButton pRipple type="submit" icon="pi pi-check" class="p-button-success" label="Sauvegarder"
         [disabled]="!personneForm.form.valid"></button>
 </form>

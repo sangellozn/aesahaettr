@@ -26,13 +26,21 @@ export class PersonnesService extends AbstractAppService {
 
   save(personne: Personne): Observable<Personne> {
     return this.http.post<Personne>(this.url, personne).pipe(
-      tap(() => this.messageService.add({ severity: 'success', summary: 'Création', detail: 'La personne pays a été créé avec succès.' })),
+      tap(() => this.messageService.add({ severity: 'success', summary: 'Création', detail: 'La personne a été créée avec succès.' })),
       catchError(this.throwError()));
   }
 
   getById(id: string): Observable<PersonneFull> {
     return this.http.get<PersonneFull>(`${this.url}/${id}`).pipe(
       map((value: PersonneFull) => PersonneFull.fromJson(value)),
+      catchError(this.throwError()));
+  }
+
+  update(personne: Personne): Observable<PersonneFull> {
+    const { id } = personne;
+    return this.http.put<PersonneFull>(`${this.url}/${id}`, personne).pipe(
+      map((value: PersonneFull) => PersonneFull.fromJson(value)),
+      tap(() => this.messageService.add({ severity: 'success', summary: 'Modification', detail: 'La personne a été modifiée avec succès.' })),
       catchError(this.throwError()));
   }
 

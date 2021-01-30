@@ -332,8 +332,11 @@
     		<element name="dateDebut" type="date" minOccurs="0"
     			maxOccurs="1">
     		</element>
-    		<element name="dateFin" type="date" minOccurs="0" maxOccurs="1"></element>
+    		<element name="dateFin" type="date" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
     	</sequence>
+    	<attribute name="id" type="tns:UIID"></attribute>
     </complexType>
 
     <element name="localisation" type="tns:localisation"></element>

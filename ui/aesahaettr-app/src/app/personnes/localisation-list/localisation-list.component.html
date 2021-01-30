@@ -8,9 +8,13 @@
             <div *ngIf="loc.lieuDit">{{loc.lieuDit}}</div>
             <div>{{loc.codePostal}} {{loc.localiteDestination}} ({{loc.paysLibelle}})</div>
             <p-footer>
+                <div class="text-align-left">
+                    Depuis le <span>{{loc.dateDebut | date:'dd/MM/yyyy'}}</span>
+                    <span *ngIf="loc.dateFin">&nbsp;jusqu'au {{loc.dateFin | date:'dd/MM/yyyy'}}</span>
+                    <span *ngIf="!loc.dateFin">&nbsp;jusqu'à aujourd'hui</span>
+                </div>
                 <div class="text-align-right">
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2" title="Modifier" (click)="editLocalisation(loc)"></button>
-                    <button pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger p-mr-2" title="Supprimer"></button>
                 </div>
             </p-footer>
         </p-card>
@@ -68,7 +72,7 @@
                             <div class="p-field">
                                 <label for="paysCode">Pays *</label>
                                 <p-dropdown [options]="refPays" [(ngModel)]="localisation.paysCode" optionLabel="libelle" optionValue="code" name="paysCode" inputId="paysCode"
-                                #paysCode="ngModel"></p-dropdown>
+                                #paysCode="ngModel" required></p-dropdown>
                                 <small class="p-invalid" [hidden]="paysCode.valid || paysCode.pristine">Le pays est obligatoire</small>
                             </div>
                         </div>
@@ -77,7 +81,7 @@
                 <div class="p-field">
                     <label for="typeLocalisationCode">Type de localisation *</label>
                     <p-dropdown [options]="refTypeLocalisations" [(ngModel)]="localisation.typeLocalisationCode" optionLabel="libelle" optionValue="code" name="typeLocalisationCode" inputId="typeLocalisationCode"
-                    #typeLocalisationCode="ngModel"></p-dropdown>
+                    #typeLocalisationCode="ngModel" required></p-dropdown>
                     <small class="p-invalid" [hidden]="typeLocalisationCode.valid || typeLocalisationCode.pristine">Le type de localisation est obligatoire</small>
                 </div>
                 <div class="p-grid">
@@ -85,7 +89,7 @@
                         <div class="p-fluid">
                             <div class="p-field">
                                 <label for="dateDebut">Depuis le *</label>
-                                <p-calendar [(ngModel)]="localisation.dateDebut" inputId="dateDebut" name="dateDebut" #dateDebut="ngModel" dateFormat="dd/mm/yy"></p-calendar>
+                                <p-calendar [(ngModel)]="localisation.dateDebut" inputId="dateDebut" name="dateDebut" #dateDebut="ngModel" dateFormat="dd/mm/yy" required></p-calendar>
                                 <small class="p-invalid" [hidden]="dateDebut.valid || dateDebut.pristine">La date de début est obligatoire</small>
                             </div>
                         </div>

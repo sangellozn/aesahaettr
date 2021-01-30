@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import aesahaettr.services.personnes.IPersonnesServices;
-import aesahaettr.ui.bean.personnes.LocalisationDto;
-import aesahaettr.ui.bean.personnes.PersonneCreateDto;
 import aesahaettr.ui.bean.personnes.PersonneFullDto;
 import aesahaettr.ui.bean.personnes.PersonneListItemDto;
+import aesahaettr.ui.bean.personnes.PersonneMinimalDto;
 
 @RestController
 @RequestMapping("api/personnes")
@@ -29,18 +29,18 @@ public class PersonnesController {
     }
 
     @PostMapping
-    public PersonneCreateDto save(@RequestBody PersonneCreateDto dto) {
+    public PersonneMinimalDto save(@RequestBody PersonneMinimalDto dto) {
         return this.personnesServices.save(dto);
+    }
+
+    @PutMapping("{id}")
+    public PersonneFullDto update(@RequestBody PersonneMinimalDto dto) {
+        return this.personnesServices.update(dto);
     }
 
     @GetMapping("{id}")
     public PersonneFullDto getById(@PathVariable String id) {
         return this.personnesServices.getById(id);
-    }
-
-    @PostMapping("/localisations")
-    public LocalisationDto save(@RequestBody LocalisationDto localisationDto) {
-        return null;
     }
 
 }

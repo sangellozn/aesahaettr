@@ -1,8 +1,15 @@
 export class Localisation {
 
+    constructor(personneId?: string) {
+        this.personneId = personneId;
+        this.paysCode = 'FR';
+        this.typeLocalisationCode = 'SITUE';
+    }
+
     public static fromJson(json: object): Localisation {
         const resultat: Localisation = new Localisation;
 
+        resultat.id = json['id'];
         resultat.personneId = json['personneId'];
         resultat.adresseId = json['adresseId'];
         resultat.typeLocalisationCode = json['typeLocalisationCode'];
@@ -23,6 +30,7 @@ export class Localisation {
         return resultat;
     }
 
+    id: string;
     personneId: string;
     adresseId: string;
     typeLocalisationCode: string;

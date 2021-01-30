@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { PersonneFull } from 'src/app/bean/personnes/personne-full';
 import { PersonnesService } from 'src/app/services/personnes.service';
@@ -17,22 +17,39 @@ export class PersonneComponent implements OnInit {
 
   quickAddType: string = '';
 
-  constructor(private route: ActivatedRoute, private personnesService: PersonnesService) { }
+  constructor(private route: ActivatedRoute, 
+    private personnesService: PersonnesService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.personnesService.getById(this.route.snapshot.paramMap.get('id')).subscribe(data => this.personne = data);
+    this.loadPersonne();
     this.menuItems = this.getMenuItems();
   }
 
-  onQuickAddActionCompleted(value: boolean): void {
+  loadPersonne(): void {
+    this.personnesService.getById(this.route.snapshot.paramMap.get('id')).subscribe(data => this.personne = data);
+  }
+
+  onQuickAddActionCompleted(reload: boolean): void {
+    if (reload) {
+      this.loadPersonne();
+    }
     this.quickAddType = '';
+  }
+
+  onAddLocalisationButtonClick(): void {
+    this.quickAddType = 'LOCALISATION';
+  }
+
+  onEditButtonClick(): void {
+    this.router.navigate(['personnes', this.personne.id, 'edit']);
   }
 
   getMenuItems(): MenuItem[] {
     return [
       {
         label: 'Ajouter une nouvelle localisation', icon: 'pi pi-home', command: () => {
-          this.quickAddType = 'LOCALISATION'
+          this.onAddLocalisationButtonClick();
         }
       },
       {

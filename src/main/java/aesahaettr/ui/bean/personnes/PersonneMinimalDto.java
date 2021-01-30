@@ -1,6 +1,6 @@
 package aesahaettr.ui.bean.personnes;
 
-public class PersonneCreateDto {
+public class PersonneMinimalDto {
 
     private String id;
 

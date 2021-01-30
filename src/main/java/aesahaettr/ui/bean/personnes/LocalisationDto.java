@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 public class LocalisationDto {
 
+    private String id;
+
     private String personneId;
 
     private String adresseId;
@@ -31,6 +33,20 @@ public class LocalisationDto {
     private String paysCode;
 
     private String paysLibelle;
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return this.id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
      * @return the personneId

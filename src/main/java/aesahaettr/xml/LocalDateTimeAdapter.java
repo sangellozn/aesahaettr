@@ -9,7 +9,6 @@ public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
 
     private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
-
     @Override
     public LocalDateTime unmarshal(String v) throws Exception {
         return LocalDateTime.parse(v, this.dateTimeFormatter);

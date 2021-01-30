@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -58,6 +59,8 @@ public class Localisation {
     protected LocalDateTime dateDebut;
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     protected LocalDateTime dateFin;
+    @XmlAttribute(name = "id", required = true)
+    protected String id;
 
     /**
      * Obtient la valeur de la propriété adresseId.
@@ -153,6 +156,20 @@ public class Localisation {
      */
     public void setDateFin(LocalDateTime value) {
         this.dateFin = value;
+    }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return this.id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

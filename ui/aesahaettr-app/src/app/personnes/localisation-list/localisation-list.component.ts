@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Localisation } from 'src/app/bean/personnes/localisation';
 import { ReferentielItem } from 'src/app/bean/referentiel-item';
+import { LocalisationsService } from 'src/app/services/localisations.service';
 import { ReferentielService } from 'src/app/services/ref/referentiel.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class LocalisationListComponent implements OnInit {
    */
   localisation: Localisation = new Localisation;
 
-  constructor(private referentielService: ReferentielService) { }
+  constructor(private referentielService: ReferentielService, private localisationsService: LocalisationsService) { }
 
   ngOnInit() {
     this.referentielService.findAllLocalisation().subscribe(data => this.refTypeLocalisations = data);
@@ -50,19 +51,23 @@ export class LocalisationListComponent implements OnInit {
   }
 
   onLocalisationFormSubmit(): void {
-    // TODO save
-    this.reset();
+    if (this.localisation.id) {
+      this.localisationsService.update(this.localisation).subscribe(() => this.reset(true));
+    } else {
+      this.localisation.personneId = this.personneId;
+      this.localisationsService.save(this.localisation).subscribe(() => this.reset(true));
+    }
   }
 
   onPopinCancelBtnClick(): void {
     this.reset();
   }
 
-  reset(): void {
+  reset(reload = false): void {
     this.visible = false;
     this.modification = false;
     this.localisation = new Localisation;
-    this.onEditAddActionCompleted.emit(true);
+    this.onEditAddActionCompleted.emit(reload);
   }
 
 }

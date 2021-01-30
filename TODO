@@ -1,0 +1,3 @@
+- Ne pas remonter dans les DTO les libellés des objets référencés, mais uniquement les codes et les mapper sur le référentiel :
+    Exemple : paysLibelle et typeLocalisationLibelle du DTO LocalisationDto, pour l'affichage, faire un mapping sur les codes à partir des listes des référentiels.
+- Les dates saisies par les p-calendar sont en utc, voir pour remplacer toutes les dates dans l'application en instant et faire la conversion dans l'UI.

@@ -16,14 +16,25 @@ export class PersonneFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.has('id')) {
-      console.debug('charger personne');
-    } else {
-      console.log('Nouvelle personne');
+      const id = this.route.snapshot.paramMap.get('id');
+      this.personnesService.getById(id).subscribe(data => this.personne = data.toPersonne());
     }
   }
 
   onPersonneFormSubmit(): void {
-    this.personnesService.save(this.personne).subscribe(data => this.router.navigate(['/personnes', {id: data.id}]));
+    if (this.personne.id) {
+      this.personnesService.update(this.personne).subscribe(data => this.router.navigate(['/personnes', data.id]));
+    } else {
+      this.personnesService.save(this.personne).subscribe(data => this.router.navigate(['/personnes', data.id]));
+    }
+  }
+
+  onBackButtonClick(): void {
+    if (this.personne.id) {
+      this.router.navigate(['personnes', this.personne.id]);
+    } else {
+      this.router.navigate(['personnes']);
+    }
   }
 
 }

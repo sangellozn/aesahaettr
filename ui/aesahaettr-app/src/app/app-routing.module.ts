@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'ref/type/relation', component: RelationComponent },
   { path: 'personnes', component: PersonneListComponent },
   { path: 'personnes/new', component: PersonneFormComponent },
+  { path: 'personnes/:id/edit', component: PersonneFormComponent },
   { path: 'personnes/:id', component: PersonneComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

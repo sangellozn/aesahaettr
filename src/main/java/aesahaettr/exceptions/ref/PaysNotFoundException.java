@@ -4,13 +4,13 @@ import aesahaettr.exceptions.EntityNotFoundException;
 
 public class PaysNotFoundException extends EntityNotFoundException {
 
-    public PaysNotFoundException(String id) {
-        super(id);
+    public PaysNotFoundException(String code) {
+        super(code);
     }
 
     @Override
     public String getMessage() {
-        return "Le pays [id=" + this.getId() + "] n'existe pas.";
+        return "Le pays [code=" + this.getId() + "] n'existe pas.";
     }
 
 }
