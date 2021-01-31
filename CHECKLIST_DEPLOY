@@ -1,0 +1,3 @@
+- Changer le baseHref dans le fichier index.html et le mettre à /aesahaettr/
+- Reverter le WEB-INF supprimé par le build angular.
+- Maven clean/package
