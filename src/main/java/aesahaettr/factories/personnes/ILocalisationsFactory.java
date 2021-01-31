@@ -13,4 +13,8 @@ public interface ILocalisationsFactory {
 
     LocalisationDto mapToDto(Localisation localisation, Personne personne);
 
+    void updateBean(Adresse adresse, LocalisationDto dto);
+
+    void updateBean(Localisation localisation, LocalisationDto dto);
+
 }

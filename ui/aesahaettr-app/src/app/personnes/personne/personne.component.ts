@@ -41,6 +41,10 @@ export class PersonneComponent implements OnInit {
     this.quickAddType = 'LOCALISATION';
   }
 
+  onAddEvenementButtonClick(): void {
+    this.quickAddType = 'EVENEMENT';
+  }
+
   onEditButtonClick(): void {
     this.router.navigate(['personnes', this.personne.id, 'edit']);
   }
@@ -69,7 +73,7 @@ export class PersonneComponent implements OnInit {
       },
       {
         label: 'Créer un nouvel événement', icon: 'pi pi-info-circle', command: () => {
-
+          this.onAddEvenementButtonClick();
         }
       }      
     ];

@@ -1,7 +1,9 @@
 package aesahaettr.ui.bean.personnes;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Collection;
+
+import aesahaettr.ui.bean.evenements.EvenementDto;
 
 public class PersonneFullDto {
 
@@ -17,11 +19,13 @@ public class PersonneFullDto {
 
     private String commentaire;
 
-    private LocalDateTime dateCreation;
+    private Instant dateCreation;
 
-    private LocalDateTime dateModification;
+    private Instant dateModification;
 
     private Collection<LocalisationDto> localisations;
+
+    private Collection<EvenementDto> evenements;
 
     /**
      * @return the id
@@ -110,28 +114,28 @@ public class PersonneFullDto {
     /**
      * @return the dateCreation
      */
-    public LocalDateTime getDateCreation() {
+    public Instant getDateCreation() {
         return this.dateCreation;
     }
 
     /**
      * @param dateCreation the dateCreation to set
      */
-    public void setDateCreation(LocalDateTime dateCreation) {
+    public void setDateCreation(Instant dateCreation) {
         this.dateCreation = dateCreation;
     }
 
     /**
      * @return the dateModification
      */
-    public LocalDateTime getDateModification() {
+    public Instant getDateModification() {
         return this.dateModification;
     }
 
     /**
      * @param dateModification the dateModification to set
      */
-    public void setDateModification(LocalDateTime dateModification) {
+    public void setDateModification(Instant dateModification) {
         this.dateModification = dateModification;
     }
 
@@ -139,7 +143,7 @@ public class PersonneFullDto {
      * @return the localisations
      */
     public Collection<LocalisationDto> getLocalisations() {
-        return localisations;
+        return this.localisations;
     }
 
     /**
@@ -147,6 +151,20 @@ public class PersonneFullDto {
      */
     public void setLocalisations(Collection<LocalisationDto> localisations) {
         this.localisations = localisations;
+    }
+
+    /**
+     * @return the evenements
+     */
+    public Collection<EvenementDto> getEvenements() {
+        return evenements;
+    }
+
+    /**
+     * @param evenements the evenements to set
+     */
+    public void setEvenements(Collection<EvenementDto> evenements) {
+        this.evenements = evenements;
     }
 
 }

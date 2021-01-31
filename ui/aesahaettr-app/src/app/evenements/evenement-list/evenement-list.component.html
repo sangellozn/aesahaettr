@@ -1,0 +1,56 @@
+<p>Liste des événement sous forme de tableau avec recherche trié par ordre décroissant d'événement</p>
+<form (ngSubmit)="onEvenementFormSubmit()" #evenementForm="ngForm">
+    <div id="evenement-dialog">
+        <p-dialog [(visible)]="visible" [header]="modification ? 'Modification de l\'événement' : 'Nouvel événement'"
+            [modal]="true" styleClass="p-fluid" (onHide)="onHidePopin()">
+            <ng-template pTemplate="content">
+                <div class="pr-4 pl-4">
+                    <div class="p-field">
+                        <label for="dateEvenement">Date de l'événement *</label>
+                        <p-calendar [(ngModel)]="evenement.dateEvenement" inputId="dateEvenement" name="dateEvenement"
+                            #dateEvenement="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1" required></p-calendar>
+                        <small class="p-invalid" [hidden]="dateEvenement.valid || dateEvenement.pristine">La date de
+                            l'événement est obligatoire</small>
+                    </div>
+                    <div class="p-grid">
+                        <div class="p-col-6">
+                            <div class="p-field">
+                                <label for="dateDebut">Date de début</label>
+                                <p-calendar [(ngModel)]="evenement.dateDebut" inputId="dateDebut" name="dateDebut"
+                                    #dateDebut="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1"></p-calendar>
+                            </div>
+                        </div>
+                        <div class="p-col-6">
+                            <div class="p-field">
+                                <label for="dateFin">Date de fin</label>
+                                <p-calendar [(ngModel)]="evenement.dateFin" inputId="dateFin" name="dateFin"
+                                    #dateFin="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1"></p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-field">
+                        <label for="resume">Résumé *</label>
+                        <input type="text" pInputText id="resume" name="resume" [(ngModel)]="evenement.resume"
+                            #resume="ngModel" />
+                        <small class="p-invalid" [hidden]="resume.valid || resume.pristine">Le résumé est
+                            obligatoire</small>
+                    </div>
+                    <div class="p-field">
+                        <label for="description">Description *</label>
+                        <textarea pInputTextarea name="description" id="description" [(ngModel)]="evenement.description"
+                            rows="12" #description="ngModel" required></textarea>
+                        <small class="p-invalid" [hidden]="description.valid || description.pristine">La description est
+                            obligatoire</small>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple type="button" label="Annuler" icon="pi pi-times"
+                    class="p-button-danger p-button-outlined" (click)="onPopinCancelBtnClick()"></button>
+                <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-success"
+                    [disabled]="!evenementForm.form.valid"></button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</form>

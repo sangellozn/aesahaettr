@@ -1,0 +1,11 @@
+#localisation-grid .p-card.p-component {
+    height: 100%;
+}
+
+#localisation-grid .p-card.p-component .p-card-content {
+    min-height: 150px;
+}
+
+#evenement-dialog .p-dialog {
+    min-width: 50%;
+}

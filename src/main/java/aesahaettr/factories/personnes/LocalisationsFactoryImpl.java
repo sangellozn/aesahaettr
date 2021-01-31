@@ -67,4 +67,22 @@ public class LocalisationsFactoryImpl implements ILocalisationsFactory {
         return dto;
     }
 
+    @Override
+    public void updateBean(Adresse adresse, LocalisationDto dto) {
+        adresse.setCodePostal(dto.getCodePostal());
+        adresse.setLieuDit(dto.getLieuDit());
+        adresse.setLigne1(dto.getLigne1());
+        adresse.setLigne2(dto.getLigne2());
+        adresse.setLigne3(dto.getLigne3());
+        adresse.setLocaliteDestination(dto.getLocaliteDestination());
+        adresse.setPaysCode(dto.getPaysCode());
+    }
+
+    @Override
+    public void updateBean(Localisation localisation, LocalisationDto dto) {
+        localisation.setDateDebut(dto.getDateDebut());
+        localisation.setDateFin(dto.getDateFin());
+        localisation.setTypeLocalisationCode(dto.getTypeLocalisationCode());
+    }
+
 }

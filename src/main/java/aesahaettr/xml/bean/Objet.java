@@ -8,7 +8,7 @@
 
 package aesahaettr.xml.bean;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import aesahaettr.xml.LocalDateTimeAdapter;
+import aesahaettr.xml.InstantAdapter;
 
 
 /**
@@ -63,11 +63,11 @@ public class Objet {
     @XmlElement(required = true)
     protected String description;
     @XmlElement(name = "dateCreation", required = true)
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    protected LocalDateTime dateCreation;
+    @XmlJavaTypeAdapter(InstantAdapter.class)
+    protected Instant dateCreation;
     @XmlElement(name = "dateModification")
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    protected LocalDateTime dateModification;
+    @XmlJavaTypeAdapter(InstantAdapter.class)
+    protected Instant dateModification;
     @XmlElement(required = true)
     protected String typeObjetCode;
     @XmlElement(required = true)
@@ -130,10 +130,10 @@ public class Objet {
      *
      * @return
      *     possible object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public LocalDateTime getDateCreation() {
+    public Instant getDateCreation() {
         return this.dateCreation;
     }
 
@@ -142,10 +142,10 @@ public class Objet {
      *
      * @param value
      *     allowed object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public void setDateCreation(LocalDateTime value) {
+    public void setDateCreation(Instant value) {
         this.dateCreation = value;
     }
 
@@ -154,10 +154,10 @@ public class Objet {
      *
      * @return
      *     possible object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public LocalDateTime getDateModification() {
+    public Instant getDateModification() {
         return this.dateModification;
     }
 
@@ -166,10 +166,10 @@ public class Objet {
      *
      * @param value
      *     allowed object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public void setDateModification(LocalDateTime value) {
+    public void setDateModification(Instant value) {
         this.dateModification = value;
     }
 

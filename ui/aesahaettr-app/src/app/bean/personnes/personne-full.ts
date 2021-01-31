@@ -1,4 +1,5 @@
-import { Localisation } from "./localisation";
+import { Evenement } from "../evenements/evenement";
+import { Localisation } from "../localisations/localisation";
 import { Personne } from "./personne";
 
 export class PersonneFull {
@@ -13,10 +14,13 @@ export class PersonneFull {
         resultat.prenomUsage = json['prenomUsage'];
         resultat.commentaire = json['commentaire'];
         resultat.dateCreation = new Date(json['dateCreation']);
+        
         if (json['dateModification']) {
             resultat.dateModification = new Date(json['dateModification']);
         }
+
         resultat.localisations = json['localisations'].map(Localisation.fromJson);
+        resultat.evenements = json['evenements'].map(Evenement.fromJson);
 
         return resultat;
     }
@@ -43,5 +47,6 @@ export class PersonneFull {
     dateCreation: Date;
     dateModification: Date = null;
     localisations: Localisation[] = [];
+    evenements: Evenement[] = [];
 
 }

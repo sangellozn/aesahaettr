@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Localisation } from 'src/app/bean/personnes/localisation';
+import { Localisation } from 'src/app/bean/localisations/localisation';
 import { ReferentielItem } from 'src/app/bean/referentiel-item';
 import { LocalisationsService } from 'src/app/services/localisations.service';
 import { ReferentielService } from 'src/app/services/ref/referentiel.service';

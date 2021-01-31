@@ -8,6 +8,7 @@
 
 package aesahaettr.xml.bean;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import aesahaettr.xml.LocalDateTimeAdapter;
+import aesahaettr.xml.InstantAdapter;
 
 
 /**
@@ -55,10 +56,10 @@ public class Localisation {
     protected String adresseId;
     @XmlElement(required = true)
     protected String typeLocalisationCode;
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    protected LocalDateTime dateDebut;
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    protected LocalDateTime dateFin;
+    @XmlJavaTypeAdapter(InstantAdapter.class)
+    protected Instant dateDebut;
+    @XmlJavaTypeAdapter(InstantAdapter.class)
+    protected Instant dateFin;
     @XmlAttribute(name = "id", required = true)
     protected String id;
 
@@ -118,7 +119,7 @@ public class Localisation {
      *     {@link LocalDateTime }
      *
      */
-    public LocalDateTime getDateDebut() {
+    public Instant getDateDebut() {
         return this.dateDebut;
     }
 
@@ -130,7 +131,7 @@ public class Localisation {
      *     {@link LocalDateTime }
      *
      */
-    public void setDateDebut(LocalDateTime value) {
+    public void setDateDebut(Instant value) {
         this.dateDebut = value;
     }
 
@@ -142,7 +143,7 @@ public class Localisation {
      *     {@link LocalDateTime }
      *
      */
-    public LocalDateTime getDateFin() {
+    public Instant getDateFin() {
         return this.dateFin;
     }
 
@@ -154,7 +155,7 @@ public class Localisation {
      *     {@link LocalDateTime }
      *
      */
-    public void setDateFin(LocalDateTime value) {
+    public void setDateFin(Instant value) {
         this.dateFin = value;
     }
 

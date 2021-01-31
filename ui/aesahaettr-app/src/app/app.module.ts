@@ -36,6 +36,7 @@ import { PersonneFormComponent } from './personnes/personne-form/personne-form.c
 import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
 import { PersonneComponent } from './personnes/personne/personne.component';
 import { LocalisationListComponent } from './personnes/localisation-list/localisation-list.component';
+import { EvenementListComponent } from './evenements/evenement-list/evenement-list.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LocalisationListComponent } from './personnes/localisation-list/localis
     PersonneFormComponent,
     PersonneListComponent,
     PersonneComponent,
-    LocalisationListComponent
+    LocalisationListComponent,
+    EvenementListComponent
   ],
   imports: [
     AppRoutingModule,

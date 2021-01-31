@@ -11,18 +11,18 @@ import aesahaettr.services.personnes.ILocalisationsServices;
 import aesahaettr.ui.bean.personnes.LocalisationDto;
 
 @RestController
-@RequestMapping("api/personnes/{personneId}")
+@RequestMapping("api/personnes/{personneId}/localisations")
 public class LocalisationsController {
 
     @Autowired
     private ILocalisationsServices localisationsServices;
 
-    @PutMapping("/localisations/{localisationId}")
+    @PutMapping("/{localisationId}")
     public LocalisationDto update(@RequestBody LocalisationDto localisationDto) {
         return this.localisationsServices.update(localisationDto);
     }
 
-    @PostMapping("/localisations")
+    @PostMapping
     public LocalisationDto save(@RequestBody LocalisationDto localisationDto) {
         return this.localisationsServices.save(localisationDto);
     }

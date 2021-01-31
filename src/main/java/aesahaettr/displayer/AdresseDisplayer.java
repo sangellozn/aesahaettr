@@ -14,12 +14,13 @@ public final class AdresseDisplayer {
         Objects.requireNonNull(adresse);
 
         return new StringBuilder().append(adresse.getLigne1())
-                .append(' ')
+                .append(", ")
                 .append(adresse.getCodePostal())
                 .append(' ')
                 .append(adresse.getLocaliteDestination())
-                .append(' ')
+                .append(" (")
                 .append(adresse.getPaysCode())
+                .append(')')
                 .toString();
     }
 

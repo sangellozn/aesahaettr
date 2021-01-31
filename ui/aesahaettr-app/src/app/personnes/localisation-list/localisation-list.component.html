@@ -1,5 +1,5 @@
 <div *ngIf="!localisations.length">Aucune localisation ou adresse connue.</div>
-<div class="p-grid">
+<div class="p-grid" id="localisation-grid">
     <div *ngFor="let loc of localisations" class="p-col-3">
         <p-card [header]="loc.typeLocalisationLibelle">
             <div>{{loc.ligne1}}</div>
@@ -89,7 +89,8 @@
                         <div class="p-fluid">
                             <div class="p-field">
                                 <label for="dateDebut">Depuis le *</label>
-                                <p-calendar [(ngModel)]="localisation.dateDebut" inputId="dateDebut" name="dateDebut" #dateDebut="ngModel" dateFormat="dd/mm/yy" required></p-calendar>
+                                <p-calendar [(ngModel)]="localisation.dateDebut" inputId="dateDebut" name="dateDebut" #dateDebut="ngModel" dateFormat="dd/mm/yy"
+                                    firstDayOfWeek="1" required></p-calendar>
                                 <small class="p-invalid" [hidden]="dateDebut.valid || dateDebut.pristine">La date de début est obligatoire</small>
                             </div>
                         </div>
@@ -98,7 +99,7 @@
                         <div class="p-fluid">
                             <div class="p-field">
                                 <label for="dateFin">Jusqu'au</label>
-                                <p-calendar [(ngModel)]="localisation.dateFin" inputId="dateFin" name="dateFin" #dateFin="ngModel" dateFormat="dd/mm/yy"></p-calendar>
+                                <p-calendar [(ngModel)]="localisation.dateFin" inputId="dateFin" name="dateFin" #dateFin="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1"></p-calendar>
                             </div>
                         </div>
                     </div>

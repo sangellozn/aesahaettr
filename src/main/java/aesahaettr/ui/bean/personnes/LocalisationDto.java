@@ -1,6 +1,6 @@
 package aesahaettr.ui.bean.personnes;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class LocalisationDto {
 
@@ -14,9 +14,9 @@ public class LocalisationDto {
 
     private String typeLocalisationLibelle;
 
-    private LocalDateTime dateDebut;
+    private Instant dateDebut;
 
-    private LocalDateTime dateFin;
+    private Instant dateFin;
 
     private String ligne1;
 
@@ -107,28 +107,28 @@ public class LocalisationDto {
     /**
      * @return the dateDebut
      */
-    public LocalDateTime getDateDebut() {
+    public Instant getDateDebut() {
         return this.dateDebut;
     }
 
     /**
      * @param dateDebut the dateDebut to set
      */
-    public void setDateDebut(LocalDateTime dateDebut) {
+    public void setDateDebut(Instant dateDebut) {
         this.dateDebut = dateDebut;
     }
 
     /**
      * @return the dateFin
      */
-    public LocalDateTime getDateFin() {
+    public Instant getDateFin() {
         return this.dateFin;
     }
 
     /**
      * @param dateFin the dateFin to set
      */
-    public void setDateFin(LocalDateTime dateFin) {
+    public void setDateFin(Instant dateFin) {
         this.dateFin = dateFin;
     }
 

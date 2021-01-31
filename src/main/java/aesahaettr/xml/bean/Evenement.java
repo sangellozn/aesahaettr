@@ -8,7 +8,7 @@
 
 package aesahaettr.xml.bean;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import aesahaettr.xml.LocalDateTimeAdapter;
+import aesahaettr.xml.InstantAdapter;
 
 
 /**
@@ -54,13 +54,13 @@ import aesahaettr.xml.LocalDateTimeAdapter;
 })
 public class Evenement {
 
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    protected LocalDateTime dateDebut;
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    protected LocalDateTime dateFin;
+    @XmlJavaTypeAdapter(InstantAdapter.class)
+    protected Instant dateDebut;
+    @XmlJavaTypeAdapter(InstantAdapter.class)
+    protected Instant dateFin;
     @XmlElement(required = true)
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    protected LocalDateTime dateEvt;
+    @XmlJavaTypeAdapter(InstantAdapter.class)
+    protected Instant dateEvt;
     @XmlElement(required = true)
     protected String resume;
     @XmlElement(required = true)
@@ -73,10 +73,10 @@ public class Evenement {
      *
      * @return
      *     possible object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public LocalDateTime getDateDebut() {
+    public Instant getDateDebut() {
         return this.dateDebut;
     }
 
@@ -85,10 +85,10 @@ public class Evenement {
      *
      * @param value
      *     allowed object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public void setDateDebut(LocalDateTime value) {
+    public void setDateDebut(Instant value) {
         this.dateDebut = value;
     }
 
@@ -97,10 +97,10 @@ public class Evenement {
      *
      * @return
      *     possible object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public LocalDateTime getDateFin() {
+    public Instant getDateFin() {
         return this.dateFin;
     }
 
@@ -109,10 +109,10 @@ public class Evenement {
      *
      * @param value
      *     allowed object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public void setDateFin(LocalDateTime value) {
+    public void setDateFin(Instant value) {
         this.dateFin = value;
     }
 
@@ -121,10 +121,10 @@ public class Evenement {
      *
      * @return
      *     possible object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public LocalDateTime getDateEvt() {
+    public Instant getDateEvt() {
         return this.dateEvt;
     }
 
@@ -133,10 +133,10 @@ public class Evenement {
      *
      * @param value
      *     allowed object is
-     *     {@link LocalDateTime }
+     *     {@link Instant }
      *
      */
-    public void setDateEvt(LocalDateTime value) {
+    public void setDateEvt(Instant value) {
         this.dateEvt = value;
     }
 

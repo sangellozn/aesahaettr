@@ -1,6 +1,7 @@
 package aesahaettr.factories.personnes;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
@@ -40,6 +41,7 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
         Optional<Localisation> localisationOpt = bean.getLocalisations()
                 .getLocalisation().stream()
                 .filter(item -> EnumSet.of(LocalisationEnum.RESIDE, LocalisationEnum.SITUE).contains(LocalisationEnum.valueOf(item.getTypeLocalisationCode())))
+                .filter(item -> item.getDateFin() == null)
                 .findFirst();
 
         if (localisationOpt.isPresent()) {
@@ -69,7 +71,7 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
 
         resultat.setCommentaire(dto.getCommentaire());
         resultat.setContacts(new ContactList());
-        resultat.setDateCreation(LocalDateTime.now());
+        resultat.setDateCreation(Instant.now());
         resultat.setEvenementIds(new EvenementIdList());
         resultat.setId(UUID.randomUUID().toString());
         resultat.setLocalisations(new LocalisationList());
@@ -97,6 +99,7 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
         resultat.setDateModification(bean.getDateModification());
         resultat.setLocalisations(bean.getLocalisations().getLocalisation().
                 stream().map(item -> this.localisationsFactory.mapToDto(item, bean)).collect(Collectors.toList()));
+        resultat.setEvenements(Collections.emptyList()); // FIXME
 
         return resultat;
     }
@@ -104,7 +107,7 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
     @Override
     public void updateBean(Personne bean, PersonneMinimalDto dto) {
         bean.setCommentaire(dto.getCommentaire());
-        bean.setDateModification(LocalDateTime.now());
+        bean.setDateModification(Instant.now());
         bean.setNom(dto.getNom());
         bean.setNomUsage(dto.getNomUsage());
         bean.setPrenoms(dto.getPrenoms());

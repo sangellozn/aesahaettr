@@ -13,11 +13,11 @@
             <div class="p-col">
                 <div class="p-fluid">
                     <div class="p-field">
-                        <label for="nom">Nom</label>
+                        <label>Nom</label>
                         <input type="text" pInputText disabled [value]="personne.nom" />
                     </div>
                     <div class="p-field">
-                        <label for="nom">Nom d'usage</label>
+                        <label>Nom d'usage</label>
                         <input type="text" pInputText disabled [value]="personne.nomUsage" />
                     </div>
                 </div>
@@ -25,11 +25,11 @@
             <div class="p-col">
                 <div class="p-fluid">
                     <div class="p-field">
-                        <label for="nom">Prénoms</label>
+                        <label>Prénoms</label>
                         <input type="text" pInputText disabled [value]="personne.prenoms" />
                     </div>
                     <div class="p-field">
-                        <label for="nom">Prénom d'usage</label>
+                        <label>Prénom d'usage</label>
                         <input type="text" pInputText disabled [value]="personne.prenomUsage" />
                     </div>
                 </div>
@@ -39,8 +39,8 @@
             <div class="p-col">
                 <div class="p-fluid">
                     <div class="p-field">
-                        <label for="nom">Commentaire</label>
-                        <textarea pInputTextarea type="text" rows="5" pInputText disabled >{{personne.commentaire}}</textarea>
+                        <label>Commentaire</label>
+                        <textarea pInputTextarea type="text" rows="5" pInputText disabled>{{personne.commentaire}}</textarea>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,12 @@
 
     </p-panel>
     <p-panel header="Evénements" styleClass="mb-3">
-
+        <ng-template pTemplate="icons">
+            <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-success p-mr-2" title="Ajouter un événement"
+              (click)="onAddEvenementButtonClick()"></button>
+        </ng-template>
+        <app-evenement-list [visible]="quickAddType === 'EVENEMENT'"
+          [elementId]="personne.id" (onEditAddActionCompleted)="onQuickAddActionCompleted($event)"></app-evenement-list>
     </p-panel>
     <p-scrollTop [threshold]="200"></p-scrollTop>
 </div>

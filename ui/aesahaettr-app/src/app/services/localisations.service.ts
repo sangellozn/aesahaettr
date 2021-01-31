@@ -4,7 +4,7 @@ import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Localisation } from '../bean/personnes/localisation';
+import { Localisation } from '../bean/localisations/localisation';
 import { AbstractAppService } from './abstract-app.service';
 
 @Injectable({

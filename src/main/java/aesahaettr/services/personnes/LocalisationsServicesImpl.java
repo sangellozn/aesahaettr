@@ -39,8 +39,17 @@ public class LocalisationsServicesImpl implements ILocalisationsServices {
 
     @Override
     public LocalisationDto update(LocalisationDto dto) {
-        // TODO Auto-generated method stub
-        return null;
+        Adresse adresse = ObjectFinder.getAdresseById(dto.getAdresseId());
+        Personne personne = ObjectFinder.getPersonneById(dto.getPersonneId());
+
+        Localisation localisation = ObjectFinder.getLocalisationById(dto.getId(), personne);
+
+        this.localisationFactory.updateBean(adresse, dto);
+        this.localisationFactory.updateBean(localisation, dto);
+
+        AesahaettrXmlInstance.save();
+
+        return this.localisationFactory.mapToDto(localisation, personne);
     }
 
 }
