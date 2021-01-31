@@ -14,6 +14,8 @@ import aesahaettr.xml.bean.Aesahaettr;
 
 public final class AesahaettrXmlInstance {
 
+    private static final String AESAHAETTR_DATA_FILE_KEY = "aesahaettr-data-file";
+
     private static Aesahaettr INSTANCE;
 
     private AesahaettrXmlInstance() {
@@ -24,7 +26,7 @@ public final class AesahaettrXmlInstance {
         try {
             InitialContext context = new InitialContext();
             Context xmlNode = (Context) context.lookup("java:comp/env");
-            String dataFilePath = (String) xmlNode.lookup("data-file");
+            String dataFilePath = (String) xmlNode.lookup(AesahaettrXmlInstance.AESAHAETTR_DATA_FILE_KEY);
 
             JAXBContext jaxbContext = JAXBContext.newInstance(Aesahaettr.class);
 
@@ -41,7 +43,7 @@ public final class AesahaettrXmlInstance {
         try {
             InitialContext context = new InitialContext();
             Context xmlNode = (Context) context.lookup("java:comp/env");
-            String dataFilePath = (String) xmlNode.lookup("data-file");
+            String dataFilePath = (String) xmlNode.lookup(AesahaettrXmlInstance.AESAHAETTR_DATA_FILE_KEY);
 
             JAXBContext jaxbContext = JAXBContext.newInstance(Aesahaettr.class);
 
