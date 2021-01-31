@@ -1,6 +1,6 @@
-package aesahaettr.factories.personnes;
+package aesahaettr.factories;
 
-import aesahaettr.ui.bean.personnes.LocalisationDto;
+import aesahaettr.ui.bean.LocalisationDto;
 import aesahaettr.xml.bean.Adresse;
 import aesahaettr.xml.bean.Localisation;
 import aesahaettr.xml.bean.Personne;

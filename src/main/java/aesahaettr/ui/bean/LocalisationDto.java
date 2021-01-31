@@ -1,4 +1,4 @@
-package aesahaettr.ui.bean.personnes;
+package aesahaettr.ui.bean;
 
 import java.time.Instant;
 
@@ -6,13 +6,11 @@ public class LocalisationDto {
 
     private String id;
 
-    private String personneId;
+    private String elementId;
 
     private String adresseId;
 
     private String typeLocalisationCode;
-
-    private String typeLocalisationLibelle;
 
     private Instant dateDebut;
 
@@ -32,8 +30,6 @@ public class LocalisationDto {
 
     private String paysCode;
 
-    private String paysLibelle;
-
     /**
      * @return the id
      */
@@ -49,17 +45,17 @@ public class LocalisationDto {
     }
 
     /**
-     * @return the personneId
+     * @return the elementId
      */
-    public String getPersonneId() {
-        return this.personneId;
+    public String getElementId() {
+        return this.elementId;
     }
 
     /**
-     * @param personneId the personneId to set
+     * @param elementId the elementId to set
      */
-    public void setPersonneId(String personneId) {
-        this.personneId = personneId;
+    public void setElementId(String elementId) {
+        this.elementId = elementId;
     }
 
     /**
@@ -88,20 +84,6 @@ public class LocalisationDto {
      */
     public void setTypeLocalisationCode(String typeLocalisationCode) {
         this.typeLocalisationCode = typeLocalisationCode;
-    }
-
-    /**
-     * @return the typeLocalisationLibelle
-     */
-    public String getTypeLocalisationLibelle() {
-        return this.typeLocalisationLibelle;
-    }
-
-    /**
-     * @param typeLocalisationLibelle the typeLocalisationLibelle to set
-     */
-    public void setTypeLocalisationLibelle(String typeLocalisationLibelle) {
-        this.typeLocalisationLibelle = typeLocalisationLibelle;
     }
 
     /**
@@ -228,20 +210,6 @@ public class LocalisationDto {
      */
     public void setPaysCode(String paysCode) {
         this.paysCode = paysCode;
-    }
-
-    /**
-     * @return the paysLibelle
-     */
-    public String getPaysLibelle() {
-        return this.paysLibelle;
-    }
-
-    /**
-     * @param paysLibelle the paysLibelle to set
-     */
-    public void setPaysLibelle(String paysLibelle) {
-        this.paysLibelle = paysLibelle;
     }
 
 }

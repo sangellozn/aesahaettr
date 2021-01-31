@@ -1,12 +1,12 @@
-package aesahaettr.services.personnes;
+package aesahaettr.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aesahaettr.AesahaettrXmlInstance;
-import aesahaettr.factories.personnes.ILocalisationsFactory;
+import aesahaettr.factories.ILocalisationsFactory;
 import aesahaettr.finder.ObjectFinder;
-import aesahaettr.ui.bean.personnes.LocalisationDto;
+import aesahaettr.ui.bean.LocalisationDto;
 import aesahaettr.xml.bean.Adresse;
 import aesahaettr.xml.bean.Aesahaettr;
 import aesahaettr.xml.bean.Localisation;
@@ -19,9 +19,9 @@ public class LocalisationsServicesImpl implements ILocalisationsServices {
     private ILocalisationsFactory localisationFactory;
 
     @Override
-    public LocalisationDto save(LocalisationDto dto) {
+    public LocalisationDto saveForPersonne(LocalisationDto dto) {
 
-        String personneId = dto.getPersonneId();
+        String personneId = dto.getElementId();
 
         Adresse adresse = this.localisationFactory.mapDtoToNewAdresseBean(dto);
         Localisation localisation = this.localisationFactory.mapDtoToNewLocalisationBean(dto, adresse);
@@ -38,9 +38,9 @@ public class LocalisationsServicesImpl implements ILocalisationsServices {
     }
 
     @Override
-    public LocalisationDto update(LocalisationDto dto) {
+    public LocalisationDto updateForPersonne(LocalisationDto dto) {
         Adresse adresse = ObjectFinder.getAdresseById(dto.getAdresseId());
-        Personne personne = ObjectFinder.getPersonneById(dto.getPersonneId());
+        Personne personne = ObjectFinder.getPersonneById(dto.getElementId());
 
         Localisation localisation = ObjectFinder.getLocalisationById(dto.getId(), personne);
 

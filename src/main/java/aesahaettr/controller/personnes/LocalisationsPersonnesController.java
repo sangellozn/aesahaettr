@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import aesahaettr.services.personnes.ILocalisationsServices;
-import aesahaettr.ui.bean.personnes.LocalisationDto;
+import aesahaettr.services.ILocalisationsServices;
+import aesahaettr.ui.bean.LocalisationDto;
 
 @RestController
 @RequestMapping("api/personnes/{personneId}/localisations")
-public class LocalisationsController {
+public class LocalisationsPersonnesController {
 
     @Autowired
     private ILocalisationsServices localisationsServices;
 
     @PutMapping("/{localisationId}")
     public LocalisationDto update(@RequestBody LocalisationDto localisationDto) {
-        return this.localisationsServices.update(localisationDto);
+        return this.localisationsServices.updateForPersonne(localisationDto);
     }
 
     @PostMapping
     public LocalisationDto save(@RequestBody LocalisationDto localisationDto) {
-        return this.localisationsServices.save(localisationDto);
+        return this.localisationsServices.saveForPersonne(localisationDto);
     }
 
 }

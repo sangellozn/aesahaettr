@@ -11,7 +11,7 @@ import { ReferentielService } from 'src/app/services/ref/referentiel.service';
 })
 export class LocalisationListComponent implements OnInit {
 
-  @Input() personneId: string;
+  @Input() elementId: string;
 
   /**
    * Liste des éléments à afficher.
@@ -21,6 +21,8 @@ export class LocalisationListComponent implements OnInit {
   @Input() visible: boolean = false;
 
   @Output() onEditAddActionCompleted = new EventEmitter<boolean>();
+
+  @Input() type: string = 'PERSONNE';
 
   modification: boolean = false;
 
@@ -52,10 +54,18 @@ export class LocalisationListComponent implements OnInit {
 
   onLocalisationFormSubmit(): void {
     if (this.localisation.id) {
-      this.localisationsService.update(this.localisation).subscribe(() => this.reset(true));
+      if (this.type === 'PERSONNE') {
+        this.localisationsService.updateForPersonne(this.localisation).subscribe(() => this.reset(true));
+      } else {
+        // TODO
+      }
     } else {
-      this.localisation.personneId = this.personneId;
-      this.localisationsService.save(this.localisation).subscribe(() => this.reset(true));
+      this.localisation.elementId = this.elementId;
+      if (this.type === 'PERSONNE') {
+        this.localisationsService.saveForPersonne(this.localisation).subscribe(() => this.reset(true));
+      } else {
+        // TODO
+      }
     }
   }
 
@@ -68,6 +78,14 @@ export class LocalisationListComponent implements OnInit {
     this.modification = false;
     this.localisation = new Localisation;
     this.onEditAddActionCompleted.emit(reload);
+  }
+
+  getPaysByCode(code: string): ReferentielItem {
+    return this.refPays.filter(item => item.code === code)[0] || new ReferentielItem;
+  }
+
+  getTypeLocalisationByCode(code: string): ReferentielItem {
+    return this.refTypeLocalisations.filter(item => item.code === code)[0] || new ReferentielItem;
   }
 
 }

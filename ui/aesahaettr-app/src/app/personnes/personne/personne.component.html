@@ -70,16 +70,16 @@
               (click)="onAddLocalisationButtonClick()"></button>
         </ng-template>
         <app-localisation-list [localisations]="personne.localisations" [visible]="quickAddType === 'LOCALISATION'"
-          [personneId]="personne.id" (onEditAddActionCompleted)="onQuickAddActionCompleted($event)"></app-localisation-list>
+          [elementId]="personne.id" type="PERSONNE" (onEditAddActionCompleted)="onQuickAddActionCompleted($event)"></app-localisation-list>
     </p-panel>
     <p-panel header="Moyens de contact" styleClass="mb-3">
-
+        En cours de développement.
     </p-panel>
     <p-panel header="Relations" styleClass="mb-3">
-
+        En cours de développement.
     </p-panel>
     <p-panel header="Possessions" styleClass="mb-3">
-
+        En cours de développement.
     </p-panel>
     <p-panel header="Evénements" styleClass="mb-3">
         <ng-template pTemplate="icons">
@@ -87,7 +87,7 @@
               (click)="onAddEvenementButtonClick()"></button>
         </ng-template>
         <app-evenement-list [visible]="quickAddType === 'EVENEMENT'"
-          [elementId]="personne.id" (onEditAddActionCompleted)="onQuickAddActionCompleted($event)"></app-evenement-list>
+          [elementId]="personne.id" type="PERSONNE" [evenements]="personne.evenements" (onEditAddActionCompleted)="onQuickAddActionCompleted($event)"></app-evenement-list>
     </p-panel>
     <p-scrollTop [threshold]="200"></p-scrollTop>
 </div>

@@ -3,7 +3,8 @@ package aesahaettr.ui.bean.personnes;
 import java.time.Instant;
 import java.util.Collection;
 
-import aesahaettr.ui.bean.evenements.EvenementDto;
+import aesahaettr.ui.bean.EvenementDto;
+import aesahaettr.ui.bean.LocalisationDto;
 
 public class PersonneFullDto {
 

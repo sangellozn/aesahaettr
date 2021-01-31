@@ -1,12 +1,12 @@
 <div *ngIf="!localisations.length">Aucune localisation ou adresse connue.</div>
 <div class="p-grid" id="localisation-grid">
     <div *ngFor="let loc of localisations" class="p-col-3">
-        <p-card [header]="loc.typeLocalisationLibelle">
+        <p-card [header]="getTypeLocalisationByCode(loc.typeLocalisationCode).libelle">
             <div>{{loc.ligne1}}</div>
             <div *ngIf="loc.ligne2">{{loc.ligne2}}</div>
             <div *ngIf="loc.ligne3">{{loc.ligne3}}</div>
             <div *ngIf="loc.lieuDit">{{loc.lieuDit}}</div>
-            <div>{{loc.codePostal}} {{loc.localiteDestination}} ({{loc.paysLibelle}})</div>
+            <div>{{loc.codePostal}} {{loc.localiteDestination}} ({{getPaysByCode(loc.paysCode).libelle}})</div>
             <p-footer>
                 <div class="text-align-left">
                     Depuis le <span>{{loc.dateDebut | date:'dd/MM/yyyy'}}</span>

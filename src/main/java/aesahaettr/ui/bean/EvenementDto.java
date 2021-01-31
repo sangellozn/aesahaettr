@@ -1,8 +1,8 @@
-package aesahaettr.ui.bean.evenements;
+package aesahaettr.ui.bean;
 
 import java.time.Instant;
 
-public class EvenementDto {
+public class EvenementDto implements Comparable<EvenementDto> {
 
     private String id;
 
@@ -114,6 +114,11 @@ public class EvenementDto {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public int compareTo(EvenementDto o) {
+        return this.dateEvenement.compareTo(o.dateEvenement);
     }
 
 }

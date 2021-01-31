@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Evenement } from 'src/app/bean/evenements/evenement';
+import { EvenementsService } from 'src/app/services/evenements.service';
 
 @Component({
   selector: 'app-evenement-list',
@@ -17,20 +18,41 @@ export class EvenementListComponent implements OnInit {
 
   @Input() evenements: Evenement[] = [];
 
+  @Input() type: string = 'PERSONNE';
+
   modification: boolean = false;
 
   evenement: Evenement = new Evenement;
 
   @Output() onEditAddActionCompleted = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private evenementsService: EvenementsService) { }
 
   ngOnInit(): void {
 
   }
 
-  onEvenementFormSubmit(): void {
+  editEvenement(evenement: Evenement): void {
+    this.evenement = {...evenement};
+    this.visible = true;
+    this.modification = true;
+  }
 
+  onEvenementFormSubmit(): void {
+    if (this.evenement.id) {
+      if (this.type === 'PERSONNE') {
+        this.evenementsService.updateForPersonne(this.evenement).subscribe(() => this.reset(true));
+      } else {
+        // TODO
+      }
+    } else {
+      this.evenement.elementId = this.elementId;
+      if (this.type === 'PERSONNE') {
+        this.evenementsService.saveForPersonne(this.evenement).subscribe(() => this.reset(true));
+      } else {
+        // TODO
+      }
+    }
   }
 
   onHidePopin(): void {

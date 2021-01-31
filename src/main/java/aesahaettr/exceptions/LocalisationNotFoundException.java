@@ -1,6 +1,4 @@
-package aesahaettr.exceptions.personnes;
-
-import aesahaettr.exceptions.EntityNotFoundException;
+package aesahaettr.exceptions;
 
 public class LocalisationNotFoundException extends EntityNotFoundException {
 

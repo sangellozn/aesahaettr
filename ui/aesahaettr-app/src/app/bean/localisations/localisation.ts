@@ -1,7 +1,7 @@
 export class Localisation {
 
-    constructor(personneId?: string) {
-        this.personneId = personneId;
+    constructor(elementId?: string) {
+        this.elementId = elementId;
         this.paysCode = 'FR';
         this.typeLocalisationCode = 'SITUE';
     }
@@ -10,10 +10,9 @@ export class Localisation {
         const resultat: Localisation = new Localisation;
 
         resultat.id = json['id'];
-        resultat.personneId = json['personneId'];
+        resultat.elementId = json['elementId'];
         resultat.adresseId = json['adresseId'];
         resultat.typeLocalisationCode = json['typeLocalisationCode'];
-        resultat.typeLocalisationLibelle = json['typeLocalisationLibelle'];
         resultat.dateDebut = new Date(json['dateDebut']);
         if (json['dateFin']) {
             resultat.dateFin = new Date(json['dateFin']);
@@ -25,16 +24,14 @@ export class Localisation {
         resultat.codePostal = json['codePostal'];
         resultat.localiteDestination = json['localiteDestination'];
         resultat.paysCode = json['paysCode'];
-        resultat.paysLibelle = json['paysLibelle'];
 
         return resultat;
     }
 
     id: string;
-    personneId: string;
+    elementId: string;
     adresseId: string;
     typeLocalisationCode: string;
-    typeLocalisationLibelle: string;
     dateDebut: Date;
     dateFin: Date = null;
     ligne1: string;
@@ -44,6 +41,5 @@ export class Localisation {
     codePostal: string;
     localiteDestination: string;
     paysCode: string;
-    paysLibelle: string;
 
 }

@@ -1,7 +1,7 @@
 package aesahaettr.factories.personnes;
 
 import java.time.Instant;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import aesahaettr.displayer.AdresseDisplayer;
+import aesahaettr.factories.IEvenementsFactory;
+import aesahaettr.factories.ILocalisationsFactory;
 import aesahaettr.finder.ObjectFinder;
 import aesahaettr.ui.bean.LocalisationEnum;
 import aesahaettr.ui.bean.personnes.PersonneFullDto;
@@ -29,6 +31,9 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
 
     @Autowired
     private ILocalisationsFactory localisationsFactory;
+
+    @Autowired
+    private IEvenementsFactory evenementsFactory;
 
     @Override
     public PersonneListItemDto mapToListItemDto(Personne bean) {
@@ -99,7 +104,11 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
         resultat.setDateModification(bean.getDateModification());
         resultat.setLocalisations(bean.getLocalisations().getLocalisation().
                 stream().map(item -> this.localisationsFactory.mapToDto(item, bean)).collect(Collectors.toList()));
-        resultat.setEvenements(Collections.emptyList()); // FIXME
+        resultat.setEvenements(bean.getEvenementIds().getEvenementId().stream()
+                .map(ObjectFinder::getEvenementById)
+                .map(item -> this.evenementsFactory.mapToDto(item, bean))
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList()));
 
         return resultat;
     }

@@ -1,11 +1,11 @@
-package aesahaettr.factories.personnes;
+package aesahaettr.factories;
 
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
 import aesahaettr.finder.ObjectFinder;
-import aesahaettr.ui.bean.personnes.LocalisationDto;
+import aesahaettr.ui.bean.LocalisationDto;
 import aesahaettr.xml.bean.Adresse;
 import aesahaettr.xml.bean.Localisation;
 import aesahaettr.xml.bean.Personne;
@@ -59,10 +59,8 @@ public class LocalisationsFactoryImpl implements ILocalisationsFactory {
         dto.setLigne3(adresse.getLigne3());
         dto.setLocaliteDestination(adresse.getLocaliteDestination());
         dto.setPaysCode(adresse.getPaysCode());
-        dto.setPaysLibelle(ObjectFinder.getPaysByCode(adresse.getPaysCode()).getLibelle());
-        dto.setPersonneId(personne.getId());
+        dto.setElementId(personne.getId());
         dto.setTypeLocalisationCode(localisation.getTypeLocalisationCode());
-        dto.setTypeLocalisationLibelle(ObjectFinder.getTypeLocalisationByCode(localisation.getTypeLocalisationCode()).getLibelle());
 
         return dto;
     }

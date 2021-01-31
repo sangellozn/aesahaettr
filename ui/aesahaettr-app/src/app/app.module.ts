@@ -35,7 +35,7 @@ import { RelationComponent } from './ref/type/relation/relation.component';
 import { PersonneFormComponent } from './personnes/personne-form/personne-form.component';
 import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
 import { PersonneComponent } from './personnes/personne/personne.component';
-import { LocalisationListComponent } from './personnes/localisation-list/localisation-list.component';
+import { LocalisationListComponent } from './localisation-list/localisation-list.component';
 import { EvenementListComponent } from './evenements/evenement-list/evenement-list.component';
 
 @NgModule({

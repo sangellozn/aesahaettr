@@ -4,11 +4,13 @@ import java.util.Objects;
 
 import aesahaettr.AesahaettrXmlInstance;
 import aesahaettr.exceptions.AdresseNotFoundException;
-import aesahaettr.exceptions.personnes.LocalisationNotFoundException;
+import aesahaettr.exceptions.EvenementNotFoundException;
+import aesahaettr.exceptions.LocalisationNotFoundException;
 import aesahaettr.exceptions.personnes.PersonneNotFoundException;
 import aesahaettr.exceptions.ref.PaysNotFoundException;
 import aesahaettr.exceptions.ref.RefTypeNotFoundException;
 import aesahaettr.xml.bean.Adresse;
+import aesahaettr.xml.bean.Evenement;
 import aesahaettr.xml.bean.Localisation;
 import aesahaettr.xml.bean.Pays;
 import aesahaettr.xml.bean.Personne;
@@ -53,6 +55,13 @@ public final class ObjectFinder {
         Objects.requireNonNull(personne);
         return personne.getLocalisations().getLocalisation().stream().filter(item -> item.getId().equals(id))
                 .findFirst().orElseThrow(() -> new LocalisationNotFoundException(id, personne.getId()));
+    }
+
+    public static Evenement getEvenementById(String id) {
+        Objects.requireNonNull(id);
+        return AesahaettrXmlInstance.getInstance().getEvenements().getEvenement().stream()
+                .filter(item -> item.getId().equals(id))
+                .findFirst().orElseThrow(() -> new EvenementNotFoundException(id));
     }
 
 }

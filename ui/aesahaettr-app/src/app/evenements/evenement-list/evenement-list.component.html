@@ -1,4 +1,44 @@
-<p>Liste des événement sous forme de tableau avec recherche trié par ordre décroissant d'événement</p>
+<p-table #evenementTable [value]="evenements" dataKey="id" [rows]="10" [paginator]="true" [rowHover]="true"
+  [globalFilterFields]="['resume']" styleClass="p-datatable-striped">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Liste des événements</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="evenementTable.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Recherche rapide..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="dateEvenement">Date événement <p-sortIcon field="dateEvenement"></p-sortIcon></th>
+            <th pSortableColumn="dateDebut">Période (du/au) <p-sortIcon field="dateDebut"></p-sortIcon></th>
+            <th pSortableColumn="resume">Résumé <p-sortIcon field="resume"></p-sortIcon></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-evenement>
+        <tr>
+            <td>{{evenement.dateEvenement | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+            <td>
+                <span *ngIf="!evenement.dateDebut && !evenement.dateFin">&nbsp;</span>
+                <span *ngIf="evenement.dateDebut && !evenement.dateFin">{{evenement.dateDebut | date:'dd/MM/yyyy HH:mm:ss'}} à aujourd'hui</span>
+                <span *ngIf="evenement.dateDebut && evenement.dateFin">{{evenement.dateDebut | date:'dd/MM/yyyy HH:mm:ss'}} - {{evenement.dateFin | date:'dd/MM/yyyy HH:mm:ss'}}</span>
+            </td>
+            <td>{{evenement.resume}}</td>
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"
+                    (click)="editEvenement(evenement)" title="Voir/modifier l'événement"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Il y a {{evenements?.length}} événement(s) pour cette personne.
+        </div>
+    </ng-template>
+</p-table>
 <form (ngSubmit)="onEvenementFormSubmit()" #evenementForm="ngForm">
     <div id="evenement-dialog">
         <p-dialog [(visible)]="visible" [header]="modification ? 'Modification de l\'événement' : 'Nouvel événement'"
@@ -8,7 +48,7 @@
                     <div class="p-field">
                         <label for="dateEvenement">Date de l'événement *</label>
                         <p-calendar [(ngModel)]="evenement.dateEvenement" inputId="dateEvenement" name="dateEvenement"
-                            #dateEvenement="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1" required></p-calendar>
+                            #dateEvenement="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1" showTime="true" required></p-calendar>
                         <small class="p-invalid" [hidden]="dateEvenement.valid || dateEvenement.pristine">La date de
                             l'événement est obligatoire</small>
                     </div>
@@ -17,28 +57,28 @@
                             <div class="p-field">
                                 <label for="dateDebut">Date de début</label>
                                 <p-calendar [(ngModel)]="evenement.dateDebut" inputId="dateDebut" name="dateDebut"
-                                    #dateDebut="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1"></p-calendar>
+                                    #dateDebut="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1" showTime="true"></p-calendar>
                             </div>
                         </div>
                         <div class="p-col-6">
                             <div class="p-field">
                                 <label for="dateFin">Date de fin</label>
                                 <p-calendar [(ngModel)]="evenement.dateFin" inputId="dateFin" name="dateFin"
-                                    #dateFin="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1"></p-calendar>
+                                    #dateFin="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1" showTime="true"></p-calendar>
                             </div>
                         </div>
                     </div>
                     <div class="p-field">
                         <label for="resume">Résumé *</label>
                         <input type="text" pInputText id="resume" name="resume" [(ngModel)]="evenement.resume"
-                            #resume="ngModel" />
+                            #resume="ngModel" required />
                         <small class="p-invalid" [hidden]="resume.valid || resume.pristine">Le résumé est
                             obligatoire</small>
                     </div>
                     <div class="p-field">
                         <label for="description">Description *</label>
                         <textarea pInputTextarea name="description" id="description" [(ngModel)]="evenement.description"
-                            rows="12" #description="ngModel" required></textarea>
+                            rows="13" #description="ngModel" required></textarea>
                         <small class="p-invalid" [hidden]="description.valid || description.pristine">La description est
                             obligatoire</small>
                     </div>
