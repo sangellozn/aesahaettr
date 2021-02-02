@@ -1,6 +1,6 @@
 package aesahaettr.ui.bean.ref;
 
-public class ReferentielItemDto {
+public class ReferentielItemDto implements Comparable<ReferentielItemDto> {
 
     private String code;
 
@@ -32,6 +32,11 @@ public class ReferentielItemDto {
      */
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    @Override
+    public int compareTo(ReferentielItemDto o) {
+        return this.libelle.compareTo(o.libelle);
     }
 
 }

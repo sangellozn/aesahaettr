@@ -1,6 +1,7 @@
 package aesahaettr.finder;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import aesahaettr.AesahaettrXmlInstance;
 import aesahaettr.exceptions.AdresseNotFoundException;
@@ -62,6 +63,13 @@ public final class ObjectFinder {
         return AesahaettrXmlInstance.getInstance().getEvenements().getEvenement().stream()
                 .filter(item -> item.getId().equals(id))
                 .findFirst().orElseThrow(() -> new EvenementNotFoundException(id));
+    }
+
+    public static Optional<Personne> getPersonnePossesseurByObjetId(String objetId) {
+        Objects.requireNonNull(objetId);
+        return AesahaettrXmlInstance.getInstance().getPersonnes().getPersonne().stream()
+                .filter(item -> item.getPossessions().getPossession().stream().anyMatch(poss -> poss.getObjetId().equals(objetId)))
+                .findFirst();
     }
 
 }

@@ -1,0 +1,49 @@
+<h1>Les objets</h1>
+<p>Accès à la liste des objets répertoriés.</p>
+
+<p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple icon="pi pi-plus" class="p-button-success p-mr-2"
+          routerLink="/objets/new" title="Ajouter un nouvel objet"></button>
+    </ng-template>
+</p-toolbar>
+
+<p-table #objetTable [value]="objetList" dataKey="id" [rows]="10" [paginator]="true" [rowHover]="true"
+  [globalFilterFields]="['nom', 'description', 'localisation', 'possesseur']" styleClass="p-datatable-striped">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Liste des objets</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="objetTable.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Recherche rapide..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="nom">Nom <p-sortIcon field="nom"></p-sortIcon></th>
+            <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+            <th pSortableColumn="localisation">Dernière localisation connue <p-sortIcon field="localisation"></p-sortIcon></th>
+            <th pSortableColumn="possesseur">Possesseur <p-sortIcon field="possesseur"></p-sortIcon></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-objet>
+        <tr>
+            <td>{{objet.nom}}</td>
+            <td>{{objet.description}}</td>
+            <td>{{objet.localisation}}</td>
+            <td>{{objet.possesseur}}</td>
+            <td>
+                <button pButton pRipple icon="pi pi-tablet" class="p-button-rounded p-button-warning p-mr-2"
+                    [routerLink]="['/objets', objet.id]" title="Voir la fiche"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Il y a {{objetList?.length}} objet{{objetList?.length > 1 ? 's' : ''}}.
+        </div>
+    </ng-template>
+</p-table>

@@ -3,10 +3,11 @@ package aesahaettr.displayer;
 import java.util.Objects;
 
 import aesahaettr.xml.bean.Adresse;
+import aesahaettr.xml.bean.Personne;
 
-public final class AdresseDisplayer {
+public final class ObjectDisplayer {
 
-    private AdresseDisplayer() {
+    private ObjectDisplayer() {
         throw new IllegalArgumentException("Classe utilitaire.");
     }
 
@@ -23,5 +24,15 @@ public final class AdresseDisplayer {
                 .append(')')
                 .toString();
     }
+
+    public static String getPersonneDisplay(Personne personne) {
+        Objects.requireNonNull(personne);
+
+        return new StringBuilder().append(personne.getNomUsage())
+                .append(' ')
+                .append(personne.getPrenomUsage())
+                .toString();
+    }
+
 
 }

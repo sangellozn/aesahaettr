@@ -1,5 +1,5 @@
 <h1>Les personnes</h1>
-<p>Accès à la liste des personnalités connus.</p>
+<p>Accès à la liste des personnalités connues.</p>
 
 <p-toolbar styleClass="p-mb-4">
     <ng-template pTemplate="left">
@@ -8,7 +8,7 @@
     </ng-template>
 </p-toolbar>
 
-<p-table #personneTable [value]="personneList" dataKey="code" [rows]="10" [paginator]="true" [rowHover]="true"
+<p-table #personneTable [value]="personneList" dataKey="id" [rows]="10" [paginator]="true" [rowHover]="true"
   [globalFilterFields]="['nomUsage', 'prenomUsage', 'localisation']" styleClass="p-datatable-striped">
     <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
@@ -41,7 +41,7 @@
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            Il y a {{personneList?.length}} personnes.
+            Il y a {{personneList?.length}} personne{{personneList?.length > 1 ? 's' : ''}}.
         </div>
     </ng-template>
 </p-table>

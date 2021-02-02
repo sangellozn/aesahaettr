@@ -9,3 +9,7 @@
 body {
     background: var(--surface-b);
 }
+
+.p-field-checkbox > label {
+    margin-bottom: 0;
+}

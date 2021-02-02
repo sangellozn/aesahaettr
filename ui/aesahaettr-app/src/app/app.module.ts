@@ -21,6 +21,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { CardModule } from 'primeng/card';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FieldsetModule } from 'primeng/fieldset';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -37,6 +39,8 @@ import { PersonneListComponent } from './personnes/list/personne-list/personne-l
 import { PersonneComponent } from './personnes/personne/personne.component';
 import { LocalisationListComponent } from './localisation-list/localisation-list.component';
 import { EvenementListComponent } from './evenements/evenement-list/evenement-list.component';
+import { ObjetListComponent } from './objets/list/objet-list/objet-list.component';
+import { ObjetFormComponent } from './objets/objet-form/objet-form.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,9 @@ import { EvenementListComponent } from './evenements/evenement-list/evenement-li
     PersonneListComponent,
     PersonneComponent,
     LocalisationListComponent,
-    EvenementListComponent
+    EvenementListComponent,
+    ObjetListComponent,
+    ObjetFormComponent
   ],
   imports: [
     AppRoutingModule,
@@ -75,7 +81,9 @@ import { EvenementListComponent } from './evenements/evenement-list/evenement-li
     ScrollTopModule,
     CardModule,
     CalendarModule,
-    DropdownModule
+    DropdownModule,
+    CheckboxModule,
+    FieldsetModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

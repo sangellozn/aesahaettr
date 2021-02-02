@@ -28,4 +28,24 @@ public class ReferentielServicesImpl implements IReferentielServices {
                 .map(this.referentielFactory::map).collect(Collectors.toList());
     }
 
+    @Override
+    public Collection<ReferentielItemDto> findAllTypeObjet() {
+        return AesahaettrXmlInstance.getInstance().getRefTypeObjet().getTypeObjet().stream()
+                .map(this.referentielFactory::map).collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<ReferentielItemDto> findAllTypeAppartenance() {
+        return AesahaettrXmlInstance.getInstance().getRefTypeAppartenance().getTypeAppartenance().stream()
+                .map(this.referentielFactory::map).collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<ReferentielItemDto> findAllPersonnes() {
+        return AesahaettrXmlInstance.getInstance().getPersonnes().getPersonne().stream()
+                .map(this.referentielFactory::map)
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
 }

@@ -17,10 +17,6 @@ export class PersonneListComponent implements OnInit {
     this.loadPersonneList();
   }
 
-  editPersonne(personne: PersonneListItem) {
-    
-  }
-
   loadPersonneList() {
     this.personnesService.findAll().subscribe(data => this.personneList = data);
   }

@@ -26,4 +26,16 @@ export class ReferentielService extends AbstractAppService {
     return this.http.get<ReferentielItem[]>(`${this.url}/pays`).pipe(catchError(this.throwError()));
   }
 
+  findAllTypeObjet(): Observable<ReferentielItem[]> {
+    return this.http.get<ReferentielItem[]>(`${this.url}/typesObjets`).pipe(catchError(this.throwError()));
+  }
+
+  findAllTypeAppartenance(): Observable<ReferentielItem[]> {
+    return this.http.get<ReferentielItem[]>(`${this.url}/typesAppartenances`).pipe(catchError(this.throwError()));
+  }
+
+  findAllPersonnes(): Observable<ReferentielItem[]> {
+    return this.http.get<ReferentielItem[]>(`${this.url}/personnes`).pipe(catchError(this.throwError()));
+  }
+
 }

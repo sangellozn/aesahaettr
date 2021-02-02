@@ -278,8 +278,14 @@
 
     <complexType name="possession">
     	<sequence>
-    		<element name="typeAppartenanceCode" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="objetId" type="tns:UIID" minOccurs="1" maxOccurs="1"></element>
+    		<element name="typeAppartenanceCode" type="string"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="objetId" type="tns:UIID" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="dateDebut" type="dateTime" minOccurs="1" maxOccurs="1"></element>
+    		<element name="dateFin" type="dateTime" minOccurs="0" maxOccurs="1"></element>
     	</sequence>
     </complexType>
 

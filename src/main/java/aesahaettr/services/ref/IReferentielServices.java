@@ -10,4 +10,10 @@ public interface IReferentielServices {
 
     Collection<ReferentielItemDto> findAllPays();
 
+    Collection<ReferentielItemDto> findAllTypeObjet();
+
+    Collection<ReferentielItemDto> findAllTypeAppartenance();
+
+    Collection<ReferentielItemDto> findAllPersonnes();
+
 }

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import aesahaettr.displayer.AdresseDisplayer;
+import aesahaettr.displayer.ObjectDisplayer;
 import aesahaettr.factories.IEvenementsFactory;
 import aesahaettr.factories.ILocalisationsFactory;
 import aesahaettr.finder.ObjectFinder;
@@ -50,7 +50,7 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
                 .findFirst();
 
         if (localisationOpt.isPresent()) {
-            resultat.setLocalisation(AdresseDisplayer.getAdresseDisplay(ObjectFinder.getAdresseById(localisationOpt.get().getAdresseId())));
+            resultat.setLocalisation(ObjectDisplayer.getAdresseDisplay(ObjectFinder.getAdresseById(localisationOpt.get().getAdresseId())));
         }
 
         return resultat;

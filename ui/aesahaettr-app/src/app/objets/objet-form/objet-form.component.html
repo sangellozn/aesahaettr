@@ -1,0 +1,65 @@
+<h1 *ngIf="!objet.id; else editObjetBlock">Ajouter un nouvel objet</h1>
+<ng-template #editObjetBlock><h1>Modification de l'objet {{objet.nom}}</h1></ng-template>
+
+<form #objetForm="ngForm" (ngSubmit)="onObjetFormSubmit()" class="mt-5">
+    <div class="p-fluid">    
+        <div class="p-field">
+            <label for="nom">Nom *</label>
+            <input type="text" pInputText id="nom" name="nom" [(ngModel)]="objet.nom" required autofocus #nom="ngModel" />
+            <small class="p-invalid" [hidden]="nom.valid || nom.pristine">Le nom est obligatoire</small>
+        </div>
+        <div class="p-field">
+            <label for="description">Description *</label>
+            <textarea pInputTextarea name="description" id="description" [(ngModel)]="objet.description" rows="5" #description="ngModel" required></textarea>
+            <small class="p-invalid" [hidden]="description.valid || description.pristine">La description est obligatoire</small>
+        </div>
+        <div class="p-field">
+            <label for="typeObjetCode">Type d'objet *</label>
+            <p-dropdown [options]="refTypeObjet" [(ngModel)]="objet.typeObjetCode" optionLabel="libelle" optionValue="code" name="typeObjetCode" inputId="typeObjetCode"
+              #typeObjetCode="ngModel" required></p-dropdown>
+            <small class="p-invalid" [hidden]="typeObjetCode.valid || typeObjetCode.pristine">Le type d'objet est obligatoire</small>
+        </div>
+        <div class="p-field-checkbox">
+            <p-checkbox binary="true" [(ngModel)]="addToPersonne" inputId="addToPersonne" name="addToPersonne"></p-checkbox>
+            <label for="addToPersonne">Ajouter à une personne ?</label>
+        </div>
+        <div *ngIf="addToPersonne">
+            <div class="p-field">
+                <label for="personneId">Personne *</label>
+                <p-dropdown [options]="personnes" [(ngModel)]="objet.personneId" optionLabel="libelle" optionValue="code" name="personneId" inputId="personneId"
+                   [required]="addToPersonne" #personneId="ngModel" [filter]="true" filterBy="libelle"></p-dropdown>
+                <small class="p-invalid" [hidden]="personneId.valid || personneId.pristine">La personne est obligatoire</small>
+            </div>
+            <div class="p-field">
+                <label for="typeAppartenanceCode">Type d'appartenance *</label>
+                <p-dropdown [options]="refTypeAppartenance" [(ngModel)]="objet.typeAppartenanceCode" optionLabel="libelle" optionValue="code" name="typeAppartenanceCode" inputId="typeAppartenanceCode"
+                   [required]="addToPersonne" #typeAppartenanceCode="ngModel"></p-dropdown>
+            </div>
+            <div class="p-grid">
+                <div class="p-col-6">
+                    <div class="p-fluid">
+                        <div class="p-field">
+                            <label for="dateDebut">Depuis le *</label>
+                            <p-calendar [(ngModel)]="objet.dateDebut" inputId="dateDebut" name="dateDebut" #dateDebut="ngModel" dateFormat="dd/mm/yy"
+                                firstDayOfWeek="1" [required]="addToPersonne"></p-calendar>
+                            <small class="p-invalid" [hidden]="dateDebut.valid || dateDebut.pristine">La date de début est obligatoire</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-6">
+                    <div class="p-fluid">
+                        <div class="p-field">
+                            <label for="dateFin">Jusqu'au</label>
+                            <p-calendar [(ngModel)]="objet.dateFin" inputId="dateFin" name="dateFin" #dateFin="ngModel" dateFormat="dd/mm/yy" firstDayOfWeek="1"></p-calendar>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <button pButton pRipple type="button" label="Annuler" icon="pi pi-times"
+        class="p-button-danger p-button-outlined mr-2" (click)="onBackButtonClick()"></button>
+    <button pButton pRipple type="submit" icon="pi pi-check" class="p-button-success" label="Sauvegarder"
+        [disabled]="!objetForm.form.valid"></button>
+</form>

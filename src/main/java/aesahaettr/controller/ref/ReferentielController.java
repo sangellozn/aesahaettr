@@ -27,4 +27,19 @@ public class ReferentielController {
         return this.referentielServices.findAllPays();
     }
 
+    @GetMapping("typesObjets")
+    public Collection<ReferentielItemDto> getAllTypeOjbet() {
+        return this.referentielServices.findAllTypeObjet();
+    }
+
+    @GetMapping("typesAppartenances")
+    public Collection<ReferentielItemDto> getAllTypeAppartenance() {
+        return this.referentielServices.findAllTypeAppartenance();
+    }
+
+    @GetMapping("personnes")
+    public Collection<ReferentielItemDto> getAllPersonnes() {
+        return this.referentielServices.findAllPersonnes();
+    }
+
 }

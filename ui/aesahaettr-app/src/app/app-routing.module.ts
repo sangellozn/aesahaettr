@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './not-found/page-not-found/page-not-found.component';
+import { ObjetListComponent } from './objets/list/objet-list/objet-list.component';
+import { ObjetFormComponent } from './objets/objet-form/objet-form.component';
 import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
 import { PersonneFormComponent } from './personnes/personne-form/personne-form.component';
 import { PersonneComponent } from './personnes/personne/personne.component';
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'personnes/new', component: PersonneFormComponent },
   { path: 'personnes/:id/edit', component: PersonneFormComponent },
   { path: 'personnes/:id', component: PersonneComponent },
+  { path: 'objets', component: ObjetListComponent },
+  { path: 'objets/new', component: ObjetFormComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
