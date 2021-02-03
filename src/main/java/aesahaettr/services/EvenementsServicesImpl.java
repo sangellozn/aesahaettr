@@ -8,6 +8,7 @@ import aesahaettr.factories.IEvenementsFactory;
 import aesahaettr.finder.ObjectFinder;
 import aesahaettr.ui.bean.EvenementDto;
 import aesahaettr.xml.bean.Evenement;
+import aesahaettr.xml.bean.Objet;
 import aesahaettr.xml.bean.Personne;
 
 @Service
@@ -26,17 +27,30 @@ public class EvenementsServicesImpl implements IEvenementsServices {
 
         AesahaettrXmlInstance.save();
 
-        return this.evenementsFactory.mapToDto(evenement, personne);
+        return this.evenementsFactory.mapToDto(evenement, dto.getElementId());
     }
 
     @Override
-    public EvenementDto updateForPersonne(EvenementDto dto) {
+    public EvenementDto update(EvenementDto dto) {
         Evenement evenement = ObjectFinder.getEvenementById(dto.getId());
         this.evenementsFactory.updateBean(evenement, dto);
 
         AesahaettrXmlInstance.save();
 
-        return this.evenementsFactory.mapToDto(evenement, ObjectFinder.getPersonneById(dto.getElementId()));
+        return this.evenementsFactory.mapToDto(evenement, dto.getElementId());
+    }
+
+    @Override
+    public EvenementDto saveForObjet(EvenementDto dto) {
+        Evenement evenement = this.evenementsFactory.mapDtoToNewBean(dto);
+        Objet objet = ObjectFinder.getObjetById(dto.getElementId());
+
+        objet.getEvenementIds().getEvenementId().add(evenement.getId());
+        AesahaettrXmlInstance.getInstance().getEvenements().getEvenement().add(evenement);
+
+        AesahaettrXmlInstance.save();
+
+        return this.evenementsFactory.mapToDto(evenement, dto.getElementId());
     }
 
 }

@@ -10,6 +10,7 @@ import aesahaettr.ui.bean.LocalisationDto;
 import aesahaettr.xml.bean.Adresse;
 import aesahaettr.xml.bean.Aesahaettr;
 import aesahaettr.xml.bean.Localisation;
+import aesahaettr.xml.bean.Objet;
 import aesahaettr.xml.bean.Personne;
 
 @Service
@@ -34,7 +35,7 @@ public class LocalisationsServicesImpl implements ILocalisationsServices {
 
         AesahaettrXmlInstance.save();
 
-        return this.localisationFactory.mapToDto(localisation, personne);
+        return this.localisationFactory.mapToDto(localisation, personne.getId());
     }
 
     @Override
@@ -49,7 +50,40 @@ public class LocalisationsServicesImpl implements ILocalisationsServices {
 
         AesahaettrXmlInstance.save();
 
-        return this.localisationFactory.mapToDto(localisation, personne);
+        return this.localisationFactory.mapToDto(localisation, personne.getId());
+    }
+
+    @Override
+    public LocalisationDto saveForObjet(LocalisationDto dto) {
+        String objetId = dto.getElementId();
+
+        Adresse adresse = this.localisationFactory.mapDtoToNewAdresseBean(dto);
+        Localisation localisation = this.localisationFactory.mapDtoToNewLocalisationBean(dto, adresse);
+
+        Aesahaettr instance = AesahaettrXmlInstance.getInstance();
+        instance.getAdresses().getAdresse().add(adresse);
+
+        Objet objet = ObjectFinder.getObjetById(objetId);
+        objet.getLocalisations().getLocalisation().add(localisation);
+
+        AesahaettrXmlInstance.save();
+
+        return this.localisationFactory.mapToDto(localisation, objet.getId());
+    }
+
+    @Override
+    public LocalisationDto updateForObjet(LocalisationDto dto) {
+        Adresse adresse = ObjectFinder.getAdresseById(dto.getAdresseId());
+        Objet objet = ObjectFinder.getObjetById(dto.getElementId());
+
+        Localisation localisation = ObjectFinder.getLocalisationById(dto.getId(), objet);
+
+        this.localisationFactory.updateBean(adresse, dto);
+        this.localisationFactory.updateBean(localisation, dto);
+
+        AesahaettrXmlInstance.save();
+
+        return this.localisationFactory.mapToDto(localisation, objet.getId());
     }
 
 }

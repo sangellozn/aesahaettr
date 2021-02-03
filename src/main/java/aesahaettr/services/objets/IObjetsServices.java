@@ -14,4 +14,6 @@ public interface IObjetsServices {
 
     ObjetFullDto update(ObjetMinimalDto dto);
 
+    ObjetFullDto getById(String id);
+
 }

@@ -49,8 +49,18 @@ public class ObjetsServicesImpl implements IObjetsServices {
 
     @Override
     public ObjetFullDto update(ObjetMinimalDto dto) {
-        // TODO Auto-generated method stub
-        return null;
+        Objet objet = ObjectFinder.getObjetById(dto.getId());
+
+        this.objetsFactory.updateBean(objet, dto);
+
+        AesahaettrXmlInstance.save();
+
+        return this.objetsFactory.mapToFullDto(objet);
+    }
+
+    @Override
+    public ObjetFullDto getById(String id) {
+        return this.objetsFactory.mapToFullDto(ObjectFinder.getObjetById(id));
     }
 
 }

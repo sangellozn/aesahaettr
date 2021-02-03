@@ -16,4 +16,6 @@ public interface IObjetsFactory {
 
     Possession mapToNewPossessionBean(ObjetMinimalDto dto, String objetId);
 
+    void updateBean(Objet objet, ObjetMinimalDto dto);
+
 }

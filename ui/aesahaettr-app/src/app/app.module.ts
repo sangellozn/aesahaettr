@@ -32,7 +32,7 @@ import { PageNotFoundComponent } from './not-found/page-not-found/page-not-found
 import { AppartenanceComponent } from './ref/type/appartenance/appartenance.component';
 import { ContactComponent } from './ref/type/contact/contact.component';
 import { LocalisationComponent } from './ref/type/localisation/localisation.component';
-import { ObjetComponent } from './ref/type/objet/objet.component';
+import { ObjetComponent as RefObjetComponent } from './ref/type/objet/objet.component';
 import { RelationComponent } from './ref/type/relation/relation.component';
 import { PersonneFormComponent } from './personnes/personne-form/personne-form.component';
 import { PersonneListComponent } from './personnes/list/personne-list/personne-list.component';
@@ -41,6 +41,7 @@ import { LocalisationListComponent } from './localisation-list/localisation-list
 import { EvenementListComponent } from './evenements/evenement-list/evenement-list.component';
 import { ObjetListComponent } from './objets/list/objet-list/objet-list.component';
 import { ObjetFormComponent } from './objets/objet-form/objet-form.component';
+import { ObjetComponent } from './objets/objet/objet.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ObjetFormComponent } from './objets/objet-form/objet-form.component';
     LocalisationListComponent,
     EvenementListComponent,
     ObjetListComponent,
-    ObjetFormComponent
+    ObjetFormComponent,
+    RefObjetComponent
   ],
   imports: [
     AppRoutingModule,

@@ -42,15 +42,15 @@ export class EvenementListComponent implements OnInit {
     if (this.evenement.id) {
       if (this.type === 'PERSONNE') {
         this.evenementsService.updateForPersonne(this.evenement).subscribe(() => this.reset(true));
-      } else {
-        // TODO
+      } else if (this.type === 'OBJET') {
+        this.evenementsService.updateForObjet(this.evenement).subscribe(() => this.reset(true));
       }
     } else {
       this.evenement.elementId = this.elementId;
       if (this.type === 'PERSONNE') {
         this.evenementsService.saveForPersonne(this.evenement).subscribe(() => this.reset(true));
-      } else {
-        // TODO
+      } else if (this.type === 'OBJET') {
+        this.evenementsService.saveForObjet(this.evenement).subscribe(() => this.reset(true));
       }
     }
   }

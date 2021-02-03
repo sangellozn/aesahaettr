@@ -1,4 +1,4 @@
-package aesahaettr.controller.personnes;
+package aesahaettr.controller.objets;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +11,8 @@ import aesahaettr.services.IEvenementsServices;
 import aesahaettr.ui.bean.EvenementDto;
 
 @RestController
-@RequestMapping("api/personnes/{personneId}/evenements")
-public class EvenementsPersonnesController {
+@RequestMapping("api/objets/{objetId}/evenements")
+public class EvenementsObjetsController {
 
     @Autowired
     private IEvenementsServices evenementsServices;
@@ -24,7 +24,7 @@ public class EvenementsPersonnesController {
 
     @PostMapping
     public EvenementDto save(@RequestBody EvenementDto evenementDto) {
-        return this.evenementsServices.saveForPersonne(evenementDto);
+        return this.evenementsServices.saveForObjet(evenementDto);
     }
 
 }

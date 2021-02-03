@@ -6,6 +6,9 @@ public interface IEvenementsServices {
 
     EvenementDto saveForPersonne(EvenementDto dto);
 
-    EvenementDto updateForPersonne(EvenementDto dto);
+    EvenementDto update(EvenementDto dto);
+
+    EvenementDto saveForObjet(EvenementDto dto);
+
 
 }

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import aesahaettr.ui.bean.EvenementDto;
 import aesahaettr.xml.bean.Evenement;
-import aesahaettr.xml.bean.Personne;
 
 @Component
 public class EvenementsFactoryImpl implements IEvenementsFactory {
@@ -26,14 +25,14 @@ public class EvenementsFactoryImpl implements IEvenementsFactory {
     }
 
     @Override
-    public EvenementDto mapToDto(Evenement bean, Personne personne) {
+    public EvenementDto mapToDto(Evenement bean, String id) {
         EvenementDto dto = new EvenementDto();
 
         dto.setDateDebut(bean.getDateDebut());
         dto.setDateEvenement(bean.getDateEvt());
         dto.setDateFin(bean.getDateFin());
         dto.setDescription(bean.getDescription());
-        dto.setElementId(personne.getId());
+        dto.setElementId(id);
         dto.setId(bean.getId());
         dto.setResume(bean.getResume());
 

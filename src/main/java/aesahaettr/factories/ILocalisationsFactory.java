@@ -3,7 +3,6 @@ package aesahaettr.factories;
 import aesahaettr.ui.bean.LocalisationDto;
 import aesahaettr.xml.bean.Adresse;
 import aesahaettr.xml.bean.Localisation;
-import aesahaettr.xml.bean.Personne;
 
 public interface ILocalisationsFactory {
 
@@ -11,7 +10,7 @@ public interface ILocalisationsFactory {
 
     Localisation mapDtoToNewLocalisationBean(LocalisationDto dto, Adresse adresse);
 
-    LocalisationDto mapToDto(Localisation localisation, Personne personne);
+    LocalisationDto mapToDto(Localisation localisation, String id);
 
     void updateBean(Adresse adresse, LocalisationDto dto);
 

@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +36,11 @@ public class ObjetsController {
     @PutMapping("{id}")
     public ObjetFullDto update(@RequestBody ObjetMinimalDto dto) {
         return this.objetsServices.update(dto);
+    }
+
+    @GetMapping("{id}")
+    public ObjetFullDto getById(@PathVariable String id) {
+        return this.objetsServices.getById(id);
     }
 
 }

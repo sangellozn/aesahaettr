@@ -8,7 +8,6 @@ import aesahaettr.finder.ObjectFinder;
 import aesahaettr.ui.bean.LocalisationDto;
 import aesahaettr.xml.bean.Adresse;
 import aesahaettr.xml.bean.Localisation;
-import aesahaettr.xml.bean.Personne;
 
 @Component
 public class LocalisationsFactoryImpl implements ILocalisationsFactory {
@@ -43,7 +42,7 @@ public class LocalisationsFactoryImpl implements ILocalisationsFactory {
     }
 
     @Override
-    public LocalisationDto mapToDto(Localisation localisation, Personne personne) {
+    public LocalisationDto mapToDto(Localisation localisation, String id) {
         LocalisationDto dto = new LocalisationDto();
 
         Adresse adresse = ObjectFinder.getAdresseById(localisation.getAdresseId());
@@ -59,7 +58,7 @@ public class LocalisationsFactoryImpl implements ILocalisationsFactory {
         dto.setLigne3(adresse.getLigne3());
         dto.setLocaliteDestination(adresse.getLocaliteDestination());
         dto.setPaysCode(adresse.getPaysCode());
-        dto.setElementId(personne.getId());
+        dto.setElementId(id);
         dto.setTypeLocalisationCode(localisation.getTypeLocalisationCode());
 
         return dto;

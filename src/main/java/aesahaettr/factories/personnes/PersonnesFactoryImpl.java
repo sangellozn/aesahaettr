@@ -103,10 +103,10 @@ public class PersonnesFactoryImpl implements IPersonnesFactory {
         resultat.setDateCreation(bean.getDateCreation());
         resultat.setDateModification(bean.getDateModification());
         resultat.setLocalisations(bean.getLocalisations().getLocalisation().
-                stream().map(item -> this.localisationsFactory.mapToDto(item, bean)).collect(Collectors.toList()));
+                stream().map(item -> this.localisationsFactory.mapToDto(item, bean.getId())).collect(Collectors.toList()));
         resultat.setEvenements(bean.getEvenementIds().getEvenementId().stream()
                 .map(ObjectFinder::getEvenementById)
-                .map(item -> this.evenementsFactory.mapToDto(item, bean))
+                .map(item -> this.evenementsFactory.mapToDto(item, bean.getId()))
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList()));
 

@@ -19,7 +19,7 @@
               #typeObjetCode="ngModel" required></p-dropdown>
             <small class="p-invalid" [hidden]="typeObjetCode.valid || typeObjetCode.pristine">Le type d'objet est obligatoire</small>
         </div>
-        <div class="p-field-checkbox">
+        <div class="p-field-checkbox" *ngIf="!modification">
             <p-checkbox binary="true" [(ngModel)]="addToPersonne" inputId="addToPersonne" name="addToPersonne"></p-checkbox>
             <label for="addToPersonne">Ajouter à une personne ?</label>
         </div>

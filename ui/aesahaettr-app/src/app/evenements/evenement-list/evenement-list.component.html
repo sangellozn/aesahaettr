@@ -35,7 +35,7 @@
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            Il y a {{evenements?.length}} événement{{evenements?.length > 1 ? 's' : ''}} pour cette personne.
+            Il y a {{evenements?.length}} événement{{evenements?.length > 1 ? 's' : ''}} pour {{type === 'PERSONNE' ? 'cette personne' : 'cet objet'}}.
         </div>
     </ng-template>
 </p-table>

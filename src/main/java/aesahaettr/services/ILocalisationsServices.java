@@ -8,4 +8,8 @@ public interface ILocalisationsServices {
 
     LocalisationDto updateForPersonne(LocalisationDto dto);
 
+    LocalisationDto saveForObjet(LocalisationDto dto);
+
+    LocalisationDto updateForObjet(LocalisationDto dto);
+
 }

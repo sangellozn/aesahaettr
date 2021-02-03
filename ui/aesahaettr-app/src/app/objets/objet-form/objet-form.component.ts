@@ -31,9 +31,8 @@ export class ObjetFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.has('id')) {
-      // FIXME
-      //const id = this.route.snapshot.paramMap.get('id');
-      //this.objetsService.getById(id).subscribe(data => this.objet = data.toObjet());
+      const id = this.route.snapshot.paramMap.get('id');
+      this.objetsService.getById(id).subscribe(data => {this.objet = data.toObjet(); this.modification = true});
     }
     this.referentielService.findAllTypeObjet().subscribe(data => this.refTypeObjet = data);
     this.referentielService.findAllTypeAppartenance().subscribe(data => this.refTypeAppartenance = data);
@@ -42,8 +41,7 @@ export class ObjetFormComponent implements OnInit {
 
   onObjetFormSubmit(): void {
     if (this.objet.id) {
-      // FIXME
-      //this.objetsService.update(this.objet).subscribe(data => this.router.navigate(['/objets', data.id]));
+      this.objetsService.update(this.objet).subscribe(data => this.router.navigate(['/objets', data.id]));
     } else {
       this.objetsService.save(this.objet).subscribe(data => this.router.navigate(['/objets', data.id]));
     }

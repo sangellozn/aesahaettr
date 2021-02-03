@@ -12,6 +12,8 @@ public class ObjetFullDto {
 
     private String nom;
 
+    private String description;
+
     private Instant dateCreation;
 
     private Instant dateModification;
@@ -118,6 +120,20 @@ public class ObjetFullDto {
      */
     public void setLocalisations(Collection<LocalisationDto> localisations) {
         this.localisations = localisations;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

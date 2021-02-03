@@ -56,15 +56,15 @@ export class LocalisationListComponent implements OnInit {
     if (this.localisation.id) {
       if (this.type === 'PERSONNE') {
         this.localisationsService.updateForPersonne(this.localisation).subscribe(() => this.reset(true));
-      } else {
-        // TODO
+      } else if (this.type === 'OBJET') {
+        this.localisationsService.updateForObjet(this.localisation).subscribe(() => this.reset(true));
       }
     } else {
       this.localisation.elementId = this.elementId;
       if (this.type === 'PERSONNE') {
         this.localisationsService.saveForPersonne(this.localisation).subscribe(() => this.reset(true));
-      } else {
-        // TODO
+      } else if (this.type === 'OBJET') {
+        this.localisationsService.saveForObjet(this.localisation).subscribe(() => this.reset(true));
       }
     }
   }
